@@ -1,0 +1,649 @@
+% !TEX root = ../../math6370.tex
+
+\section{Unique Factorization and Ramification in $\O_K$}
+\subsection{Prime Ideals in $\O_K$}
+
+Let $K/\Q$ be a number field of degree $n$. 
+
+\begin{prop}\label{prop:finitering}
+If $I \subseteq \O_K$ is a nonzero ideal, then $\O_K/I$ is a finite ring. 
+\end{prop}
+
+\pf Take $0 \neq \alpha \in I$. Since$ \alpha\O_K \subseteq I$, we have a surjective map of rings 
+	\[
+	\O_K/\alpha \O_K \longtwoheadrightarrow \O_K/I
+	\]
+It suffices to show that $\O_K/\alpha\O_K$ is finite. Then without loss of generality, we may assume $I=\alpha \O_K$. Consider the multiplication by $\alpha$ map: $\mu_\alpha: \O_K \to \O_K$, $x \mapsto \alpha x$. Choosing an integral basis for $\O_K$, we can write $\O_K \cong \Z^n$ as an abelian group. Then $\mu_\alpha$ can be written as a matrix $B \in M_n(\Z)$. Observe
+	\[
+	\#\O_K/\alpha\O_K=[\O_K \colon \alpha \O_K]=[\O_K \colon \mu_\alpha(\O_K)]= [\Z^n \colon B(\Z^n)]
+	\]
+Note also that $\det B= \det(\mu_\alpha)= \Nm{K/\Q}(\alpha) \neq 0$. Using the Smith Normal Form, we may write
+	\[
+	B':= PBQ= \begin{pmatrix} d_1 & & \\ & \ddots & \\ & & d_n \end{pmatrix},
+	\]
+where $P,Q \in \GL_n(\Z)$ and $d_i \geq 1$. But then
+	\[
+	\begin{split}
+	[\Z^n \colon B(\Z^n)]&= [\Z^n \colon B'(\Z^n)] \\
+	&=[\Z^n \colon d_1 \Z \times \cdots \times d_n \Z] \\
+	&= d_1 \cdots d_n \\
+	&= \det B' \\
+	&= \pm \det B \\
+	&= \pm \Nm{K/\Q}(\alpha)
+	\end{split}
+	\] \qed \\
+
+\begin{rem}
+In Proposition~\ref{prop:finitering}, we actually showed that $\#\O_K/\alpha\O_K=|\Nm{K/\Q}(\alpha)|$.
+\end{rem}
+
+\begin{cor}
+If $I \subseteq \O_K$ is a prime ideal, then $\O_K/I$ is a field.
+\end{cor}
+
+\pf By Proposition~\ref{prop:finitering}, we know that $\O_K/I$ is finite. But $I$ is a prime ideal so that $\O_K/I$ is a finite integral domain, hence a field. \qed \\
+
+\begin{prop}
+All nonzero prime ideals in $\O_K$ are maximal. 
+\end{prop}
+
+\pf If $I$ is a nonzero prime ideal in $\O_K$, then we know $\O_K/I$ is a field. But then $I$ must be maximal. \qed \\
+
+\begin{dfn}[Norm (Ideal)]
+For a nonzero ideal $I \subseteq \O_K$, we define the norm of $I$ to be $N(I)=\#(\O_K/I)$. 
+\end{dfn}
+
+This definition replicates the traditional case: if $I=(\alpha)=\alpha \O_K$, then $N(I)=\#(\O_K/I)=\#(\O_K/\alpha \O_K)=|\Nm{K/\Q}(\alpha)|$. Moreover, observe that there are finitely many ideals of a given norm: if $N(I)=m$, then $I \subseteq \O_K$ is of index $m$, i.e. $m \O_K \subseteq I \subseteq \O_K$. But then $m\O_K \subseteq \O_K$ is of index $m$. Since $\O_K \cong \Z^n$, we know $\O_K/m\O_K \cong \Z^n/m\Z^n$ as abelian groups. Then there can be only finitely many such ideals. 
+
+Furthermore, if $I$ is a nonzero ideal of $\O_K$, then $I \cong \Z^n$ as additive groups. In particular, $\O_K$ is noetherian: all ideals of $\O_K$ are finitely generated $\O_K$-modules. [In fact, we have the stronger result that all ideals of $\O_K$ are finitely generated abelian groups.]
+
+
+
+\subsection{Factoring in $\O_K$}
+
+The goal for constructing $\O_K$ was to mimic $\Z \subseteq \Q$ but instead for a generally number field $K/\Q$. Thus far, we have seen $\O_K$ is a useful ring that does much of what we want. However, one of the vital properties of $\Z$, the unique factorization of elements into products of primes, does not generally hold for $\O_K$.
+
+\begin{ex}\label{ex:badfactorok}
+Let $K=\Q(\sqrt{-5})$ so that $\O_K=\Z(\sqrt{-5})$. We first show that $\O_K^\times=\{\pm 1\}$. Suppose that $\alpha \in \O_K^\times$, where $\alpha=a+b\sqrt{-5}$. We know $\alpha$ is a unit if and only if $\Nm{K/\Q}(\alpha)= \pm 1$. But then $\Nm{K/\Q}(\alpha)=a^2+5b^2= \pm 1$. Therefore, $b=0$ so $a \in \{\pm1\}$ forcing $\O_K^\times=\{\pm 1\}$. Now observe
+	\[
+	6=2 \cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5})
+	\]
+We claim these are two distinct factorizations of 6 into irreducibles in $\O_K$. To see $1+\sqrt{-5}$ is irreducible, suppose $1+\sqrt{-5}=\alpha \beta$, where $\alpha, \beta \in \O_K$ are not units. Then
+	\[
+	\begin{split}
+	\Nm{K/\Q}(1+\sqrt{-5})&= \Nm{K/\Q}(\alpha\beta)=\Nm{K/\Q}(\alpha) \Nm{K/\Q}(\beta) \\
+	6&=\Nm{K/\Q}(\alpha)\Nm{K/\Q}(\beta)
+	\end{split}
+	\]
+But $\Nm{K/\Q}(\alpha),\Nm{K/\Q}(\beta) \in \Z$ since $\alpha,\beta \in \O_K$. Since we assumed $\alpha,\beta$ were not units, $|\Nm{K/\Q}(\alpha)| \neq 1$. It must be then that $\Nm{K/\Q}(\alpha) \in \{2,3\}$. But neither $\Nm{K/\Q}(\alpha)=a^2+5b^2=2$ nor $\Nm{K/\Q}(\alpha)=a^2+5b^2=3$ have integer pairs of solutions. Therefore, one of $\Nm{K/\Q}(\alpha),\Nm{K/\Q}(\beta)$ is $\pm 1$ so that one of $\alpha,\beta$ must be a unit. Then $1+\sqrt{-5}$ is irreducible. This works the same for showing 2, 3, and $1-\sqrt{-5}$ are irreducible. Furthermore since $\O_K^\times=\{\pm1\}$, it is clear that none of 2, 3, $1+\sqrt{-5}$, and $1-\sqrt{-5}$ are associates. But then $6=2 \cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5})$ is two distinct factorization of 6 into irreducibles in $\O_K$. Hence, unique factorization fails for $\O_K$. \xqed
+\end{ex}
+
+The previous example shows that unique factorization in $\O_K$ fails for elements. However, we can recover unique factorization if instead we work on the level of ideals in $\O_K$ instead. We are going to see that all ideals in $\O_K$ factor into products of prime ideals in $\O_K$. Before proving the theorem, let us see an example of this type of factorization.
+
+
+\begin{ex}\label{ex:2primefactorex}
+Let $K=\Q(\sqrt{-5})$ so that $\O_K=\Z[\sqrt{-5}]$. We claim $\p=(2,1+\sqrt{-5})= 2\O_K + (1+\sqrt{-5})\O_K \subseteq \O_K$ is a prime ideal. This follows from the fact that
+	\[
+	\O_K/\p= \dfrac{\Z[\sqrt{-5}]}{(2,1+\sqrt{-5})}= \Z/2\Z
+	\]
+is an integral domain. Now
+	\[
+	\begin{split}
+	\p^2&=(2,1+\sqrt{-5})(2,1+\sqrt{-5}) \\
+	&=(4,2(1+\sqrt{-5}),(1+\sqrt{-5})^2) \\
+	&=(4,2+2\sqrt{-5},-4+2\sqrt{-5})
+	\end{split}
+	\]
+But then $\p^2$ contains $(2+2\sqrt{-5}) - (-4+2\sqrt{-5})=6$ and hence then contains $6-4=2$. But then all the generators of $\p^2$ are multiples of $2 \in \p^2$ so that $\p^2=(2)$. Note that while $\p^2$ is principal, $\p$ itself cannot be principle for then 2 would a factorization, contradicting its irreducibility. 
+
+Now let $\q_1=(3,1+\sqrt{-5})$ and $\q_2=(3,1-\sqrt{-5})$ be ideals of $\O_K$. As above, one can check that these ideals are prime. Further,
+	\[
+	\q_1\q_2=(9,3-3\sqrt{-5},3+3\sqrt{-5},6)=(3),
+	\]
+since $9-6=3 \in \q_1\q_2$ and all the generators of $\q_1\q_2$ are multiples of 3. But then
+	\[
+	(6)=(2)(3)=\p^2\q_1\q_2
+	\]
+is a factorization of $(6)=6 \O_K$ into prime ideals. But from Example~\ref{ex:badfactorok}, we knew $6=2 \cdot 3=(1+\sqrt{-5})(1-\sqrt{-5})$. Assuming unique factorization, the factorization for $(6)$ should then give factorizations for $(1+\sqrt{-5})$ and $(1-\sqrt{-5})$. Observe
+	\[
+	\p\q_1=(2,1+\sqrt{-5})(3,1+\sqrt{-5})=(6,2+2\sqrt{-5},3+3\sqrt{-5},-4+2\sqrt{-5})
+	\]
+so that $(3+3\sqrt{-5})-(2+2\sqrt{-5})=1+\sqrt{-5} \in \p\q_1$. Therefore, $\p\q_1=(1+\sqrt{-5})$. Similarly, we have $\p\q_2=(1-\sqrt{-5})$. \xqed
+\end{ex}
+
+
+Notice in the previous example, unique factorization failed for the element 6 but held for the ideal $(6)$. Since we can recover unique factorization into prime ideals in $\O_K$, it will be necessary to study the structure of prime ideals in $\O_K$.
+
+
+\begin{rem}
+Unique factorization fails for every order $R \subsetneq \O_K \subseteq K$. 
+\end{rem}
+
+
+Take $0 \neq \p \subseteq \O_K$ to be a prime ideal. Note that $\p \cap \Z=(p)$, where $p$ is prime. We know that $\p$ is maximal so that $\O_K/\p$ is a field. Recall that if $K$ is a field, $\char K$ is the cardinality of the kernel of the unique map $\Z \to K$ (if the kernel is infinite, we define $\char K:=0$). It must be that $\O_K/\p=p$, where $P$ is prime. The ideal $p\O_K$ must factor into a product of prime ideals in $\O_K$, say $p\O_K=\p_1^{e_1} \cdots \p_r^{e_r}$ for distinct prime ideals $\p_i$ and $e_i \geq 1$. 
+
+
+\begin{dfn}[(Un)Ramified]
+Let $p$ be prime. If $p\O_K=\p_1^{e_1} \cdots \p_r^{e_r}$ is factorization of the ideal $p\O_K$ into distinct primes $\p_i$ and $e_i \geq 1$, we say that $p$ is ramified in $K$ if $e_i>1$ for some $i$ and unramified in $K$ if $e_i<1$ for all $i$. 
+\end{dfn}
+
+
+We shall eventually show that $p$ is ramified in $K$ if and only if $p$ divides $\disc K$. Hence, there are only finitely many ramified primes in $K$. Now $p\O_K=\p_1^{e_1} \cdots \p_r^{e_r}$ so that $\p \supseteq p\O_K=\p_1^{e_1} \cdots \p_r^{e_r}$. Recall the following result:
+
+
+\begin{lem}
+Let $\p$ be a prime ideal of $R$ and $I,J$ be ideals of $R$. If $\p \subseteq IJ$, then $\p \supseteq I$ or $\p \supseteq J$. 
+\end{lem}
+
+
+The the lemma, we know $\p \subseteq \p_i$ for some $i$. However, $\p_i$ is maximal forcing $\p=\p_i$. Therefore, $0 \neq \p \subseteq \O_K$ appears in the factorization of $p\O_K$, where $p=\char \O_K/\p$. Then the primes $\p_i$ `lie over' $p$. 
+	\[
+	\begin{tikzcd}
+	\p_1 & \cdots & \p_r \\
+	& p \arrow[dash]{ul} \arrow[dash]{u} \arrow[dash]{ur} & 
+	\end{tikzcd}
+	\]
+
+We shall now see how to factor $p\O_K$ for `most' primes $p$. Suppose $p\O_K=\p_1^{e_1} \cdots \p_r^{e_r}$. By maximality for $i \neq j$, $\p_i^{e_i} + \p_j^{e_j}=\O_K$. [If this were not the case, there would be a maximal ideal $\q$ such that $\p_i^{e_i} + \p_j^{e_j} \subseteq \q$. But then $\p_i^{e_i},\p_j^{e_j} \subseteq \q$ and then $\p_i,\p_j \subseteq \q$. Since $\p_i,\p_j$ are maximal, $\p_i=\q=\p_j$.] Recall the Chinese Remainder Theorem:
+
+\begin{thm}[Chinese Remainder Theorem] \label{thm:chinese}
+Let $R$ be a unital commutative ring. If $I_1,\ldots,I_m$ are pairwise coprime ideals of $R$, then the homomorphism of rings $\phi: R \to R/I_1 \oplus \cdots R/I_m$ given by $r \mapsto to(r+I_1,\ldots,r+I_m)$ is surjective with kernel $I_1 \cap \cdots \cap I_m= I_1 \cdots I_m$. 
+\end{thm}
+
+
+\noindent The Chinese Remainder Theorem gives  
+	\[
+	p\O_K \cong \prod_{i=1}^r \O_K/\p_i^{e_i}= \O_K/\p_1^{e_1} \times \cdots \times \O_K/\p_r^{e_r}
+	\]
+
+
+Now let $K$ be a number field and $\Z[\alpha] \subseteq \O_K$ an order. Define $g(x) \in \Z[x]$ to be the minimal polynomial of $\alpha$. Take $p \nmid [\O_K \colon \Z[\alpha]]$ (this is 1 if $\O_K=\Z[\alpha]$). Define also $\ov{g}:= g \mod p$, the polynomial obtained by reducing the coefficients of $g(x)$ mod $p$. Then we have $\ov{g}= \ov{g}_1^{e_1} \cdots \ov{g}_r^{e_r}$ with the $\ov{g}_i \in \F_p[x]$ distinct, monic, irreducible, and $e_i \geq 1$. For each $i$, choose a lift $g_i \in \Z[x]$ with $g_i \mod p= \ov{g}_i$. Note that one can choose $g_i$ to be monic with the same degree as $g_i$, say $f_i$. Define the ideal $\p_i:=(p,g_i(\alpha))$. 
+
+
+\begin{prop}
+The ideal $\p=(p,g_i(\alpha)) \subseteq \O_K$ is prime and $p\O_K=\p_1^{e_1}\cdots\p_r^{e_r}$. Moreover, $[\O_K/\p_i \colon \F_p]=f_i$.
+\end{prop}
+
+\pf From the fact that $\Z[\alpha] \subseteq \O_K$, we have a map $\phi: \Z[\alpha]/(p) \to \O_K/(p)$. We claim this map is an isomorphism. Both have cardinality $p^n$:
+	\[
+	\begin{aligned}
+	\O_K &\cong \Z^n  & &\hspace{1cm} &  \Z[\alpha]&\cong \Z^n \\
+	\O_K/p\O_K &\cong \Z^n/p\Z^n  & &\hspace{1cm} & \Z[\alpha]/(p)&\cong \Z^n/p\Z^n
+	\end{aligned}
+	\]
+Now $\#\coker \phi$ divides $p^n$ and $[\O_K \colon \Z[\alpha]]$ but $p^n$ and $[\O_K \colon \Z[\alpha]]$ are relatively prime by assumption.This forces $\coker \phi$ to be trivial so that $\phi$ is surjective. But then $\phi$ is a surjective map between finite sets of the same cardinality. Therefore, $\phi$ is an isomorphism.
+
+We have isomorphisms
+	\[
+	\begin{split}
+	\qfrac{\O_K}{p\O_K}&\cong \qfrac{\O_K}{\p_i} \\
+	&\cong \qfrac{\Z[x]}{(p,g(x))} \\
+	&\cong \qfrac{\F_p[x]}{(\overline{g})} \\
+	&\stackrel{\text{C.R.T.}}{\cong} \prod_i \qfrac{\F_p[x]}{(\overline{g}_i^{\,e_i})}
+	\end{split}
+	\]
+The homomorphisms $\O_K \sra \qfrac{\F_p[x]}{(\overline{g}_i^{\,e_i})}$ have kernel  $I_i=(p,g_i(\alpha)^{e_i})$  (the ambivalence in choice of lift is absorbed by $p$). Hence, $\qfrac{\O_K}{I_i} \cong \qfrac{\F_p[x]}{(\overline{g}_i^{\,e_i})}$. Therefore, the map
+	\[
+	\begin{tikzcd}
+	\O_K \arrow[two heads]{r} & \prod_{i=1}^r \qfrac{\O_K}{I_i}= \qfrac{\O_K}{I_1} \times \cdots \times \qfrac{\O_K}{I_r}
+	\end{tikzcd}
+	\]
+has kernel $p\O_K$. But by the Chinese Remainder Theorem, the kernel is $I_1 \cap \cdots \cap I_r= I_1 \cdots I_r$. Therefore, $p\O_K=I_1 \cdots I_r$. It is routine to verify that $I_i= \p_i^{e_i}$. Finally,
+	\[
+	\left[\qfrac{\O_K}{\p_i} \colon \F_p\right] = \left[\qfrac{\F_p[x]}{(\overline{g}_i)} \colon \F_p\right] = \deg \overline{g}_i = f_i.
+	\]
+\qed \\
+
+
+\begin{rem}
+The degree of the extension restricts possible factorizations in that
+	\[
+	\sum_{i=1}^r e_if_i = \sum_{i=1}^r e_i \deg(\overline{g}_i) = \deg \overline{g} = n = [K \colon \Q]
+	\]
+In fact, this is true for all $p$. 
+\end{rem}
+
+
+\begin{ex}\label{ex:quadrepfactor}
+Let $K=\Q(\sqrt{d})$, where $d \neq 1$ is a squarefree integer, and choose an odd prime $p$. Let $\alpha=\sqrt{d}$ and $g(x)=x^2-d$. Note that $p \nmid [\O_K \colon \Z[\alpha]]$, since $[\O_K \colon \Z[\alpha]]$ is 1 or 2. Since $\sum_{i=1}^r e_if_i=2$, we have a limited number of possibilities for the factorization of $p\O_K$:
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c|c|c}
+	$r$ & $e_i$ & $f_i$ & $p\O_K$ & $\qfrac{\O_K}{\p_i}$ \\ \hline 
+	2 & 1 & 1 & $\p_1\p_2$ & $\F_p$  \\
+	1 & 2 & 1 & $\p^2$ & $\F_p$ \\
+	1 & 1 & 2 & $\p$ & $\F_{p^2}$
+	\end{tabular}
+	\end{table}
+In the first case, we say, `$\p$ splits in $K$'. In the second case, we say, `$\p$ ramifies in $K$'. In the third case, we say, `$\p$ is inert in $K$'. But given an odd prime $p$, can we say which case will occur? The possibilities are characterized by the possible factorizations of $x^2-d$ mod $p$:
+	\begin{enumerate}[(i)]
+	\item $p$ splits in $K$ if and only if $p\nmid d$ and $d$ is a square mod $p$
+	\item $p$ ramifies in $K$ if and only if $p \mid d$
+	\item $p$ is inert in $K$ if and only if $p \nmid d$ and $d$ is not a square mod $p$ 
+	\end{enumerate}
+If $p=2$, there are fewer possibilities: if $d \not\equiv 1 \mod 4$, then there was no reason for the exclusion and it ramifies as above. If $d \equiv 1 \mod 4$, take $\alpha=\frac{1+\sqrt{d}}{2}$ and $g(x)= x^2 - x + \frac{1-d}{4}$. A routine calculation shows that it depends on if $d \equiv 1 \mod 8$. \xqed
+\end{ex}
+
+
+\begin{rem}
+In Example~\ref{ex:quadrepfactor}, quadratic reciprocity will describe all three cases, depending only on the value $p$ modulo $4d$. This will be proven later. 
+\end{rem}
+
+\begin{ex}
+Let $\O_K=\Z[\alpha]$, where $\alpha=\sqrt[3]{2}$. Let $g(x)=x^3-2$. Then
+	\[
+	\begin{split}
+	&x^3-2 \equiv (x-3)(x^2+3x+4) \mod 5 \\
+	&x^2-2 \text{ is irreducible } \mod 7 \\
+	&x^3 - 2 \equiv (x+11)(x+24)(x+27) \mod 31
+	\end{split}
+	\]
+Hence, 5 and 31 split while 7 is inert in $K$. \xqed
+\end{ex}
+
+
+
+\subsection{Fractional Ideals}
+
+In order describe unique factorization of ideals into prime ideals, we will need to extend our notion of an ideal. 
+
+\begin{dfn}[Fractional Ideal]
+A fractional ideal of $K$ is a nonzero finitely generated $\O_K$-submodule of $K$. 
+\end{dfn} 
+
+Note that a fractional ideal $I$ must also be itself finitely generated as $\O_K$ is noetherian. The next lemma will demonstrate the reason for the name; fractional ideals are ideals of $\O_K$ after `clearing denominators'.
+
+\begin{lem}\label{lem:fracideal}
+Let $I$ be a nonzero $\O_K$-submodule of $K$. The following are equivalent:
+	\begin{enumerate}[(i)]
+	\item $I$ is a fractional ideal
+	\item $dI \subseteq \O_K$ for some $d \geq 1$
+	\item $dI \subseteq \O_K$ for some $0 \neq d \in \O_K$
+	\item $I=xJ$ for some $x \in K^\times$ and nonzero ideal $J \subseteq \O_K$
+	\end{enumerate}
+\end{lem}
+
+\pf \\
+\noindent $(i) \to (ii):$ Suppose $I= \O_K x_1 + \cdots + \O_K x_r$, where $x_i \in K$. Then there exists $d_i \geq 1$ such that $d_ix_i \in \O_K$. Let $d= \prod d_i$. Then $dI \subseteq \O_K$. \\
+
+\noindent $(ii)\to (iii):$ This is clear as $d \in \O_K$. \\
+
+\noindent $(iii) \to (iv):$ Define $J:=dI$. Then $I=d^{-1}J$. \\
+
+\noindent $(iv) \to (i):$ $I$ is a finitely generated $\O_K$-submodule of $K$ as ideals of $\O_K$ are finitely generated. \qed \\
+
+Given two fractional ideals $I,J$ of $K$, there is another fractional ideal, $IJ$. If $I,J$, and $K$ are fractional ideals, a few easy properties follow:
+	\begin{itemize}
+	\item $IJ=JI$
+	\item $I(JK)=(IJ)K$
+	\item $I \O_K=\O_K=I$ ($I$ is an $O_K$-module)
+	\end{itemize}
+
+\begin{dfn}[Fractional Ideals]
+Let $\J_K$ be the set of fractional ideals of $K$.
+\end{dfn}
+
+We shall see that $\J_K$ is an abelian group under multiplication with identity $\O_K$. The last point above shows that the identity exists. We now need to establish the existence of inverses. 
+
+\begin{dfn}[Principal Fractional Ideals]
+Let $\B_K \subseteq \J_K$ be the set of group of principal fractional ideals, i.e. $x \O_K$ with $x \in K^\times$. 
+\end{dfn}
+
+$\B_K$ is clearly a group with identity $\O_K$ and if $x\O_K \in \B_K$ the inverse is $x^{-1}\O_K$. Moreover, $\B_K \subseteq \J_K$. Once we have established $\J_K$ is a group, we shall define the ideal class group:
+
+\begin{dfn}[Ideal Class Group]
+The ideal class group of $K$ is
+	\[
+	\Cl_K:= \qfrac{\J_K}{\B_K}
+	\]
+\end{dfn}
+
+We shall see that $\Cl_K$ is in fact finite. 
+
+\begin{ex}
+$\Cl_{\Q(\sqrt{-5})} \cong \qfrac{\Z}{2\Z}$ \xqed
+\end{ex}
+
+For now, we continue to show that $\J_K$ is an group under multiplication. We first define a candidate for inverses. For $I \in \J_K$, define
+	\[
+	\widetilde{I}:=  \{ x \in K \colon xI \subseteq \O_K\}.
+	\]
+Note that $\widetilde{I}$ is a fractional ideal: fix $0 \neq \alpha \in I$. Then $\alpha \widetilde{I} \subseteq \O_K$. By Proposition~\ref{prop:algint}, $\widetilde{I}$ is a finitely generated $\O_K$-module. 
+
+\begin{lem}\label{lem:invunique}
+If $J \in \J_K$ satisfies $IJ=\O_K$, then $\widetilde{I}=J$.
+\end{lem}
+
+\pf If $I \widetilde{I}=\O_K$, then $J \subseteq \widetilde{I}$. Multiplication by $I$ gives
+	\[
+	\O_K= IJ \subseteq I\widetilde{I} \subseteq \O_K.
+	\]
+Hence, $I\widetilde{I}=O_K$. Then
+	\[
+	\widetilde{I}=\O_K\widetilde{I}= JI \cdot \widetilde{I}= J\O_K=J
+	\]
+\qed \\
+
+So if an inverse for $I \in \J_K$ exists, it must be $\widetilde{I}$. 
+
+\begin{lem}\label{lem:product}
+Every nonzero ideal of $\O_K$ contains a product of nonzero prime ideals.
+\end{lem}
+
+\pf Suppose this were not the case. The set of all ideals not containing a product of nonzero prime ideals must have a maximal element with respect to inclusion, say $I$. Now $I$ itself cannot be prime. Therefore, there are $a,b \in \O_K$ such that $ab \in I$ and $a \notin I$, $b \notin I$. Then the ideals $\langle a \rangle + I$ and $\langle b \rangle + I$ are strictly larger than $I$. But then they must contain a product of nonzero primes
+	\[
+	\begin{split}
+	\langle a \rangle + I &= \p_1\cdots \p_r \\
+	\langle b \rangle + I &= \q_1 \cdots \q_s 
+	\end{split}
+	\]
+But then
+	\[
+	I= \langle ab \rangle + I = (\langle a \rangle + I)(\langle b \rangle + I) \supseteq \p_1\cdots \p_r \q_1 \cdots \q_s.
+	\]
+But then $I$ contains a product of ideals, a contradiction. Then the set of ideals not containing a product of nonzero prime ideals must be empty. \qed \\
+
+\begin{ex}
+Let $\O_K=\Z[\sqrt{-5}]$ with ideals $\q=(3,1+\sqrt{-5})$ and $\q'=(3,1-\sqrt{-5})$. We saw $\q\q'=(3)$, so $\q(\frac{1}{3}\q')=\O_K$. Then
+	\[
+	\widetilde{\q}= \frac{1}{3} \q' = \O_K + \left(\dfrac{1-\sqrt{-5}}{3}\right) \O_K.
+	\] \xqed
+\end{ex}
+
+We shall now see that prime ideals are invertible. 
+
+\begin{prop}
+If $\p \subseteq \O_K$ is a nonzero prime ideal, then $\p \widetilde{\p}=\O_K$.
+\end{prop}
+
+\pf First, we need to show that $\widetilde{p} \supsetneq \O_K$. We know that $\widetilde{p} \supseteq \O_K$. Choose a nonzero $a \in \p$. Then $\p \supseteq (a)$. By Lemma~\ref{lem:product}, $(a)$ contains a product of prime ideals, say $\p_1\cdots\p_r$. But then
+	\[
+	\p \supseteq (a) \supseteq \p_1 \cdots \p_r.
+	\]
+Assume that $\p_1\cdots\p_r$ is a minimal product of primes, i.e. $r$ is the smallest integer such that a product of prime ideals is contained in $(a)$. Since $\p$ is prime, $\p \supseteq \p_i$ for some $i$. But then $\p=\p_i$ since all primes in $\O_K$ are maximal. 
+
+If $r=1$, then $\p \supseteq (a) \supseteq \p_1$. Hence, $\p=(a)$ is a principal ideal with inverse $\frac{1}{a} \O_K$ as a fractional ideal, which strictly contains $\O_K$. In this case, $\widetilde{\p}=\frac{1}{a} \O_K$. If $r \geq 2$, without loss of generality, assume that $\p=\p_1$. Then
+	\[
+	(a) \supseteq \p \p_2 \cdots \p_r
+	\]
+and $(a) \not\supseteq \p_2 \cdots \p_r$ by the minimality of $r$. Let $b \in \p_2 \cdots \p_r$ such that $b \notin (a)$. Define $x=\frac{b}{a} \in K^\times$. Then $x \notin \O_K$ and we claim $x \in \widetilde{\p}$, which would show that $\widetilde{\p} \neq \O_K$. We have
+	\[
+	b \o \subseteq \p \p_2 \cdots \p_r \subseteq (a)= a\O_K.
+	\]
+Dividing by $a$, we have $x\p \subseteq \O_K$. Hence, $x \in \widetilde{\p}$. 
+
+Now fix $x \in \widetilde{\p} \setminus \O_K$. Then $x\p \subseteq \O_K$ which implies $\p + x\p \subseteq \O_K$. Since $\p$ is a maximal ideal, either $\p+x\p=\p$ or $\p+x\p=\O_K$. 
+
+If $\p+x\p=\p$, then $x\p \subseteq \p$. Now $\p \neq 0$ is a finitely generated $\Z$-submodule of $K$, which implies that $x \in \O_K$ by Proposition~\ref{prop:algint}. Since $x \notin \O_K$, this is a contradiction. [This is where we have made use of the fact that the ring of algebraic integers instead of a general order.] Then $\p+x\p=\O_K$. Hence, $\p(\O_K + x\O_K)=\O_K$. By Lemma~\ref{lem:invunique}, $\O_K+x\O_K=\widetilde{\p}$ since it is an inverse to $\p$. \qed \\
+
+
+\begin{cor}
+If $\p$ is a nonzero prime ideal of $\O_K$.
+\begin{enumerate}[(i)]
+\item If $\p I=\p J$ for ideals $I,J$ of $\O_K$, then $I=J$.
+\item Let $I \neq 0$ be an ideal of $\O_K$. Then $\p \supseteq I$ if and only if $I=\p J$ for some unique ideal $J$.
+\item For a nonzero ideal $I$, $\p I \subsetneq I$. 
+\end{enumerate}
+\end{cor}
+
+\pf
+\begin{enumerate}[(i)]
+\item Multiplication by $\widetilde{p}$.
+\item If $\p \supseteq I$, then defining $J= \widetilde{p} I \subseteq \O_K$ to see $I=\p J$. Conversely, if $I=\p J$ so that $\p \supseteq I$. 
+\item Assume to the contrary that $\p I=I$. Then $I=\p I=\p^2 I=\cdots= \p^n I \subseteq \p^n$. Since $\#(\O_K/I)$ is finite, $\p^{n+1}=\p^n$ for $n$ sufficiently large. Multiplication by $\widetilde{\p}^n$, we obtain $\p=\O_K$, a contradiction. \qed \\
+\end{enumerate}
+
+We are now in a position to prove unique factorization in $\O_K$.
+
+\begin{thm}\label{thm:uniquefact}
+Every nonzero ideal in $\O_K$ factors uniquely, up to reordering, into a product of prime ideals of $\O_K$.
+\end{thm}
+
+\pf Let $I \subsetneq \O_K$ be a nonzero proper ideal. By Lemma~\ref{lem:product}, $I$ contains a product of nonzero prime ideals:
+	\[
+	I \supseteq \p_1 \cdots \p_r.
+	\]
+We proceed by induction on $r$. If $r=1$, then $I \supseteq \p_1$. Therefore, $I=\p_1$ by maximality. If $r>1$, write $I \supseteq \p_1 \cdots \p_r\p_{r+1}$. Choose a maximal ideal $\p \supseteq I$, so $\p=\p_i$ for some $i$. Without loss of generality, assume that $\p=\p_{r+1}$. Multiplying by $\widetilde{\p}$, we have
+	\[
+	\O_K= \widetilde{\p} I \supseteq \p_1 \cdots \p_r.
+	\]
+By induction, we factor $\widetilde{p} I= \q_1 \cdots \q_s$ into a product of primes. Multiplication by $\p$, we have $I=\p \q_1\cdots\q_s$. This concludes the proof of existence.
+
+To prove uniqueness, suppose that
+	\[
+	\p_1\cdots \p_r = \q_1 \cdots \q_s
+	\]
+with $\p_i$, $\q_i$ nonzero prime ideals and $r \leq s$. We know that $\p_1=\q_i$ for some $i$. Without loss of generality, assume $\p_1=\q_1$. Multiplication by $\widetilde{\p}_1$ gives $\p_2 \cdots \p_r= \q_2 \cdots \q_s$. Continuing in this fashion, we have $\p_i=\q_i$ for $1 \leq i \leq r$ and $\O_K=\q_{r+1}\cdots\q_s$, a contradiction unless $r=s$. \qed \\
+
+\begin{cor}
+$\J_K$ is a group.
+\end{cor}
+
+\pf It remains only to check that every element of $\J_K$ has an inverse. Suppose $I \in \J_K$. Then $dI \subseteq \O_K$ for some $d \geq 1$ and that $dI=\p_1\cdots\p_r$. Then $I= \frac{1}{d} \p_1 \cdots \p_r$, which has inverse $d \widetilde{\p}_1\cdots \widetilde{\p}_r$. \qed \\
+
+Since we now know $\J_K$ is a group, we shall write $I^{-1}:= \widetilde{I}$ from now on. Every ideal $I \in \J_K$ has a unique factorization $I=\prod_\p \p^{e_\p}$, where the product is taken over all nonzero primes $\p$, $e_\p \in \Z$, and $e_\p=0$ for all but finitely many $\p$. How different is the multiplication of fractional ideals than from ordinary multiplication in $K$? The subgroup $\B_K \subseteq \J_K$ has multiplication which behaves much like the multiplication in $K^\times$. The class group of $K$, $\Cl_K= \J_K/\B_K$, measures this difference. As stated before, $\Cl_K$ is a finite abelian group, as we shall see. 
+
+
+\begin{ex}
+We shall find all integer pair of solutions to $y^2= x^3-5$. We shall use the fact that $\Cl_{\Q(\sqrt{-5})} \cong \Z/2\Z$. We know if $K=\Q(\sqrt{-5})$ that $\O_K=\Z[\sqrt{-5}]$. Fix solution pair $(x,y)$. Over $\O_K$, we may factor as
+	\[
+	x^3=y^2+5=(y+\sqrt{-5})(y-\sqrt{-5})
+	\]
+We claim that the ideals $(y+\sqrt{-5})$ and $(y-\sqrt{-5})$ are relatively prime. 
+
+If these ideals were not relatively prime, there would be a prime $\p \subseteq \O_K$ with $y \pm \sqrt{-5} \in \p$. But then $(y+\sqrt{-5})-(y-\sqrt{-5})=2 \sqrt{-5} \in \p$. Hence, $2 \cdot 5 \in \p$ so that either $2 \in \p$ or $5 \in \p$. We know also that
+	\[
+	x^3= (y+\sqrt{-5})(y-\sqrt{-5}) \in \p,
+	\]
+which implies $x \in \p$. Now $\p \cap \Z=p \Z$, where $p= \char (\O_K/\p)$. Since $x \in \Z$, we know $x \in \p \cap \Z$ so that $x \in 2\Z$ or $x \in 5\Z$. Then either $2 \mid x$ or $5 \mid x$. But since $y^2=x^3-5$, neither $y^2= -5 \mod 4$ nor $y^2= -5 \mod 25$ have solutions, a contradiction. Then the ideals $(y+\sqrt{-5})$ and $(y-\sqrt{-5})$ are relatively prime.
+
+Factor the ideal generated by $x$ into primes (noting that $x$ cannot be 0):
+	\[
+	x \O_K= \prod_{i=1}^r \p_i^{e_i}.
+	\]
+Then in particular,
+	\[
+	\prod_{i=1}^r \p_i^{3e_i}= (y+\sqrt{-5})(y-\sqrt{-5})
+	\]
+Since the ideals $(y+\sqrt{-5})$ and $(y-\sqrt{-5})$ are relatively prime, we must have
+	\[
+	(y+\sqrt{-5})=\prod_{i \in \I} \p_i^{3e_i},
+	\]
+where $\mathcal{I} \subseteq \{1,\ldots,r\}$. Rewrite this as
+	\[
+	(y+\sqrt{-5})= I^3
+	\]
+for $I= \prod_{i \in \I} \p_i$. In $\Cl_K=\J_K/\B_K$, the element $[I]$ then cubes to the identity since $I^3$ is principal. But as $\Cl_K \cong \Z/2\Z$, $[I]$ is trivial. Hence, $I$ is a principal ideal in $\O_K$. We can then write
+	\[
+	(y+\sqrt{-5})= (a+b\sqrt{-5})^3
+	\]
+for some $a,b \in \Z$. Noting the units in $\Z[\sqrt{-5}]$ are $\pm 1$, we then have
+	\[
+	y+\sqrt{-5}= \pm(a+b\sqrt{-5})^3. 
+	\]
+Without loss of generality, we assume the unit above is 1 (as $-1$ is a cube). Hence, $y+\sqrt{-5}=(a+b\sqrt{-5})^3$. Then
+	\[
+	y+\sqrt{-5}=(a^3+3ab^2(-5)) + (3a^2b+b^2(-5)) \sqrt{-5}.
+	\]
+Relating real and imaginary parts, we have the following system of equations:
+	\[
+	\begin{split}
+	a^3-15ab^2&= y \\
+	3a^2b-5b^3&=1
+	\end{split}
+	\]
+Using the second equation, $1=b(3a^2-5b^2)$ so that $b \in \{\pm 1\}$ (as $b \in \Z$). But then $1= \pm (3a^2-5)$ which implies $3a^2= 5 \pm 1$, neither of which have integer solutions. But then the equation $y^2= x^3-5$ has no integer solutions. \xqed
+\end{ex}
+
+
+
+
+\subsection{Ramification}
+
+
+\begin{dfn}[Ramification]
+Let $p$ be a prime. Factor $p\O_K$ as $p\O_K= \p_1^{e_1}\cdots \p_r^{e_r}$, where the $\p_i$ are distinct prime ideals and $e \geq 1$. We call $e_i$ the ramification index of $\p$ over $\p$. Further, we say $\p$ is ramified in $K$ if $e_i>1$ for some $i$ and otherwise say that $\p$ is unramified. 
+\end{dfn}
+
+\begin{dfn}[Inertia Degree]
+Let $p$ be a prime. Factor $p\O_K$ as $p\O_K= \p_1^{e_1}\cdots \p_r^{e_r}$, where the $\p_i$ are distinct prime ideals and $e \geq 1$. The inertia degree of $\p_i$ over $\p$ is $f_i:= [\O_K/\p_i \colon \F_p]$.
+\end{dfn}
+
+\begin{restatable}{thm}{eifi} \label{thm:eifi}
+Let $p$ be a prime. Factor $p\O_K$ as $p\O_K= \p_1^{e_1}\cdots \p_r^{e_r}$, where the $\p_i$ are distinct prime ideals and $e \geq 1$. Let $f_i$ be the inertia degree of $\p_i$. Then
+	\[
+	\sum_{i=1}^r e_if_i = [K \colon \Q]
+	\]
+In particular, $r \leq [K \colon \Q]$. 
+\end{restatable}
+
+\pf See page~\pageref{firstpageref}. \qed \\
+
+\begin{rem}
+It is true that $r=[K \colon \Q]$ for infinitely many primes $p$.
+\end{rem}
+
+\begin{ex}
+Suppose that $[K \colon \Q]=3$ and $p$ is unramified in $K$. Then $e_i=1$ for all $i$. Then there are 3 possibilities:
+	\begin{enumerate}[(i)]
+	\item $r=3$: $f_1=f_2=f_3=1$
+	\item $r=2$: $f_1=1$, $f_2=2$
+	\item $r=1$: $f_1=3$
+	\end{enumerate}
+It is possible for only a few of these cases to occur. For example in $K=\Q(\sqrt[3]{2})$, each of these cases occurs. However in $K=\Q(\alpha)$, where $\alpha$ is a root of $x^3+x^2-2x-1$, the case $r=2$ does not occur. \xqed
+\end{ex}
+
+Recall that for a nonzero ideal $I \subseteq \O_K$, the norm of $I$ is $N(I):= \#(\O_K/I)$. 
+
+\begin{prop}\label{prop:normidealprod}
+If $I,J$ are ideals of $\O_K$, then $N(IJ)=N(I)N(J)$. In particular, if $I=\p_1^{e_1}\cdots\p_r^{e_r}$ for distinct primes $p_i$, then $N(I)=N(\p_1)^{e_1} \cdots N(\p_r)^{e_r}$. 
+\end{prop}
+
+\pf It suffices to only check the last statement. For $i \neq j$, $\p_i^{e_i} + \p_j^{e_j}=\O_K$ by maximality. Then by the Chinese Remainder Theorem,
+	\[
+	\O_K/I = \O_K/\p_1^{e_1}\cdots\p_r^{e_r} \cong \O_K/\p_1^{e_1} \times \cdots \times \O_K/\p_r^{e_r}.
+	\]
+Hence, $N(I)=\prod_i N(\p_i^{e_i})$. It only remains to show that for a prime $\p$, $N(\p^i)=N(\p)^i$. Consider the chain
+	\[
+	\O_K \supseteq \p \supseteq \p^2 \supseteq \cdots \supseteq \p^i.
+	\]
+Then
+	\[
+	N(\p^i)= \#(\O_K/\p^i)= \prod_{i=1}^e \#(\p^{i-1}/p^i),
+	\]
+where we define $\p^0=\O_K$. Then we only need show $\#(\p^{i-1}/\p^i)=N(\p)$.
+
+If $\p^{i-1}/\p^i=0$ for some $i$, then $\p^{i-1}=\p^i$ so that $\p^i=\O_K$, a contradiction. Therefore, $\p^{i-1}/\p^i \neq 0$ for all $i$. Choose then $0 \neq x \in \p^{i-1}/\p^i$. Define a homomorphism of $\O_K$-modules $\phi: \O_K \to \p^{i-1}/\p^i$ via $b \mapsto bx$. If $\phi$ were not surjective, then we have $0 \subsetneq \im \phi \subsetneq \p^{i-1}/\p^i$. But then there is a $\O_K$-submodule $J$ of $M$ with $\p^i \subseteq J \subseteq \p^{i-1}$.Hence, $\p \subsetneq (\p^{i-1})^{-1}J \subsetneq \O_K$, contradicting the maximality of $\p$. Therefore, $\phi$ is a surjective map. But then $\phi: \O_K \sra \p^{i-1}/\p^i \neq 0$. The kernel of $\phi$ contains $\p$, so there is a surjection
+	\[
+	\begin{tikzcd}
+	\qfrac{\O_K}{\p} \arrow[two heads]{r} & \qfrac{\p^{i-1}}{\p^i}.
+	\end{tikzcd}
+	\]
+But $\O_K/\p$ is a field which forces $\O_K/\p \cong \p^{i-1}/\p^i$. Therefore, $N(\p)=\#(\p^{i-1}/\p^i)$. \qed \\
+
+We can now prove Theorem~\ref{thm:eifi}.
+
+\eifi*\label{firstpageref}
+
+\pf We compute $N(p\O_K)$ in two different ways. If $p\O_K=\p_1^{e_1} \cdots \p_r^{e_r}$. By Proposition~\ref{prop:normidealprod} implies
+	\[
+	N(p\O_K)= N(\p_1)^{e_1} \cdots N(\p_r)^{e_r}.
+	\]
+Moreover,
+	\[
+	N(\p_i)= \#\left(\qfrac{\O_K}{\p_i} \right)= p_i^{f_i}.
+	\]
+But then
+	\[
+	N(p\O_K)= \prod_{i=1}^r (p^{f_i})^{e_i} = p^{\sum_{i=1}^r e_if_i}.
+	\]
+On the other hand, $\O_K \cong \Z^n$ as an abelian group, where $n=[K \colon \Q]$. Then we have the following chain of isomorphisms of abelian groups:
+	\[
+	\qfrac{\O_K}{p\O_K} \cong \qfrac{\Z^n}{p\Z^n} \cong \left(\qfrac{\Z}{p\Z}\right)^n.
+	\]
+This implies that $N(p\O_K)=\p^n$. Hence,
+	\[
+	p^{\sum_{i=1}^r e_if_i}= p^n. 
+	\]
+so that $\sum_{i=1}^r e_if_i=n$, as desired. \qed \\
+
+Some facts we shall not prove that are useful nonetheless:
+
+\begin{rem} \hfill
+\begin{enumerate}[(i)]
+\item Given two number fields $K_1,K_2$ with relatively prime discriminant, $K_1 \cap K_2 =\Q$.
+\item Given an integer $n \geq 1$ and a finite set $S$ of primes then up to isomorphism, there are only finitely many number fields $K$ such that $K$ has degree $n$ and $K$ is unramified at all $p \notin S$. 
+\end{enumerate}
+\end{rem}
+
+The first is not too hard to show while the second is a much harder theorem. What we shall prove is that $p$ ramifies in $K$ if and only if $p$ divides the discriminant of $K$. Hence, there are only finitely many primes $p$ which ramify in $K$. In order to prove this, we will have to extend our notion of discriminant. 
+
+\begin{dfn}[Discriminant]
+Suppose $A \subseteq B$, where $B$ is a free $A$-module of rank $n$. Choose an $A$-basis $x_1,\ldots,x_n$ of $B$, define the discriminant of $B$ over $A$ as
+	\[
+	\disc_A(B):=\disc(x_1,\ldots,x_n)= \det(\Tr{B/A}(x_ix_j)) \in A,
+	\]
+where $\Tr{B/A}(x)$ is the trace of the $A$-linear map $B \to B$ given by $b \mapsto xb$. 
+\end{dfn}
+
+If one chose another $A$-basis $y_1,\ldots,y_n$, then
+	\[
+	\disc(y_1,\ldots,y_n)=\disc(x_1,\ldots,x_n) (\det C)^2,
+	\]
+where $C \in \GL_n(A)$ is the change of basis matrix satisfying
+	\[
+	y_i = \sum_{j=1}^n C_{ij} x_j.
+	\]
+Since $C$ is an invertible matrix, $\det(C) \in A^\times$. Then $\disc(y_1,\ldots,y_n)$ and $\disc(x_1,\ldots,x_n)$ differ by the square of a unit in $A$. Then $\disc_A(B)$ is well defined up to an element of $(A^\times)^2$ and defines a coset $\disc(x_1,\ldots,x_n) \cdot (A^\times)^2$. 
+
+\begin{prop}
+For $A \subseteq B_1$ and $A \subseteq B_2$, 
+	\[
+	\disc_A(B_1 \times B_2)= \disc_A(B_1) \disc_A(B_2).
+	\]
+\end{prop}
+
+Before proving our desired theorem, a lemma.
+
+\begin{lem}\label{lem:ram}
+Let $\p \subseteq \O_K$ be a nonzero prime and let $e$ be its ramification index. Then the discriminant of $\O_K/\p^e$ over $\F_p$ is zero if and only if $e \geq 2$. 
+\end{lem}
+
+\pf Suppose $e \geq 2$. Fix a basis $x_1,\ldots,x_n$ of $B=\O_K/\p^e$ over $\F_p$ with $x_1^2=0$. [We may choose $x_1$ this was because
+	\[
+	x_i \in \qfrac{\p^{e-1}}{\p^e} \Longrightarrow x_1^2 \in (\p^{e-1})^2 \subseteq \p^e,
+	\]
+the last inclusion holding since $e \geq 2$.] Define a linear map $B \to B$ via $b \mapsto x_1x_jb$. This map can be represented by an $n \times n$ matrix $M$ in $\F_p$ with $M^2=0$ (since $x_1^2=0$). Now
+	\[
+	\Tr{B/\F_p}(x_1x_j)= \text{tr}(M)=0
+	\]
+since the eigenvalues of $M$ are all zero. Then
+	\[
+	\disc(x_1,\ldots,x_n)=\det(\Tr{B/\F_p}(x_ix_j))=0,
+	\]
+since the first row is zero. Hence,
+	\[
+	\disc_{\F_p}\left(\qfrac{\O_K}{\p^e}\right)=0.
+	\]
+
+If $e=1$, we want to show that $\disc(\O_K/\p^e) \neq 0$. We show, in fact, for a finite field extension $L/K$ of separable fields, $\disc(L/K) \neq 0$. The separable assumption gives $L=K(\alpha)$ for some $\alpha$ and $1,\alpha,\ldots,\alpha^{n-1}$ is a $K$-basis of $L$, where $n=[L \colon K]$. As before,
+	\[
+	\disc(1,\alpha,\ldots,\alpha^{n-1})= \prod_{1 \leq i < j \leq n} (\sigma_i(\alpha) - \sigma_j(\alpha))^2
+	\]
+where $\sigma_1,\ldots,\sigma_n: L \hra \overline{K}$ are the $K$-embeddings of $L$ into an algebraic closure $\overline{K}$ of $K$. The product on the right size is nonzero and will be nonzero up to a unit squared. Hence, $\disc_K(L) \neq 0$. \qed \\
+
+
+We are now in a position to prove our theorem.
+
+\begin{thm}
+A prime $p$ is ramified in $K$ if and only if $p$ divides the discriminant of $K$. In particular, there are only finitely many primes $p$ which ramify in $K$. 
+\end{thm}
+
+\pf Let $x_1,\ldots,x_n$ be a $\Z$-basis of $\O_K$. Then $\overline{x}_1,\ldots,\overline{x}_n$ is an $\F_p$-basis of $\O_K/p\O_K$. Then
+	\[
+	\disc(K)= \disc(x_1,\ldots,x_n) \equiv \disc(\overline{x}_1,\ldots,\overline{x}_n) \mod p
+	\]
+This class represents an element of the coset $\disc_{\F_p}(\O_K/p\O_K)$. So $p \mid \disc K$ if and only if $\disc_{\F_p}(\O_K/p\O_K)=0$. But then by Lemma~\ref{lem:ram}, $p$ ramifies in $K$ if and only if $p \mid \disc K$. Since $\disc K \in \Z$, there are finitely many primes dividing it. Hence, there are finitely many primes which ramify in $K$. \qed \\
+
+
+

@@ -1,0 +1,267 @@
+% !TEX root = ../../math6370.tex
+
+\section{Dedekind Domains \& DVRs}
+\subsection{Dedekind Domains}
+
+Though we have been working with the ring of integers of a number field, factorization of ideals into prime ideals holds in a more general setting --- in Dedekind domains. 
+
+\begin{dfn}[Integrally Closed]
+A ring $R$ is integrally closed if for each monic $f(x) \in R[x]$ with root $\alpha \in K$, where $K=\Frac R$, then $\alpha \in R$.
+\end{dfn}
+
+\begin{dfn}[Dedekind domain]
+A Dedekind domain is an integral domain $R$ satisfying:
+	\begin{enumerate}[(i)]
+	\item $R$ is noetherian
+	\item $R$ is integrally closed
+	\item every nonzero prime ideal in $R$ is maximal
+	\item there is at least one nonzero prime ideal
+	\end{enumerate}
+\end{dfn}
+
+\begin{rem}
+The last condition for a Dedekind domain is to exclude fields from being Dedekind domains. 
+\end{rem}
+
+\begin{ex}
+If $K$ is a number field, then $\O_K$ is a Dedekind domain. Indeed, we know that $\O_K$ is noetherian and every nonzero prime ideal in $\O_K$ is maximal. To see that $\O_K$ is integrally closed, take any $\alpha \in K$ such that $f(\alpha)=0$ with monic $f \in \O_K[x]$. Define $M:=\O_K[\alpha] \subseteq K$. Note that $M$ is a finitely generated $\O_K$-module since $f$ is monic. Therefore, $M$ is a finitely generated $\Z$-module. Then $\alpha M \subseteq M$ so that $\alpha \in \O_K$ by Proposition~\ref{prop:algint}. Finally, $\O_K$ contains a nonzero prime ideal. \xqed
+\end{ex}
+
+Though we shall not prove it, factorization in Dedekind domains holds just as in $\O_K$. 
+
+\begin{thm}
+Let $R$ be an integral domain. Then $R$ is a Dedekind domain if and only if every nonzero ideal has a unique factorization into prime ideals.
+\end{thm}
+
+The proof that Dedekind domains have unique factorization is as in Theorem~\ref{thm:uniquefact}, with minor changes. 
+
+\begin{ex} \hfill
+\begin{enumerate}[(i)]
+\item Any PID is a Dedekind domain.
+\item $R=\C[x,y]/(y^2-x^3-1)$ is a Dedekind domain, but it is not a PID. The nonzero prime ideals are $(x-a,y-b)$ with $b^2=a^3+1$ for $a,b \in \C$.
+\item If $C$ is a nonsingular affine curve over any field $k$, then its coordinate ring $k[C]$ is a Dedekind domain. \xqed
+\end{enumerate}
+\end{ex}
+
+\begin{rem}
+For any Dedekind domain $R$, we may also define the ideal class group $\Cl_R$, but it will not necessarily be finite as it is when $R$ is the ring of integers of a number field. When $R$ is the coordinate ring of the affine plane curve $y^2=x^3-1$, then $\Cl_R \cong \R^2/\Z^2$.
+\end{rem}
+
+\begin{dfn}[Integral Closure]
+Let $R$ be a ring with fraction field $K$. Let $L$ be a finite field extension of $K$. The integral closure of $R$ in $L$ is the ring
+	\[
+	S=\{ \alpha \in L \colon f(\alpha) \text{ for some monic } f(x) \in R[x]\}.
+	\]
+\end{dfn}
+
+\begin{prop}\label{prop:dedekindintcl}
+Let $R$ be a Dedekind domain with fraction field $K$. Let $L$ be a finite field extension of $K$ and let $S$ be the integral closure of $R$ in $L$. Then $S$ is a Dedekind domain.
+	\[
+	\begin{tikzcd}
+	L  \arrow[draw=none]{r}[sloped,auto=false]{\supseteq} \arrow[dash]{d} & S \arrow[dash]{d} \\
+	K  \arrow[draw=none]{r}[sloped,auto=false]{\supseteq} & R
+	\end{tikzcd}
+	\]
+\end{prop}
+
+
+\begin{ex}
+Let $R=\C[x,y]/(y^2-x^3)$. This is not a Dedekind domain as it is not integrally closed. Indeed, the curve $y^2 - x^3=0$ is singular at the origin. 
+	\[
+	\begin{tikzpicture}
+      	\draw[->] (-2,0) -- (2.2,0) node[right] {$x$};
+      	\draw[->] (0,-2) -- (0,2.2) node[above] {$y$};
+      	\draw[scale=0.5,domain=0:2.5,smooth,variable=\x,blue,thick] node at (2.7,4.5) {$y^2=x^3$} plot ({\x},{sqrt(\x*\x*\x)});
+      	\draw[scale=0.5,domain=0:2.5,smooth,variable=\x,blue,thick]  plot ({\x},{-sqrt(\x*\x*\x)});
+    	\end{tikzpicture}
+    	\]
+We may parametrize the curve $y^2-x^3=0$ by $t \mapsto (t^2,t^3)$. When $t \neq 0$, we may recover the point $(x,y)$ on the curve via $t=\frac{y}{x}$. 
+
+By abuse of notation, let $x,y \in R$ be the cosets of $x$ and $y$, respectively, in $R$. In the fraction field $K$ of $R$, define $t=y/x$. Then
+	\[
+	\begin{split}
+	t^2&= \dfrac{y^2}{x^2}= \dfrac{x^3}{x^2}=x \\
+	t^3&= \dfrac{y^3}{x^3}= \dfrac{y^3}{y^2}=y
+	\end{split}
+	\]
+In this way, we see $R \subseteq \C[t]$. But $\C[t]$ is a PID. Hence, $\C[t]$ is the integral closure of $R$ in $K$. \xqed
+\end{ex}
+
+
+
+\subsection{Discrete Valuation Rings}
+
+Let $K$ be a number field and let $\O_K$ be its ring of integers. For $x \in K^\times$, write
+	\[
+	x\O_K= \prod_\p \p^{\nu_\p(x)}
+	\]
+We have $\nu_\p(x) \in \Z$ and $\nu_\p(x)=0$ for all but finitely many $\p$. By definition, we declare $\nu_\p(0):=\infty$. 
+
+\begin{dfn}[$p$-adic valuation]
+The function $\nu_\p: K \to \Z \cup \{\infty\}$ is the $p$-adic valuation of $K$.
+\end{dfn}
+
+\begin{prop}
+The valuation $\nu_\p$ satisfies the following properties:
+	\begin{enumerate}[(i)]
+	\item $\nu_\p(xy)=\nu_\p(x)+\nu_\p(y)$
+	\item $\nu_\p(x+y) \geq \min\{(\nu_\p(x),\nu_\p(y)\}$
+	\end{enumerate}
+\end{prop}
+
+\begin{dfn}[Integral at $\p$]
+Define $\O_\p:=\{x \in K \colon \nu_\p(x) \geq 0\}$. If $\nu_\p(x) \geq 0$, then we say that $x$ is integral at $\p$. 
+\end{dfn}
+
+Note that $\O_\p$ is a ring by the above properties of $\nu_\p$. If we choose any $\pi \in \p \setminus \p^2$, then $\nu_\p(\pi)=1$.
+
+\begin{lem}\label{lem:dvr}
+The nonzero ideals of $\O_\p$ are $\p^n \O_\p=\pi^n \O_\p$ for any $\pi \in \p \setminus \p^2$.
+\end{lem}
+
+\pf Let $I$ be a nonzero ideal of $\O_\p$. Let $n$ be the smallest value of $\nu_\p(x)$ over all $x \in I$. Since $I$ is nonzero, there is some nonzero $x \in I$ and $\nu_\p(x) \geq 0$. Hence, $n \geq \nu_\p(x) \geq 0$. 
+
+Choose any $\pi \in \p \setminus \p^2$ and consider $\pi^{-n}I$. If $x \in \pi^{-n}I$, then $\nu_\p(x)= \nu_\p(\pi^{-n}b)$ for some nonzero $b \in I$ and
+	\[
+	\nu_\p(x)= \nu_\p(\pi^{-n}b)= -n + \nu_\p(b) \geq 0.
+	\]
+Hence, $\pi^{-n}I \subseteq \O_\p$ and is again an ideal.
+
+Moreover, $\pi^{-n}I$ contains some $x \in \O_\p$ with $\nu_\p(x)=0$, implying $\nu_\p(x^{-1})= -\nu_\p(x)=0$ so $x^{-1} \in \O_\p$ as well. Therefore, $\pi^{-n}I=\O_\p$ and then $I=\pi^n \O_p$> \qed \\
+
+\begin{dfn}[Discrete Valuation Ring]
+A discrete valuation ring (DVR) is a local PID, i.e. a PID with a unique maximal ideal.
+\end{dfn}
+
+Lemma~\ref{lem:dvr} shows that $\O_\p$ is a DVR.
+
+\begin{lem}
+	\[
+	\O_p= \left\{ \dfrac{a}{b} \colon a \in \O_K, b\in \O_K \setminus \p \right\}
+	\]
+\end{lem}
+
+\pf Write $R_\p$ for the right hand side. If $\frac{a}{b} \in R_\p$, then
+	\[
+	\nu_\p\left(\frac{a}{b}\right)= \nu_\p(a) - \nu_\p(b)= \nu_\p(a) - 0 \geq 0,
+	\]
+since $b \notin \p$ (when we factor $b \O_K$, $\p$ does not show up at all). Hence, $R_\p \subseteq \O_\p$. 
+
+Conversely, take any nonzero $\alpha \in \O_\p$. Factor the principal ideal generated by $\alpha$ as 
+	\[
+	\alpha \O_K= IJ^{-1},
+	\]
+where $I,J$ are ideals of $\O_K$ and $\p$ does not divide $J$. Essentially, we factored $\alpha \O_K$ into primes and collected all primes with positive exponent into $I$ and collected all primes with negative exponents into $J^{-1}$. We may assume $\p$ does not divide $J$ since $\nu_\p(\alpha) \geq 0$.
+
+The prime ideal $\p$ does not divide $J$ if and only if $J \not\subseteq \p$. We may choose $b \in J \setminus \p$. Then
+	\[
+	b\alpha \O_K= I(bJ^{-1})
+	\]
+Notice $bJ^{-1} \subseteq \O_K$, since $JJ^{-1}=\O_K$. Hence, $I(bJ^{-1}) \subseteq I$. Write $b\alpha=a \in I$. Then $\alpha= \frac{a}{b}$. We have chosen $a \in I \subseteq \O_K$ and $b \in J \setminus \p \subseteq \O_K \setminus \p$. Hence, $\alpha \in R_\p$ and $\O_\p \subseteq R_\p$. 
+
+\begin{rem}
+$\O_\p$ is the localization of $\O_K$ at $\p$. To show that $\O_\p$ is a DVR, we could have (instead of defining $\nu_\p$) noted that $\O_\p$ is necessarily local and demonstrated that it was a PID.
+\end{rem}
+
+\begin{thm}
+If $R$ is a noetherian integral domain, then $R$ is Dedekind if and only if $R_\p$ is a DVR for all nonzero primes $\p \subseteq R$. 
+\end{thm}
+
+This gives another proof that $\O_K$ is a Dedekind domain, although the proof is a bit more roundabout. 
+
+
+
+\subsection{Extension of Number Fields}
+
+Thus far, we have been working with an extension $K/\Q$. However, much of the work done thus far equally applies to an extension of number fields $L/K$. So suppose $L/K$ is an extension of number fields and $\p \in \O_K$ be a nonzero prime ideal. Then
+	\[
+	\p \O_L = \prod_{\q \mid \p} \q^{e(\q/\p)},
+	\]
+where $e(\q/\p)$ is the ramification index of $\q$ over $\p$. The inertia degree of $\q$ over $\p$ is
+	\[
+	f(\q/\p):= \left[\qfrac{\O_L}{\q} \colon \qfrac{\O_K}{\p} \right].
+	\]
+
+\begin{thm}
+$\displaystyle \sum_{\q \mid \p} e(\q/\p) f(\q/\p)=[L \colon K]$
+\end{thm}
+
+\pf We compute $N(\p \O_L)$ in two ways. First, 
+	\[
+	\begin{split}
+	N(\p\O_L)&= N\left(\prod_{\P \mid \p} \P^{e(\P/\p)} \right) \\
+	&= \prod_{\P \mid \p} N(\P)^{e(\P/\p)} \\
+	&= \prod_{\P \mid \p} \left( N(\p)^{f(\P/\p)} \right)^{e(\P/\p)} \\
+	&= N(\p)^{\sum_{\P \mid \p} e(\P/\p) f(\P/\p)}
+	\end{split}
+	\]
+On the other hand, $N(p\O_L)=\#(\O_L/\p\O_L)$. If $\O_L$ is a free $\O_K$-module, then $\O_L \cong \O_K^{[L \colon K]}$. Therefore,
+	\[
+	\qfrac{\O_L}{\p \O_L} \cong \left(\qfrac{\O_K}{\p}\right)^{[L \colon k]},
+	\] 
+as $\O_K$-modules.
+
+If $\O_L$ is not free over $\O_K$, we need to localize. We have $\O_K \subseteq \O_L$. Localizing, we obtain $(\O_K)_\p$ and $(\O_L)_\p$. We know $(\O_K)_\p$ is a PID and that $(\O_L)_\p$ is a finitely generated $(\O_K)_\p$-module. Therefore, $(\O_L)_\p$ is a free $(\O_K)_\p$-module (there is no torsion as we are in characteristic 0). But we have isomorphisms $\O_K/\p \cong (\O_K)_\p / \p (\O_K)_\p$ and $\O_L/\p\O_L \cong (\O_L)_\p/\p(\O_L)_\p$. Then
+	\[
+	\dim_{\O_K/\p} \qfrac{\O_L}{\p \O_L} = \dim_{(\O_K)_\p/\p(\O_K)_\p} \qfrac{(\O_L)_\p}{\p (\O_L)_\p}= [L \colon K].
+	\]
+Therefore, $\#(\O_L/\p \O_L)=N(\p)$. \qed \\
+
+
+These results also extend to towers of number fields:
+	\[
+	\begin{tikzcd}
+	M \arrow[dash]{d} & \cQ \arrow[draw=none]{d}[sloped,auto=false]{\supseteq} \\
+	L \arrow[dash]{d} & \P \arrow[draw=none]{d}[sloped,auto=false]{\supseteq} \\
+	K & \p
+	\end{tikzcd}
+	\]
+where $\cQ$, $\P$, and $\p$ are prime ideals in $\O_M$, $\O_L$, and $\O_K$, respectively. 
+
+\begin{prop}
+In the scenario above, we have
+\begin{enumerate}[(a)]
+\item $e(\cQ/\p)= e(\cQ/\P) e(\P/\p)$
+\item $f(\cQ/\p)= f(\cQ/\P) f(\P/\p)$
+\end{enumerate}
+\end{prop}
+
+\pf 
+\begin{enumerate}[(a)]
+\item 
+	\[
+	\begin{split}
+	\p \O_M&= \p \O_L \cdot \O_M \\
+	&= \prod_{\P \mid \p} \P^{e(\P/\p)} \O_M \\
+	&= \prod_{\P \mid \p} \left(\P \O_M \right)^{e(\P/\p)} \\
+	&= \prod_{\P \mid \p} \left(\prod_{\cQ \mid \P} \cQ^{e(\cQ/\P)} \right)^{e(\P/\p)} \\
+	&= \prod_{\P \mid \p} \prod_{\cQ \mid \P} \cQ^{e(\cQ/\P) e(\P/\p)}
+	\end{split}
+	\]
+By unique factorization, the exponents must be the same. 
+
+\item This follows from the fact that degrees of field extensions are multiplicative:
+	\[
+	\begin{tikzcd}
+	\qfrac{\O_M}{\cQ} \arrow[dash]{d} \\
+	\qfrac{\O_L}{\P} \arrow[dash]{d} \\
+	\qfrac{\O_K}{\p}
+	\end{tikzcd}
+	\]
+The degree of $\O_M/\O_L$ is $f(\cQ/\P)$ and the degree of $\O_L/\O_K$ is $f(\P/\p)$. 
+\end{enumerate}
+\qed \\
+
+\begin{ex}
+Let $X$ and $Y$ be compact Riemann surfaces with a non-constant holomorphic map $\phi: Y \to X$. Let $\M_X$ and $\M_Y$ be the field of meromorphic functions on $X$ and $Y$, respectively. The map $\phi$ induces an inclusion $\phi^*: \M_X \hookrightarrow \M_Y$ given by $f \mapsto f \circ \phi$. Let $n$ be the degree of the extension $\M_Y/\M_X$, called the degree of $\phi$. 
+
+Fix a point $p \in X$ and let $\O_p=\{f \in \M_X \colon f \text{ holomorphic at }p\}$. It is routine to verify that $\O_p$ is a ring. In fact, $\O_p$ is a DVR with maximal ideal $\p=\{ f \in \O_p \colon f(p)=0\}$, i.e. those holomorphic functions vanishing at $p$. Let $B$ be the integral closure of $\O_\p$ in $\M_Y$. Now $B$ is a Dedekind domain. We have
+	\[
+	\p B = \prod_{i=1}^r \P_i^{e_i},
+	\]
+where the $\P_i$ are distinct prime ideals with $f_i=[B/\P_i \colon \O_p/\p]=[\C \colon \C]=1$. Furthermore, if $\phi^{-1}(\{p\})=\{\P_1,\ldots,\P_r\}$, then $\O_{\P_i}=B_{\P_i}$. Geometrically considering $p$ as a divisor, $\phi^{-1}(p)= \sum_{i=1}^r e_i \P_i$ with degree $\sum_{i=1}^r e_i=n$. \xqed
+\end{ex}
+
+
+
+

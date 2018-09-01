@@ -1,0 +1,634 @@
+% !TEX root = ../../math6370.tex
+
+\section{Factoring in Galois Extensions}
+\subsection{Overview of Galois Theory}
+
+Let $K$ be a field, which for simplicity we assume has characteristic 0 or is finite. [This assumption is to force $K$ to be perfect so that finite extensions $L/K$ are separable.] Let $L/K$ be a finite extension of fields. Define $\Aut(L/K)$ to be the group (under function composition) of field automorphisms of $L$ fixing $K$ element-wise, i.e. if $\sigma$ is an automorphism of $L$, then $\sigma\big|_K=1_K$. For $H \leq \Aut(L/K)$, denote by $L^H$ the field (the reader should check this) of $x \in L$ such that $\sigma(x)=x$ for all $\sigma \in H$. In particular, $K \subseteq L^H \subseteq L$. Observe taking subgroups of $H \leq \Aut(L/K)$ and finding $L^H$ is a way of producing fields. 
+
+\begin{ex}
+Take $K=\Q$ and $L=\Q(\sqrt{d})$, where $d \in \Z$ is squarefree. We know that $\Aut(L/K)=\{1,\tau\}$, where $\tau$ is conjugation of $\sqrt{d}$, i.e. $1(a+b\sqrt{d})=a+b\sqrt{d}$ and $\tau(a+b\sqrt{d})= a-b\sqrt{d}$. Then $L^{\Aut(L/K)}=\Q$. \xqed
+\end{ex}
+
+\begin{ex}
+Let $K=\Q$ and $L=\Q(\sqrt[3]{2})$. If $\sigma \in \Aut(L/\Q)$, then $\sigma(\sqrt[3]{2})$ is a root of $x^3-2$. However, $x^3-2$ has only one root in $L \subseteq \R$. Therefore, $\Aut(L/\Q)=\{1\}$. \xqed
+\end{ex}
+
+\begin{nex}
+Consider $K=\F_p(t)$ and choose a root $u$ of the irreducible polynomial $x^p+t \in K[x]$. Let $L=K(u)=\F_p(u)$. We have $(x+u)^p=x^p+u^p=x^p+t$ is totally reducible. But then $L/K$ is a splitting field but $\Aut(L/K)=1$ as there is only one root so the automorphism is forced: $u \mapsto u$. \xqed
+\end{nex}
+
+Since the definition of a Galois extension involves the size of $\Aut(L/K)$, we remind the reader that the cardinality of $\Aut(L/K)$ is bounded by the degree of the extension. 
+
+\begin{prop}
+$\#\Aut(L/K) \leq [L \colon K]$
+\end{prop}
+
+\pf Let $L=K(\alpha)$. We have assumed $K$ has characteristic 0 or is finite so that the extension $L/K$ is separable. Let $f(x) \in K[x]$ be the minimal polynomial of $\alpha$. Each $\sigma \in \Aut(L/K)$ is determined by $\sigma(\alpha)$ and $\sigma(\alpha)$ is also a root of $f(x)$ (apply $\sigma$ to $f(x)$ and use the fact that the coefficients are in $K$: $\sigma(f(\alpha))=f(\sigma(\alpha))$). Therefore,
+	\[
+	\#\Aut(L/K) \leq \#\{ a \in L \colon f(a)=0\} \leq \deg f= [L \colon K]. \makeatletter\displaymath@qed
+	\]
+
+
+\begin{dfn}[Galois Extension]
+We say that an extension $L/K$ is Galois if it is a separable extension and any of the following equivalent conditions hold:
+
+\begin{minipage}[H]{\textwidth}
+\begin{enumerate}[(i)]
+%\setlength{\itemsep}{0pt}
+%\setlength{\parskip}{10pt}
+\item $\#\Aut(L/K)=[L \colon K]$ 
+\item $L^{\Aut(L/K)}=K$ 
+\item $L$ is the splitting field of some (irreducible) polynomial, i.e. $L=K(\alpha_1,\ldots,\alpha_n)$ 
+with $f(x)=\prod_{i=1}^n (x-\alpha_i)$. 
+\end{enumerate}
+\end{minipage}
+\end{dfn}
+
+
+\begin{dfn}[Galois Group]
+If $L/K$ is Galois, then the Galois group of $L/K$ is $\Gal(L/K):= \Aut(L/K)$. 
+\end{dfn}
+
+
+\begin{thm}[Fundamental Theorem of Galois Theory]
+Let $L/K$ be a finite Galois extension. There is an inclusion reversing bijection
+
+\begin{minipage}[H]{\textwidth}
+	\[
+	\begin{tikzcd}
+	\left\{ \parbox{2cm}{\centering Subgroups of $\Gal(L/K$).} \right\}  \arrow[leftrightarrow]{r} & \left\{\parbox{2cm}{\centering Subfields $K \subseteq F \subseteq L$.} \right\}
+	\end{tikzcd}
+	\]
+\end{minipage}
+where the coorespondences are given by $H \mapsto L^H$ and $F \mapsto \Aut(L/F=:\Gal(L/F)$, respectively. 
+\end{thm}
+
+
+An amazing result to come out of the Fundamental Theorem of Galois Theory is the fact that there must be finitely many intermediate fields between $L$ and $K$ (since these correspond to subgroups of a finite group). While it is possible to prove this without Galois Theory, it is not a simple matter. 
+
+\begin{ex}
+Let $L=\Q(\sqrt[3]{2},\zeta)$, where $\zeta$ is a primitive cube root of unity. Then $L$ is the splitting field of $x^3-2 \in \Q[x]$, which has roots $\alpha_1=\sqrt[3]{2}$, $\alpha_2=\zeta\sqrt[3]{2}$, and $\alpha_3=\zeta^2 \sqrt[3]{2}$. There is an injective group homomorphism $\phi: \Gal(L/\Q) \hra \S_3$, the symmetric group on `3 letters', such that $\sigma_{\alpha_i}=\alpha_{\phi(\sigma)_i}$ for all $\sigma \in \Gal(L/\Q)$ with $i=1,2,3$. Since $\#\Gal(L/\Q)=[L \colon \Q]=6$ and $|\S_3|=6$, this map must then be an isomorphism. The lattice of subgroups of $\S_3$ is
+	\[
+	\begin{tikzcd}
+	 &  & 1  \arrow[dash,swap]{dll}{2}  \arrow[dash]{dl}{2} \arrow[dash]{d}{2} \arrow[dash]{ddr}{3} &  \\
+	\langle (12) \rangle \arrow[dash]{ddrr}{3} & \langle (13) \rangle \arrow[dash]{ddr}{3} & \langle (23) \rangle \arrow[dash]{dd}{3} &  \\
+	 &  &  & \langle (123) \rangle \arrow[dash,swap]{dl}{2} \\
+	 &  & \S_3 &  
+	\end{tikzcd}
+	\]
+By the Fundamental Theorem of Galois Theory, we get a corresponding lattice for subfields $K \subseteq F \subseteq L$. Notice the lattice is the `upside-down' version of the group lattice with the same extension degrees. 
+	\[
+	\begin{tikzcd}
+	 &  & L  \arrow[dash,swap]{dll}{2}  \arrow[dash]{dl}{2} \arrow[dash]{d}{2} \arrow[dash]{ddr}{3} &  \\
+	\Q(\zeta^2\sqrt[3]{2}) \arrow[dash]{ddrr}{3} & \Q(\zeta\sqrt[3]{2}) \arrow[dash]{ddr}{3} & \Q(\sqrt[3]{2}) \arrow[dash]{dd}{3} &  \\
+	 &  &  & \Q(\zeta) \arrow[dash,swap]{dl}{2} \\
+	 &  & \Q &  
+	\end{tikzcd}
+	\] \xqed
+\end{ex}
+
+
+\begin{ex}[Frobenius]
+Let $p$ be a prime. Consider the field extension $\F_p \leq \F_{p^n}$. This is a separable extension as $\F_{p^n}$ is the splitting field of $x^{p^n}-x$. In fact, the extension $\F_{p^n}/\F_p$ is Galois and $\Gal(\F_{p^n}/\F_p)$ is a cyclic group of order $n$ generated by the Frobenius homomorphism: $\Frob_p: \F_{p^n} \to \F_{p^n}$ given by $x \mapsto x^p$. It is clear that $\Frob_p$ generates as $\Frob_p$ has order the smallest integer $d$ such that $\Frob_p^d(x)=x^{p^d}=x$ for all $x \in \F_{p^n}$ so that $d=n$. The intermediate fields $\F_p \subseteq F \subseteq \F_{p^n}$ are the subgroups of $\Gal(\F_{p^n}/\F_p)$ which are the cyclic groups of order $d$ for $d \mid n$. \xqed 
+\end{ex}
+
+
+\begin{ex}[Cyclotomic Extensions]
+Let $L=\Q(\zeta_n)$, where $\zeta_n$ is a primitive $n$th root of unity. The extension $L/\Q$ is Galois as the roots of $x^n-1$ are $\zeta^i_n$ with $0 \leq i <n$. The minimal polynomial of $\zeta_n$ is
+	\[
+	\Phi_n(x)= \prod_{\substack{i=1 \\ \gcd(i,m)=1}}^n (x-\zeta_n^i) \in \Z[x]
+	\]
+The degree of $\Phi_n(x)$ is $\phi(n)$, where $\phi(n)$ is the Euler totient function: $\phi(r)=\#C_r$, where $C_r:=\{i \colon 1 \leq i < r, \gcd(i,r)=1\}$.  
+
+For $\sigma \in \Gal(L/\Q)$, $\sigma$ is determined entirely by its action on $\zeta_n$: $\sigma(\zeta_n)=\zeta_n^a$ for $a \in \Z$ with $\gcd(a,n)=1$. There is an injective homomorphism
+	\[
+	\begin{tikzcd}
+	\Psi: \Gal(L/\Q) \arrow[hook]{r} & \left(\Z/n\Z\right)^\times
+	\end{tikzcd} 
+	\]
+given by $\sigma(\zeta_n)= \zeta_n^{\Psi(\sigma)}$ for $\sigma \in \Gal(L/\Q)$. Since both groups have the same cardinality, this is an isomorphism. \xqed
+\end{ex}
+
+
+
+
+\subsection{Splitting in Galois Extensions}
+
+
+Let $L/K$ be a finite Galois extension of number fields, and let $G=\Gal(L.K)$.  For $\alpha \in L$, recall we have maps:
+	\[
+	\begin{split}
+	\Tr{L/K}(\alpha)= \sum_{g \in G} \sigma(\alpha) \\
+	\Nm{L/K}(\alpha)= \prod_{\sigma \in G} \sigma(\alpha).
+	\end{split}
+	\]
+
+\begin{prop}
+Let $L/K$ be a finite Galois extension of number fields, and let $G=\Gal(L/K)$. For any $\sigma \in G$, $\sigma(\O_L)=\O_L$.
+\end{prop}
+
+\pf If $\alpha \in L$, the minimal polynomial of $\sigma(\alpha)$ is the same as the minimal polynomial of $\alpha$:
+	\[
+	\sigma(p_\alpha(x))=p_\alpha(\sigma(x))=p_{\sigma(\alpha)}(x).
+	\]
+\qed \\
+
+
+By the Proposition, there is a well-defined action of $G$ on $\O_L$: if $\sigma \in G$ and $I \subseteq \O_L$ is an ideal, then $\sigma(I) \subseteq \sigma(\O_L)=\O_L$ is also an ideal. Then we have an isomorphism of rings
+	\[
+	\begin{tikzcd}
+	\qfrac{\O_L}{I} \arrow{r} & \qfrac{\O_L}{\sigma(I)} \\[-3ex]
+	x+I \arrow[maps to]{r} & \sigma(x) + \sigma(I)
+	\end{tikzcd}
+	\]
+In particular, if $\P \subseteq \O_L$ is a prime ideal, then $\sigma(\P) \subseteq \O_L$ is a prime ideal. Choose any nonzero prime ideal $\p \subseteq \O_K$ and $\sigma \in G$. As $\sigma(\O_L)=\O_L$ and $\p \subseteq K$ is fixed, we have $\sigma(\p \O_L)=\p \O_L$. On the other hand, $\sigma(\p \O_L)=\prod_\P \sigma(\P)^{e(\P/\p)}$, where $\sigma(\P)$ is still prime. Therefore, $\p\O_L= \prod_\P \sigma(\P)^{e(\P/\p)}$. By unique factorization, the Galois group $G$ acts on the set of primes diving $\p$: $\{ \P \subseteq \O_L \colon \P \mid \p\}$. Furthermore, $e(\sigma(\P)/\p)=e(\P/\p)$ (by unique factorization) and $f(\sigma(\P)/\p)=f(\P/\p)$ (by the isomorphism of rings above). This proves the following:
+
+
+\begin{prop}\label{prop:sigma}
+Let $L/K$ be a finite Galois extension of number fields, and let $G=\Gal(L/K)$. If $\p \subseteq \O_K$ is a nonzero prime and $\P \subseteq \O_L$ with $\P \mid \p$, then
+	\[
+	\begin{split}
+	\p\O_L&= \prod_\P \sigma(\P)^{e(\P/\p)} \\
+	e(\sigma(\P)/\p)&=e(\P/\p) \\
+	f(\sigma(\P)/\p)&=f(\P/\p)
+	\end{split}
+	\]
+\end{prop}
+
+The Galois group even acts transitively on the set of prime ideals of $\O_L$ dividing $\p$.
+
+\begin{prop}\label{prop:transitive}
+Let $L/K$ be a finite Galois extension of number fields, and let $G=\Gal(L/K)$. Let $\p \subseteq \O_K$ be a nonzero prime ideal. Then $G$ acts transitively on the set of prime ideals of $\O_L$ dividing $\p$. 
+\end{prop}
+
+\pf Suppose to the contrary that this were not the case. Then there are two primes $\P,\P'$ in two different Galois orbits. By the Chinese Remainder Theorem, there exists $x \in \O_L$ with $x \in \P$ and $x \notin \sigma(\P')$ for all $\sigma \in G$. Then
+	\[
+	\Nm{L/K}(x)= \prod_{\sigma \in G} \sigma(x) = x \; \prod_{\substack{\sigma \in G \\ \sigma \neq 1}} \sigma(x) \in \P
+	\]
+since $x \in \P$. But then we must have
+	\[
+	\prod_{\sigma \in G} \sigma(x)= \Nm{L/K}(x) \in \P \cap \O_K=\p \subseteq \P'.
+	\]
+As $\P'$ is prime, $\sigma(x) \in \P'$ for some $\sigma \in G$. But then $x \in \sigma^{-1}(\P')$, a contradiction. \qed \\
+
+
+Combining Proposition~\ref{prop:sigma} and Proposition~\ref{prop:transitive}, we can now characterize factoring in Galois extensions.
+
+\begin{thm}[efg-Theorem]\label{thm:efg}
+Let $L/K$ be a finite Galois extension of number fields, and let $G=\Gal(L/K)$. For any nonzero prime $\p \subseteq \O_K$, we have $\p\O_L=(\P_1 \cdots \P_g)^e$, where the $\P_i \subseteq \O_L$ are distinct prime ideals dividing $\p$ and $e \geq 1$ is unique. Furthermore, $f=f(\P_i/\p)$ is independent of the choice of $\P_i$. Finally,
+	\[
+	[L \colon K] = \sum_{\P \mid \p} e(\P/\p) f(\P/\p)= \sum_{\P \mid \p} ef= efg.
+	\]
+\end{thm}
+
+\begin{rem}
+Note that while $e,f,g$ do not depend on the choice of $\P$, they do depend on the choice of $\p$. One can indicate this by writing $e_\p$, $f_\p$, and $g_\p$, respectively. 
+\end{rem}
+
+
+\begin{dfn}[Decomposition Group]
+Let $L/K$ be a finite Galois extension of number fields, and let $G=\Gal(L/K)$. Choose a nonzero prime $\p \subseteq \O_K$ and fix a prime $\P \subseteq \O_L$ dividing $\p$. Define the decomposition group of $\P$ to be the subgroup of $G$, $D_\P$, fixing $\P$, i.e.
+	\[
+	D_\P:= \{ \sigma \in G \colon \sigma(\P)=\P\}.
+	\]
+\end{dfn}
+
+
+It is routine to verify that there is a bijection
+	\[
+	\begin{tikzcd}
+	\qfrac{G}{D_\P} \arrow{r}{\sim} & \{\P' \colon \P' \mid \p \} \\[-3ex]
+	\sigma \arrow[maps to]{r} & \sigma(\P)
+	\end{tikzcd}
+	\]
+By Theorem~\ref{thm:efg}, we know that $\#\{\P' \colon \P' \mid \p \}=g$. Then
+	\[
+	g= \left| \qfrac{G}{D_\P} \right| = \dfrac{|G|}{|D_\P|}= \dfrac{[L \colon K]}{|D_\P|}= \dfrac{efg}{|D_\P|}.
+	\]
+Therefore, $|D_\P|=ef$. Choose now $\sigma \in D_\P$. We have an isomorphism
+	\[
+	\begin{tikzcd}
+	\F_P:= \qfrac{\O_L}{\P} \arrow{r}{\sim} & \qfrac{\O_L}{\P}=: \F_\P \\[-3ex]
+	x+\P \arrow[maps to]{r} & \sigma(x)+\sigma(\P)=\sigma(x) + \P
+	\end{tikzcd}
+	\]
+Therefore, $\sigma$ induces an automorphism of $\F_\P$ that fixes $\F_\p:= \O_K/\p$. This induces a group homomorphism $\phi: D_\P \to \Gal(\F_\P/\F_\p)$. The group $\Gal(\F_\P/\F_\p)$ is cyclic of order $f(\P/\p)=f_\p$, generated by $x \mapsto x^{N(\p)}$, where $N(\p)=\#\F_\p$. 
+
+
+\begin{lem}\label{lem:surjective}
+The map $\phi: D_\P \to \Gal(\F_\P/\F_\p)$ is surjective.
+\end{lem}
+
+\pf Using the Chinese Remainder Theorem, choose $\alpha \in \O_L$ such that $\F_\p(\overline{\alpha})= \F_\P$, where $\overline{\alpha}:= \alpha \mod \P$, and $\alpha \in \P'$ for $\P' \mid \p$ with $\P' \neq \P$.  For $\sigma \in G \setminus D_\P$, $\sigma(\P) \neq \P$. Hence, $\alpha \in \sigma(\P)$. Define
+	\[
+	f(x)= \prod_{\sigma \in G} \big(x-\sigma(\alpha) \big) \in \O_K[x].
+	\]
+Reducing mod $\P$, we have $f(x) \equiv x^{|G \setminus D_\P|}\, h(x) \mod \P$, where $h(x) \in \F_\p[x]$. Observe that $\overline{\alpha}$ is a root of $h(x)$ and all the terms in $h(x)$ come from $\sigma \in D_\P$. Then $x-\alpha$ is a root of $f(x)$ so that $x-\overline{\alpha}$ is a linear factor of $h(x)$ not generated by $x^{|G \setminus D_\P|}$. Choose $\tau \in \Gal(\F_\P/\F_\p)$. Now $\tau$ is completely determined by $\tau(\overline{\alpha})$. But $\overline{\alpha}$ is a root of $h(x) \in \F_\p[x]$ so that $\tau(\overline{\alpha})$ is a root of $h(x)$. Then $\tau(\overline{\alpha})=\sigma(\alpha) \mod \P$ for some $\sigma \in D_\P$. Therefore, $\phi(\sigma)=\tau$. \qed \\
+
+
+Since $\#D_\P=ef$ and $\#\Gal(\F_\P/\F_\p)=f$, we must have $\#\ker \phi=e$. 
+
+\begin{dfn}[Inertia Group]
+The kernel of $\phi: D_\P \to \Gal(\F_\P/\F_\p)$ is called the inertia group of $\P/\p$ and is denoted $I_\P$.
+\end{dfn}
+
+There is a short exact sequence of groups
+	\[
+	1 \ma{} I_\P \ma{} D_\P \ma{\phi} \Gal(\F_\P/\F_\p) \ma{} 1.
+	\]
+This gives a chain of subgroups of $G$ and an associated tower of number fields and ideals:
+	\[
+	\begin{tikzcd}
+	1 \arrow[dash]{d}{e} & L \arrow[dash]{d}{e} & \P \arrow[draw=none]{d}[sloped,auto=false]{\supseteq} \\
+	I_\P \arrow[dash]{d}{f} & L^{I_\P} \arrow[dash]{d}{f} & \P_I:= \P \cap \O_{L^{I_\P}} \arrow[draw=none]{d}[sloped,auto=false]{\supseteq} \\
+	D_\P \arrow[dash]{d}{g} & L^{D_\P} \arrow[dash]{d}{g} & \P_D:= \P \cap \O_{L^{D_\P}} \arrow[draw=none]{d}[sloped,auto=false]{\supseteq} \\
+	G & K=L^G & \p
+	\end{tikzcd}
+	\]
+
+\begin{dfn}[Inertia Field]
+The field $L^{I_\P}$ is called the inertia field at $\P$.
+\end{dfn}
+
+\begin{dfn}[Decomposition Field]
+The field $L^{D_\P}$ is called the decomposition field at $\P$.
+\end{dfn}
+
+In fact, the splitting of primes in this tower has `nice' behavior:
+
+\begin{prop}
+In the tower above, there is unique splitting behavior:
+\begin{itemize}
+\item In the extension $L^{D_\P}/K$, the prime $\p$ splits into $g$ distinct primes $\ell_i$ such that $e(\ell_i/\p)=1$ and $f(\ell_i/\p)=1$ for all $i$. For some $i$, $\ell_i= \P_D$.
+\item In the extension $L^{I_\P}/L^{D_\P}$, $\P_D \O_{L^{I_\P}}= \P_I$ such that $e(\P_I/\P_D)=1$ and $f(\P_I/\P_D)=f$.
+\item In the extension $L/L^{I_\P}$, $\P_I\O_L=\P^e$, where $e(\P/\P_I)=e$ and $f(\P/\P_I)=1$.
+\end{itemize}
+Furthermore, $L^{D_\P}/L$ is Galois with Galois group $D_\P$. 
+\end{prop}
+
+
+
+
+\subsection{Frobenius \& Quadratic Reciprocity}
+
+
+Fix a Galois extension $L/K$ with Galois group $G$. Fix a prime $\p \subseteq \O_K$ that is unramified in $L$. Choose a prime $\P \subseteq \O_L$ dividing $\p$. Since $\p$ is unramified, $e_\p=e(\P/\p)=1$ so that $I_\P=1$. Then there is an isomorphism $D_\P \ma{\sim} \Gal(\F_\P/\F_\p)$ since both are cyclic of order $f_\p$. Then $\Gal(\F_\P/\F_\p)$ is generated by Frobenius: $x \mapsto x^{N(\p)}$. Pulling back to $D_\P$, we obtain an element we call $\Frob_\P \in D_\P \subseteq G$ ($\Frob_\P(x) \equiv x^{N(\p)} \mod \P$ for all $x \in \O_L$). 
+
+\begin{dfn}[Frobenius]
+Under the isomorphism described above, the pullback of a generator of $\Gal(\F_\P/\F_\p)$ is called $\Frob_\B: \F_\P \to \F_\P$ given by $x \mapsto x^{N(\p)}$. 
+\end{dfn}
+
+So given a local object (a prime ideal), we obtain a global object, $L$ (an element of the Galois group). 
+
+\begin{rem}
+What we have called $\Frob_\P$ is also denoted $\Frob_{\P,L/K}$, $(\P,L/K)$, $\left(\frac{L/K}{\P}\right)$.
+\end{rem}
+
+\begin{lem}\label{lem:wdconj}
+For $\tau \in G$, $\Frob_{\tau(\P)}= \tau \Frob_\P \tau^{-1}$.
+\end{lem}
+
+\pf Observe that $\Frob_\P(\tau^{-1}x) \equiv \tau^{-1}(x)^{N(\p)} \mod \P$ and $\tau \Frob_\P(\tau^{-1} x) \equiv x^{N(\p)} \mod \tau(\P)$. Applying $\tau$, we obtain the result. \qed \\
+
+By Lemma~\ref{lem:wdconj}, the conjugacy class of a prime ideal of $\Frob_\P$ in $G$ is well defined for any $\P \mid \p$. 
+
+\begin{dfn}
+For $\p \subseteq \O_K$, $\Frob_\p$ is the conjugacy class in $G$ of $\Frob_\P$ for any $\P \subseteq \O_K$ with $\P \mid \p$. 
+\end{dfn}
+
+
+\begin{ex}\label{ex:legrec}
+Let $L=\Q(\sqrt{d})$, where $1 \neq d \in \Z$ is squarefree. Then $[L \colon \Q]=2$ and $L/\Q$ is Galois because $L$ is the splitting field of $x^2-d$. Define $G:=\Gal(L/\Q)$ and observe $G \cong \{\pm1\}$. Choose a prime $p$ with $p \nmid 2d$. Then $p$ is unramified in $L$. Since $G$ is abelian (so conjugacy classes are singleton sets and can then be identified with elements), $\Frob_p$ is an element of $G$. When is $\Frob_p$ trivial? 
+
+If $x^2-d \mod p$ splits, then $f_p=1$. If $x^2-d \mod p$ is irreducible, then $f_p=2$. Since $G$ has order 2, this determines $\Frob_p$. Define the Legendre symbol, $\leg{d}{p}$ to be the image of $\Frob_p$ under the isomorphism $\Gal(L/\Q) \ma{\sim} \{\pm 1\}$, where the map is $\Frob_p \mapsto \leg{d}{p}$. \xqed
+\end{ex}
+
+
+\begin{dfn}[Legendre Symbol]
+Fix an odd prime $p$. The Legendre symbol of an integer $d$ is
+	\[
+	\leg{d}{p}:=
+	\begin{cases}
+	+1, & \text{if }d \text{ is a nonzero square mod }p, \\
+	-1, & \text{if }d \text{ is not a square mod }p, \\
+	0, & \text{if } d \equiv 0 \mod p
+	\end{cases}
+	\]
+\end{dfn}
+
+
+\begin{prop} \hfill
+\begin{enumerate}[(i)]
+\item $\leg{a}{p}$ depends only on the value of $a \mod p$.
+\item $\leg{ab}{p}= \leg{a}{p} \leg{b}{p}$
+\item $\#\{ a \in \Z/p\Z \colon a^2 \equiv d \mod p\}= 1+ \leg{d}{p}$
+\end{enumerate}
+\end{prop}
+
+The multiplicative property of the Legendre symbol arises from the isomorphism $\F_p^\times/(\F_p^\times)^2 \cong \{\pm 1\}$ given by $a \mapsto \leg{a}{p}$. Since the Legendre symbol is multiplicative, it is only necessary to understand $\leg{-1}{p}$ and $\leg{l}{p}$ for $l \neq p$ prime. As special cases of the Legendre symbol, we have the following:
+
+\begin{prop} \label{prop:leg} \hfill
+\begin{enumerate}[(i)]
+\item $\leg{-1}{p}= (-1)^{\frac{p-1}{2}}= \begin{cases} +1, & \text{if } p \equiv 1 \mod 4 \\ -1, & \text{if } p \equiv 3 \mod 4 \end{cases}$
+\item $\leg{2}{p}= (-1)^{\frac{p^2-1}{8}}= \begin{cases} +1, & \text{if } p \equiv \pm 1 \mod 8, \\ -1, & \text{if } p \equiv \pm 3 \mod 8 \end{cases}$
+\end{enumerate}
+\end{prop}
+
+
+The proof of (i) above will come in Example~\ref{ex:parta}. For part (ii), observe that $\sqrt{2} \in \Q(\zeta_8)$. In fact, $\sqrt{2}=\zeta_8+\zeta_8^{-1}$. There is an extension of fields
+	\[
+	\begin{tikzcd}
+	\Q(\zeta_8) \arrow[dash]{d} \\
+	\Q(\sqrt{2}) \arrow[dash]{d}{2} \\
+	\Q
+	\end{tikzcd}
+	\]
+However, $\Gal(\Q(\zeta_8)/\Q) \cong (\Z/8\Z)^\times$ is not a cyclic group and contains three subgroups of index 2. To prove the result, one must show that $\Q(\zeta 2)$ corresponds to the subgroup $\{\pm 1\} \subseteq (\Z/8\Z)^\times$. 
+
+
+Proposition~\ref{prop:leg} combined with deep result of Gauss (conjectured by Euler and Legendre), called quadratic reciprocity, will allow one to calculate all Legendre symbols. The goal of this section will be to prove quadratic reciprocity. 
+
+\begin{restatable*}[Quadratic Reciprocity]{thm}{qrecip} \label{thm:qreciprocity}
+For distinct odd primes $p$ and $l$, we have
+	\[
+	\leg{p}{l} \leg{l}{p} = (-1)^{\left(\frac{-1}{2}\right)\left(\frac{l-1}{2}\right)}
+	\]
+\end{restatable*}
+
+That is, 
+	\[
+	\leg{p}{l}= 
+	\begin{cases} 
+	\leg{l}{p}, & p \equiv 1 \text{ or } l \equiv 1 \mod 4 \\ 
+	- \leg{l}{p}, & p \equiv l \equiv 3 \mod 4 .
+	\end{cases}
+	\]
+ This is a truly deep and remarkable theorem since a priori there should be no relationship between integers modulo $p$ and integers modulo $l$. The following examples illustrate the ease with which one can compute Legendre symbols using quadratic reciprocity. Moreover, we can answer questions about splitting of primes in number fields.
+
+
+\begin{ex}
+Is 3 a square modulo $p=144169$? Note that $p=144169 \equiv 1 \mod 4$ and $144169 \equiv 1 \mod 3$. Therefore, we have
+	\[
+	\leg{3}{144169} = \leg{144169}{3}= \leg{1}{3}=1.
+	\]
+Therefore, 3 is a square modulo 144169. \xqed
+\end{ex} 
+
+
+\begin{ex}
+Is 31 a square modulo 103? Note that $31 \equiv 103 \equiv 3 \mod 4$. Then
+	\[
+	\leg{31}{103} = - \leg{103}{31}= - \leg{10}{31}= - \leg{2}{31} \leg{5}{31}= - \leg{5}{31}= - \leg{31}{5}= - \leg{1}{5}= -1.
+	\]
+Therefore, 31 is not a square modulo 103. \xqed
+\end{ex}
+
+
+\begin{ex}
+Recall the situation in Example~\ref{ex:legrec}. We have that $p$ splits in $L$ if and only if $x^2-d \mod p$ has two distinct roots if and only if $\leg{d}{p}=1$. \xqed
+\end{ex}
+
+\begin{ex}
+For what primes $p$, $p \neq 2,5$, does $p$ split in $K=\Q(\sqrt{5})$? This happens precisely when $\leg{5}{p}=1$. Now
+	\[
+	\leg{5}{p}= \leg{p}{5}= 
+	\begin{cases}
+	+1, & p \equiv 1 \text{ or }4 \mod 5 \\
+	-1, & p \equiv 2 \text{ or }3 \mod 5.
+	\end{cases}
+	\]
+Therefore, $p$ splits in $K$ if and only if $p \equiv \pm 1 \mod 5$. \xqed
+\end{ex}
+
+
+Now let $L/K$ be a Galois extension of number fields with Galois group $\G=\Gal(L/K)$. Given a nonzero $\p \subseteq \O_K$ unramified in $L$, there is a unique $\Frob_\P \in \G$, where $\P \mid \p$, with $\Frob_\P(\P)=\P$ and $\Frob_\P$ induces the automorphism $x \mapsto x^{N(\p)}$ on $\F_\P=\O_L/\P$. Equivalently, there is a unique $\Frob_\P \in \G$ such that $\Frob_\P(x) \equiv x^{N(\p)} \mod \P$ for all $x \in \O_L$. Note that $\Frob_\P \in \G$ has order $f_\p:=f(\P/\p)$. The conjugacy class $\Frob_\P$ in $\G$ is denoted by $\Frob_\p$ and does not depend on $\P\mid \p$. If $\G$ is abelian, then the conjugacy class is trivial so that $\Frob_\p \in \G$ is a well defined element in $\G$. 
+
+
+\begin{ex}\label{ex:galcyl}
+Fix an integer $n \geq 2$. Let $L=\Q(\zeta_n)$, where $\zeta_n$ is a primitive $n$th root of unity. There is an isomorphism
+	\[
+	\Psi: \Gal(L/\Q) \ma{\sim} (\Z/n\Z)^\times
+	\]
+such that $\sigma(\zeta_n)=\zeta_n^{\Psi(\sigma)}$ for any $\sigma \in \Gal(L/\Q)$. Take a prime $p \nmid n$ so that it is unramified in $L$. Choose $\P \mid \p$ with $\P \subseteq \O_L$. Now $\Frob_\P(\zeta_n) \equiv \zeta_n^p \mod \P$. As $p$ does not divide $n$, $x^n-1$ is separable modulo $p$, and $\zeta_n^p$ and $\Frob_\P(\zeta_n)$ are roots of $x^n-1$. However, these are equivalent modulo $\P$ so that $\Frob_\P(\zeta_n)=\zeta_n^p$. Since the Galois group is abelian, we can write $\Frob_p=\Frob_\P$. The isomorphism is given by
+	\[
+	\begin{tikzcd}
+	\Gal(\Q(\zeta_n)/\Q) \arrow{r}{\Psi} & (\Z/n\Z)^\times \\[-3ex]
+	\Frob_p \arrow[maps to]{r} & p
+	\end{tikzcd}
+	\] \xqed
+\end{ex}
+
+
+\begin{ex}\label{ex:parta}
+Choose $n=4$ in Example~\ref{ex:galcyl}. The 4th root of unity is denoted $i$ and we have $L=\Q(i)$. Choosing an odd prime $p$
+	\[
+	\begin{tikzcd}
+	\Gal(\Q(i)/\Q) \arrow{r}{\Psi} & (\Z/4\Z)^\times \\[-3ex]
+	\Frob_p \arrow[maps to]{r} & p \mod 4
+	\end{tikzcd}
+	\]
+Note $f_p$ is the order of $\Frob_p$. An odd prime $p$ splits in $\Q(i)$ if and only if $f_p=1$ if and only if $\Frob_p=1 \in \Gal(\Q(i)/\Q)$ if and only if $p \equiv 1 \mod 4$. We know also that $p$ splits in $\Q(i)=\Q(\sqrt{-1})$ if and only if $\leg{-1}{p}=1$. Putting these two different answers together, we obtain Proposition~\ref{prop:leg}. \xqed
+\end{ex}
+
+
+\qrecip
+
+\pf Fix an odd prime $l$ and set $L=\Q(\zeta_l)$. Then via $\Psi$, we have $\Gal(L/\Q) \cong (\Z/l\Z)^\times=\F_l^\times$. Let $K/\Q$ be the subfield of $L$ corresponding to $(\F_l^\times)^2$, i.e. the subfield fixed by $\Psi^{-1}((\F_l^\times)^2)$. Now $K$ is a quadratic extension of $\Q$.
+	\[
+	\begin{tikzcd}
+	L \arrow[dash]{d} & 1 \arrow[dash]{d} \\
+	K \arrow[dash]{d}{2} & (\F_l^\times)^2 \arrow[dash]{d}{2} \\
+	\Q & \F_l^\times
+	\end{tikzcd}
+	\]
+We claim $K=\Q(\sqrt{l^*})$, where
+	\[
+	l^*=(-1)^{\frac{l-1}{2}} l= 
+	\begin{cases}
+	l, & \text{if } l \equiv 1 \mod 4 \\
+	-l, & \text{if } l \equiv 3 \mod 4
+	\end{cases}
+	\]
+Clearly, $L$ is unramified at all primes $p \neq l$ and $\disc L = \pm l^n$ for some $n$. Therefore, $K$ is also unramified at $p \neq l$ so that $\disc K= \pm l$. Then if $K=\Q(\sqrt{d})$, where $d \in \Z$ is squarefree. 
+	\[
+	\disc K=
+	\begin{cases}
+	d, & \text{if } d \equiv 1 \mod 4 \\
+	4d, & \text{if } d \not\equiv 1 \mod 4
+	\end{cases}
+	\]
+Then we must choose $d$ such that $d= \pm l$ and $d \equiv 1 \mod 4$. Hence, $K=\Q(\sqrt{l^*})$. 
+
+Now choose a prime $p$ such that $p \nmid 2l$. We find two different necessary and sufficient conditions for a prime $p$ to split in $K$. Comparing the results will result in the theorem.
+
+Now we know $p$ splits in $K$ if and only if $\leg{l^*}{p}=1$. On the other hand, choosing a prime $\P$ of $\O_L$ dividing $p$. We have $\Frob_\P \in \Gal(L/\Q)$. For $x \in \O_K$, $\Frob_\P(x) - x^p \in \P$. Therefore as $\Frob_\P|_K \in \Gal(K.\Q)$, $\Frob_\P(x) - x^p \in \P \cap \O_K=\p$. Then we have $\Frob_\P|_K= \Frob_\p$. But then $p$ splits in $K$ if and only if $f_p=f(\p/p)=1$ if and only if $\Frob_\p=1 \in \Gal(K/\Q)$. This is equivalent to $\Frob_\P$ fixes $K$ as $\Frob_\P|_K=\Frob_\p$. However, this happens if and only if $\Psi(\Frob_\P) \in (\F_l^\times)^2$. Since the Galois group is abelian, it suffices to show that $\Psi(\Frob_p) \in (\F_l^\times)^2$. However by Example~\ref{ex:galcyl}, $\Psi(\Frob_p) \in (\F_l^\times)^2$ if and only if $p \mod l \in (\F_l^\times)^2$ if and only if $\leg{p}{l}=1$. 
+
+Combining these results, we obtain $\leg{l^*}{p}=1$ if and only if $p$ splits in $K$ if and only if $\leg{p}{l}=1$. But then $\leg{l^*}{p}=\leg{p}{l}$. Therefore,
+	\[
+	\begin{split}
+	\leg{l^*}{p}&= \leg{(-1)^{l-1} 2l}{p} \\
+	&= \leg{-1}{p}^{\frac{l-1}{2}} \leg{l}{p} \\
+	&= (-1)^{\frac{p-1}{2} \frac{l-1}{2}} \leg{l}{p} 
+	\end{split}
+	\]
+	$$\makeatletter\displaymath@qed$$
+
+
+
+
+\subsection{Chebotarev Density Theorem}
+
+
+Now let $L/K$ be a finite Galois extension of number fields. Set $G=\Gal(L/K)$ and choose a nonzero prime $\p \subseteq \O_K$ which is unramified in $L$. Choose a prime $\P \subseteq \O_L$ with $\P \mid \p$. We know there exists a unique $\Frob_\P \in G$ such that $\Frob_\P(x) \equiv x^{N(\p)} \mod \P$ for all $x \in \O_L$. Furthermore, $\Frob_\P$ has order $f_\p=f(\P/\p)$. Denote by $\Frob_\p$ the conjugacy class of $\Frob_\P$ in $G$. Fix a separable monic $h \in \O_K[x]$ whose splitting field is $L$, i.e. $L=K(\alpha_1,\ldots,\alpha_n)$, where $h(x)=(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n)$. Note that the $\alpha_i$ are distinct. The Galois group of $L/K$ acts on this set of roots of $h$ by permutation. Then there is an injective homomorphism 
+	\[
+	\Psi: G \hra \S_n,
+	\]
+where for $\sigma \in G$, we have $\sigma(\alpha_i)=\alpha_{\Psi(\sigma)(i)}$. Take a prime $\p$ not dividing $\disc h$. We have $h \equiv h_1\cdots h_r \mod p$ for distinct $h_i \in \F_p[x]$ monic and irreducible. Set $f_i= \deg h_i$ --- noting that $\sum_i f_i=n$. 
+
+
+\begin{thm}
+For a prime $\P \subseteq \O_L$ dividing $\p$, $\Psi(\Frob_\P) \in \S_n$ is a permutation of cycle type $(f_1,\ldots,f_r)$. 
+\end{thm}
+
+\pf Define $\overline{\alpha_i}= \alpha_i \mod \P$. There is a bijection between $\{\alpha_1,\ldots,\alpha_n\}$ and $\{\overline{\alpha}_1,\ldots,\overline{\alpha}_n\}$ given by $\alpha \mapsto \alpha \mod \P$. Since $\p$ does not divide $\disc h$ so that $h$ is separable modulo $\p$. The action of $\Frob_\P$ corresponds to the action of $\Frob: \F_\P \to \F_\P$ given by $x \mapsto x^{N(\p)}$, where $\Gal(\F_\P/\F_\p)=\langle \Frob \rangle$. An orbit of Frob on $\{\overline{\alpha}_1,\ldots,\overline{\alpha}_n\}$ corresponds to the roots of an $h_i \in \F_\p[x]$. \qed \\
+
+
+\begin{ex}
+Let $L/\Q$ be the splitting field for $h(x)= x^4+x+5$. Note that $\disc h= 31973$ is prime. We factor $h \mod p$ for prime $p$:
+\begin{itemize}
+\item $p=2,3$: $h$ is irreducible. Hence, $\Psi(\Frob_2)$, $\Psi(\Frob_3) \in \S_4$ are 4-cycles.
+\item $p=5$: $h \equiv x(x+1)(x^2+4x+1) \mod 5$, so $\Psi(\Frob_5) \in \S_4$ is a 2-cycle.
+\item $p=7$: $h \equiv (x+6)(x^3+x^2+x+2) \mod 7$, so $\Psi(\Frob_7) \in \S_4$ is a 3-cycle.
+\end{itemize}
+Therefore, $\Psi: \Gal(L/\Q) \to \S_4$ must be an isomorphism as $\S_4$ has no proper subgroups containing elements of order 3 and 4. \xqed 
+\end{ex}
+
+
+\begin{ex}\label{ex:cheb}
+Let $L/\Q$ be the splitting field of $h(x)= x^4+8x+12$. The discriminant of $h$ is $\disc h= 2^{12} \cdot 3^4$. We can factor $h$ modulo $p$ for $p$ not dividing 6. Order the sequence $f_1,\ldots,f_r$ to be increasing. Table~\ref{tab:factor} shows how many times each cycle type occurs as well as its proportion of the total for primes $5 \leq p \leq 10,000,000$. 
+	\begin{table}
+	\centering
+	\caption{Splitting Proportions \label{tab:factor}}
+	\begin{tabular}{c|rrrrr}
+	$f_1,\ldots,f_r$ & (1,1,1,1) & (1,1,2) & (1,3) & (2,2) & (4) \\ \hline 
+	Number Occurences & 55338 & 0 & 443017 & 166222 & 0 \\
+	Proportion & 0.083268 & 0 & 0.666615 & 0.250116 & 0 
+	\end{tabular}
+	\end{table}
+Observe only odd cycle types occur in the table. Observe also $0.083268 \approx \frac{1}{12}$, $0.666615 \approx{2}{3}$, and $0.250116 \approx \frac{1}{4}$. Finally, these fractions have common denominator 12. One could then conjecture $\Psi(\Gal(L/\Q)) \subseteq \A_4 \subseteq \S_4$. To make this rigorous, first note that
+	\[
+	2^{12} \cdot 3^4 = \disc h = \prod_{1 \leq i < j \leq 4} (\alpha_i - \alpha_j)^2,
+	\]
+where $h$ has roots $\alpha_1,\ldots,\alpha_4$. Furthermore, we have
+	\[
+	\delta:= \prod_{1 \leq i<j \leq 4} (\alpha_i - \alpha_j) = 2^6 \cdot 3^2 \in \Q^\times.
+	\]
+Then for $\sigma \in \Gal(L/\Q)$,
+	\[
+	\begin{split}
+	\delta= \sigma(\delta)&= \prod_{1 \leq i<j \leq 4} \big( \sigma(\alpha_i) - \sigma(\alpha_j) \big) \\
+	&= \prod_{1 \leq i<j \leq 4} \big( \alpha_{\Psi(\sigma)(i)} - \alpha_{\Psi(\sigma)(j)} \big) \\
+	&= \sgn(\Psi(\sigma)) \prod_{1 \leq i<j \leq 4} (\alpha_i - \alpha_j),
+	\end{split}
+	\]
+where $\sgn: \S_4 \to \{\pm 1\}$ is the map to the sign of the permutation. This homomorphism has kernel $\A_4$. Cancelling $\delta$ on both sides of the equation gives $\sgn(\Psi(\sigma))=1$. Therefore, $\Psi(\Gal(L/\Q)) \subseteq \A_4$. As $\Psi(\Gal(L/\Q))$ contains elements of order 2 and 3, we must have $\Psi(\Gal(L/\Q))=\A_4$. But then $\Gal(L/\Q) \cong \A_4$. \xqed 
+\end{ex}
+
+The `nice' distribution in Table~\ref{tab:factor} in Example~\ref{ex:cheb} is not an accident but an example of a general phenomenon. 
+
+
+\begin{dfn}[Density]
+For a set $S$ of prime ideals of $\O_K$, define the density of $S$
+	\[
+	\delta(S):= \lim_{x \to \infty} \dfrac{\#\{ \p \in S \colon N(\p) \leq x \}}{\#\{ \p \colon N(\p) \leq x\}},
+	\]
+whenever this limit exists. 
+\end{dfn}
+
+We now have sufficient vocabulary to state the main theorem of this section. 
+
+
+\begin{thm}[Chebotarev Density Theorem]
+Let $L/K$ be a Galois extension of number fields with Galois group $G=\Gal(L/K)$. For any $C \subseteq G$, stable under conjugation by $G$, let $S_C$ be the set of $\p \subseteq \O_K$ such that $\p$ is unramified in $L$ and $\Frob_\p \subseteq C$. 
+	\[
+	S_C:=\{ \p \subseteq \O_K \colon \p \text{ unramified in }L, \Frob_\p \subseteq C\}.
+	\]
+Then the density of $S_C$ is the ratio of the sizes of $C$ to $G$: $\delta(S_C)= \dfrac{\#C}{\#G}$. 
+\end{thm}
+
+
+We shall not prove the theorem since this veers into many analytic techniques which will not be otherwise relevant for our purposes. However, we shall address a few examples.
+
+
+\begin{ex}
+For $n \geq 2$ and $a \in \Z$ relatively prime to $n$.
+	\[
+	\begin{tikzcd}
+	\Phi: \Gal(\Q(\zeta_n)/\Q) \arrow{r}{\Psi} & (\Z/n\Z)^\times \\[-3ex]
+	\Frob_p \arrow[maps to]{r} & \p \mod n
+	\end{tikzcd}
+	\]
+Let $C=\Phi^{-1}([a])$ and $S_C=\{p \colon p \nmid, \Frob_p \in \Phi^{-1}([a]) \}$. By the Chebotarev Density Theorem,
+	\[
+	\delta(S_C)= \dfrac{1}{\#(\Z/n\Z)}= \dfrac{1}{\phi(n)},
+	\]
+where $\phi$ is the Euler totient function. Furthermore, $S_C=\{p \colon p \equiv a \mod n\}$. This gives a theorem of Dirichlet: the density of primes $p$ congruent to $a$ modulo $m$ is $1/\phi(n)$ (see Proposition~\ref{prop:dir}). \xqed 
+\end{ex}
+
+
+\begin{prop}[Dirichlet]\label{prop:dir}
+Let $n \geq 2$. The set of primes $p \equiv a \mod n$ has density $1/\phi(n)$, where $\phi$ is the Euler totient function. In particular, there are infinitely many such $p$.
+\end{prop}
+
+
+This is a common application of Chebotarev: guaranteeing the existence of a prime with certain properties.  
+
+
+\begin{ex}
+Let $L/K$ be a Galois extension with Galois group $G$. Let $S$ be the set of primes $\p \subseteq \O_K$ that splits completely in $L$, i.e. $\p\O_L=\q_1\cdots \q_r$, wher e$e(\q_i/\p)=1$ and $f(\q_i/\p)=1$. In this case, $r=[L \colon K]$. Choosing $C=\{1\}$, by the Chebotarev Density Theorem,
+	\[
+	\delta(S)= \dfrac{1}{\#G}= \dfrac{1}{[L \colon K]}. 
+	\] \xqed
+\end{ex}
+
+
+\begin{prop}
+Let $L/K$ and $M/K$ be Galois extensions. Denote by $S_{L/K}$ the set of primes of $K$ that split completely in $L$ and mutatis mutandis for $S_{M/K}$. Then $L \subseteq M$ if and only if $S_{L/K} \supseteq S_{M/K}$.
+\end{prop}
+
+\pf (Sketch): If $L \subseteq M$, then $S_{L/K} \supseteq S_{M/K}$. Conversely, consider
+	\[
+	\begin{tikzcd}
+	\Gal(LM/K) \arrow[hook]{r} & \Gal(L/K) \times \Gal(M/K) \\[-3ex]
+	\sigma \arrow[maps to]{r} & (\sigma|_L, \sigma|_M)
+	\end{tikzcd}
+	\]
+Furthermore, $\Frob_\p \mapsto \Frob_\p \times \Frob_\p$. Then $S_{LM/K}= S_{L/K} \cap S_{M/K}$. By assumption, $S_{L/K} \supseteq S_{M/K}$, so $S_{LM/K}= S_{M/K}$. Therefore,
+	\[
+	\dfrac{1}{[LM \colon K]} = \delta(S_{LM/K})= \delta(S_{M/K})= \dfrac{1}{[M \colon K]}.
+	\]
+But then $[LM \colon K]=[M \colon K]$ so that $LM=M$. This shows $L \subseteq M$. \qed \\
+
+
+Before moving to more analytic topics in Algebraic Number Theory, we give some foreshadowing to Class Field Theory. Let $L/K$ be a Galois extension with $G=\Gal(L/K)$ abelian. Let $S$ denote teh finite set of primes of $\O_K$ containing those that ramify in $L$. Let $\I_K^S \subseteq \I_K$ denote the group generated by $\p \notin S$. Define a homomorphism $\theta: \I_K^S \to G$ by $\p \mapsto \Frob_\p$ (noting that invertible fractional ideals are an abelian group generated by the $\p$'s so it is sufficient to define the map there). The Chebotarev Density Theorem says that this map is surjective. Then we have $\I_K^S/\ker \phi \cong G$. Now $\ker \theta$ determines $L$ (the idea being $\p \notin S$ and $\p$ splits completely in $L$ if and only if $\p \in \ker \theta$). The problem (one of the problems of Class Field Theory) is to describe the finite index subgroups of $\Cl_K^S$ that correspond to $L/K$ abelian Galois extensions. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
