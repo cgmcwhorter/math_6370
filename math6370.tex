@@ -1,169 +1,27 @@
 \documentclass[11pt, twoside]{article}
-
-\usepackage[T1]{fontenc}
-\usepackage{mathpazo}
-
-%\usepackage{sectsty}
-%\allsectionsfont{\sffamily}
-
 \usepackage[]{geometry}
+\usepackage{math6370}
 
-\usepackage{
-	amsmath,
-  	amssymb,
-  	amsthm,
-  	%bm,              		% boldsymbol
-  	bookmark,        		% replaces (and loads) hyperref
-	%chngcntr,		% for counterwithin
-	enumerate,
-	fancyhdr,			% better headers
-	float,				% forced image placement
-  	mathrsfs,        		% mathscr
-  	mathtools,       		% allows prescript
-  	microtype,       		% improved looks
-	multicol,
-	nicefrac,
-	relsize,
-  	tikz-cd,         		% better commutative diagrams
-  	thmtools,        		% custom end to example environment
-	thm-restate,
-	%totcount,		% define counters
-	%wrapfig,
-	xcolor,
-  	math6370 		% custom style file
-}
-
-
-\definecolor{CornellRed}{RGB}{179,27,27}
-
-\usepackage{pgfplots}
-\usepgfplotslibrary{fillbetween}
-\pgfplotsset{compat=1.10}
-\usetikzlibrary{calc,matrix,arrows,shapes.geometric,positioning,decorations.pathmorphing,patterns}
-\tikzset{snake it/.style={-stealth,
-decoration={snake, 
-    amplitude = .4mm,
-    segment length = 2mm,
-    post length=0.9mm},decorate}}
-\pgfqkeys{/tikz/commutative diagrams}{
-  Maps to/.style={
-    /tikz/commutative diagrams/Rightarrow,
-    /tikz/commutative diagrams/maps to},
-  Maps from/.style={
-    /tikz/commutative diagrams/Leftarrow,
-    /utils/exec=\pgfsetarrowsend{cm |}}
-}   
-
-\usepackage[
-	hyperref = true,      	% links to online documents
-  	backend  = bibtex,    % use bibtex instead of biber
-  	sorting  = nyt,       	% sorts by (name, year, title)
-  	style  = alphabetic 	% citations look like [Har77]
-]{biblatex}
-\addbibresource{bib.bib}
-
-\usepackage[all]{xy}
-\hypersetup{
-	colorlinks = true,
-  	linkcolor  = violet,
-  	urlcolor   = cyan
-}
-\PassOptionsToPackage{hyphens}{url}
-
-
-\pagestyle{fancy}
-\fancyhf{}
-\setlength{\headheight}{14pt}
-\fancyhead[CE]{}
-\fancyhead[CO]{}
-\fancyhead[RE]{\thepage}
-\fancyhead[LO]{\thepage}
-
-
-
-
-
+% -------------------
+% Content
+% -------------------
 \begin{document}
 
 
-
-\pagestyle{empty}
-\begin{flushright}
-\begin{tabular}{ll}
-\raisebox{-.5\height}{\includegraphics[scale=0.075]{cornell_seal.png}} & {\color{CornellRed}\Huge Cornell University } \\
-\end{tabular}
-\end{flushright}
-\vspace{2in}
-
-{\color{CornellRed} \Huge \noindent MATH 6370: \\[0.2cm] Algebraic Number Theory \\[0.2cm] 
-\rule{0.65\textwidth}{0.05cm} \\[0.2cm]}
-
-{\color{CornellRed} \large \noindent Lecturer: Dr. David Zywina \\ Notes By: Caleb McWhorter }
-
-\vfill
-\begin{center} {\huge \color{CornellRed} Spring 2018} \end{center}
-
+\input{sections/title/title}
+\input{sections/introduction/introduction}
+\input{sections/1_ring_of_integers/ringofintegers}
+\input{sections/2_ideals/ideals}
+\input{sections/3_dedekind/dedekind}
+\input{sections/4_geometry/geometry}
+\input{sections/5_units/units}
+\input{sections/6_galois/galois}
+\input{sections/7_analytic/analytic}
+\input{sections/8_local/local}
 
 \newpage
-\vspace*{\fill} 
-\begin{quote} 
-\centering 
-Last Updated: \today 
-\end{quote}
-\vspace*{\fill}
-\newpage
-\thispagestyle{empty}
-\tableofcontents
-\newpage
-\pagestyle{fancy}
-\setcounter{section}{-1}
-\setcounter{page}{1}
-
-
-
-
-\input{sections/introduction/introduction.tex}
-\input{sections/1_ring_of_integers/ringofintegers.tex}
-\input{sections/2_ideals/ideals.tex}
-\input{sections/3_dedekind/dedekind.tex}
-\input{sections/4_geometry/geometry.tex}
-\input{sections/5_units/units.tex}
-\input{sections/6_galois/galois.tex}
-\input{sections/7_analytic/analytic.tex}
-\input{sections/8_local/local.tex}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\nocite{*}
+\addcontentsline{toc}{section}{References}
+\printbibliography
 
 \end{document}

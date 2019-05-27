@@ -1,13 +1,13 @@
 % !TEX root = ../../math6370.tex
-
+\newpage
 \section{The Ring of Integers}
 \subsection{Number Fields}
 
-Algebraic Number Theory studies the arithmetic of number fields --- the ring of integers of number fields and its ideals, units, and factorizations. Number theoretic questions are posed in terms of these algebraic objects and their properties. To begin, we recall the definition of the basic object of study --- number fields. 
+Algebraic Number Theory studies the arithmetic of number fields --- the ring of integers of number fields and their ideals, units, and factorizations. Number theoretic questions are then posed in terms of these algebraic objects and their properties. To begin, we recall the definition of the basic object of study in Algebraic Number Theory --- number fields. 
 
 
 \begin{dfn}[Number Field]
-A number field is a finite extension of $\Q$, i.e.
+A number field $K$ is a finite extension of $\Q$, i.e. a finite dimensional $\Q$-vector space. We can denote this pictorially as in the figure below. 
 	\[
 	\begin{tikzcd}
 	K \arrow[dash]{d}{[K\,:\,\Q]=\,\dim_\Q K} \\
@@ -17,94 +17,134 @@ A number field is a finite extension of $\Q$, i.e.
 \end{dfn}
 
 
-\begin{ex}[Number Fields] \hfill
+\begin{ex}[Number Fields] \label{ex:number_fields} \hfill
 	\begin{enumerate}[(i)]
-	\item $\Q$, $\Q(\sqrt{2})$, $\Q(\sqrt[3]{2})$.
-	\item $\Q(\zeta_n)$, where $\zeta_n$ is a primitive $n$th root of unity.
-	\item $\Q(\alpha)$, where $\alpha$ is a root of $x^3+2x^2+1$.
+	\item The fields $\Q$, $\Q(\sqrt{2})$, $\Q(\sqrt[3]{2})$ are all number fields. These have dimension (as $\Q$-vector spaces) of 1, 2, and 3, respectively. 
+	\item The cyclotomic fields: $\Q(\zeta_n)$, where $\zeta_n$ is a primitive $n$th root of unity.
+	\item The field $\Q(\alpha)$, where $\alpha$ is a root of $x^3+2x^2+1$.
 	\end{enumerate}
 \end{ex}
 
 
-These simple extensions of $\Q$ are not arbitrarily constructed elementary examples of number fields. In fact, every number field arises in this way. Recall given a field extension $E/F$, an element $\alpha \in E$ is called a primitive element for $E/F$ if $E=F(\alpha)$. Every number field possesses a primitive element.  
+Recall that a simple extension of a field $K$, say $L$, is an extension of the form $L= K(\alpha)$, where $\alpha$ is the root of some polynomial $p_\alpha(x) \in K[x]$. The examples of number fields in Example~\ref{ex:number_fields} are all simple extensions of $\Q$. These were not arbitrarily contrived `simple' examples of number fields. In fact, every number field arises in this way. Recall the following terminology: given a field extension $E/F$, an element $\alpha \in E$ is called a primitive element for $E/F$ if $E=F(\alpha)$. Then our preceding claim is that every number field possess a primitive element, which the following theorem justifies. 
 
 
 \begin{thm}[Primitive Element Theorem] \label{thm:primelmthm}
-If $K$ is a number field, then $K=\Q(\alpha)$ for some $\alpha \in \Q$.
+If $K$ is a number field, then $K=\Q(\alpha)$, where $\alpha$ is the root of some polynomial $p_\alpha(x) \in \Q[x]$. 
 \end{thm}
 
-
-Generally, if $E/F$ is a separable extension of finite degree, then $E=F(\alpha)$ for some $\alpha \in E$. Of course, the definition of a number field excludes infinite extensions of $\Q$ such as $\R$, $\C$, and $\Q(\{\sqrt[n]{2} \colon n \in \N\})$. Of course, there are even examples when the extension is simple, e.g. $K=\Q(e)$ or $K=\Q(\pi)$. 
-
-
-The traditional object of interest in number theory is $\Z \subseteq \Q$. What is the analog for a general number field $K$, i.e. what should the object $\O \subseteq K$ be so that factoring is `interesting'. The first goal for this course will be to define such an object and to study its properties. 
+\pf See \cite[Ch. 14.4, Thm 25]{dummit}. Though there are proofs which avoid Galois Theory. For instance, the  proof of van der Waerden avoid Galois Theory and is `constructive.' This is essentially the proof given in \cite{murty}, but can also be found more thoroughly written out in \cite{brown}. \qed \pskip
 
 
-
-\subsection{Ring of Integers}
-
+Generally, if $E/F$ is a separable extension of finite degree, then $E=F(\alpha)$ for some $\alpha \in E$. Of course, the definition of a number field excludes infinite extensions of $\Q$ such as $\R$, $\C$, and $\Q(\{\sqrt[n]{2} \colon n \in \N\})$. Of course, there are even examples of infinite extensions of $\Q$ when the extension is simple, e.g. $K=\Q(e)$ or $K=\Q(\pi)$. But remember, the term `number field' will always refer to finite extensions of $\Q$. 
 
 
-Let $K$ be a number field. Take $\alpha \in K$ and $n=[K:\Q]$. Let $\phi: \Q[\alpha] \to K$ be the homomorphism of $\Q$-algebras given by $x \mapsto \alpha$. This map is not injective (it is a map of an infinite dimensional vector space to a finite dimensional vector space). Then the kernel is nonzero and must be principal since $\Q[x]$ is a PID. This induces an isomorphism $\tilde{\phi}: \Q[x]/(p_\alpha(x)) \to K$, where $p_\alpha(x)$ is the minimal monic irreducible polynomial in $\Q[x]$ with $\alpha$ as a root. Denote by $\Q[\alpha]$ the image of $\tilde{\phi}$ in $K$, i.e. the $\Q$-algebra generated by $\alpha$. Since $p_\alpha(x)$ is irreducible, $(p_\alpha(x))$ is maximal and hence $\Q[x]/(p_\alpha(x))$ is a field. But since $\Q[\alpha] \cong \Q[x]/(p_\alpha(x))$, we must have $\Q[\alpha] \cong \Q(\alpha)$. Note that since $\Q \subseteq K$, certainly $\Z \subsetneq K$. Now recall that $\alpha \in K/\Q$ is an algebraic number if $p_\alpha(x) \in \Q[x]$. [We cannot have $\alpha$ transcendental since we assume that $K$ is a number field.] We are interested in a very special type of algebraic number. 
+The traditional object of interest in number theory is $\Z \subseteq \Q$. What is `interesting' about $\Z$, among other things, is factorization. Of course, there is no factorization in $\Q$ because $\Q$ is a field. Of course, fields are `nicer' to work with. But constructing number fields, what should be the analog for a general number field $K$, i.e. what should the object $\O \subseteq K$ be so that factoring is `interesting'. What are the `integers' for a number field? The first goal for this course will be to define such an object and to study its properties. 
+
+
+	\[
+	\begin{tikzcd}
+	? \arrow[dash]{r} & K \arrow[dash]{d}{[K \colon \Q]} \\
+	\Z \arrow[dash]{r} & \Q
+	\end{tikzcd}
+	\]
+
+
+
+% -------------------
+% Ring of Integers
+% -------------------
+\subsection{The Ring of Integers}
+
+
+Let $K$ be a number field. Choose $\alpha \in K$ and let $n=[K:\Q]$. Let $\phi: \Q[x] \to K$ be the homomorphism of $\Q$-algebras given by $x \mapsto \alpha$. This map is not injective (it is a map of an infinite dimensional vector space to a finite dimensional vector space). Therefore, the kernel is nonzero. The ring $\Q[x]$ is a PID so that the $\ker \phi$ is nonzero and principal. This induces an isomorphism $\widetilde{\phi}: \Q[x]/(p_\alpha(x)) \to K$, where $p_\alpha(x)$ is the minimal monic irreducible polynomial in $\Q[x]$ with $\alpha$ as a root (its so-called minimal polynomial). Denote by $\Q[\alpha]$ the image of $\widetilde{\phi}$ in $K$, i.e. the $\Q$-algebra generated by $\alpha$. Because $p_\alpha(x)$ is irreducible, $(p_\alpha(x))$ is maximal and hence $\Q[x]/(p_\alpha(x))$ is a field. But because $\Q[\alpha] \cong \Q[x]/(p_\alpha(x))$, we must have $\Q[\alpha] \cong \Q(\alpha)$ so that $\Q[\alpha]$ is a field. Note that since $\Q \subseteq K$, certainly $\Z \subsetneq K$. 
+
+
+Now recall that $\alpha \in K/\Q$ is an algebraic number if $p_\alpha(x) \in \Q[x]$. [Such a $p_\alpha(x)$ exists because we cannot have $\alpha$ transcendental since we assume that $K$ is a number field.] So if $\alpha$ is an algebraic number, then the work in the preceding paragraph shows that $\Q[\alpha] \cong \Q(\alpha)$. Using this isomorphism, we shall often, by abuse of notation, treat $\Q[\alpha] = \Q(\alpha)$. We are interested in a very special type of algebraic number. 
 
 
 \begin{dfn}[Algebraic Integer]
-We say $\alpha \in K$ is an algebraic integer if $p_\alpha(x)$ has coefficients in $\Z$, i.e. $p_\alpha(x) \in \Z[x]$. 
+Let $K/\Q$ be a number field. We say $\alpha \in K$ is an algebraic integer if $p_\alpha(x)$ has coefficients in $\Z$, i.e. $p_\alpha(x) \in \Z[x]$. 
 \end{dfn}
+
+
+This definition allows us to define a candidate for a subring of $K$ where factorization will be `interesting.' 
+
 
 \begin{dfn}[Ring of Integers]
-Define $\O_K$ to be the set of $\alpha \in K$ so that $\alpha$ is an algebraic integer.
+Let $K/\Q$ be a number field. Define the ring of integers of  $K$, denoted $\O_K$, to be the set of algebraic integers of $K$. This is also sometimes denoted $\Z_K$. 
 \end{dfn}
 
 
-It is not immediately clear that $\O_K$ is even a ring. We shall prove this later. 
+Despite being part of the definition, it is not immediately clear that $\O_K$ is even a ring. We shall prove this later. We will first look at some examples of rings of integers. The first example will show that this definition of `rings of integers' does reproduce the literal ring of integers $\Z$ in the case where $K= \Q$. [Note that because $p_r(x)= x - r \in \Z[x]$ for all $r \in \Z$, we always have $\Z \subseteq \O_K$.]
 
 
 \begin{ex}\label{ex:zinq}
-Take $A=\Q$. If $\alpha \in \Q$, then $p_\alpha(x)= x - \alpha$. Now $p_\alpha(x) \in \Z[x]$ if and only if $\alpha \in \Z$. One can check that $\O_K=\Z$. Then the ring of integers does indeed reproduce the basic example of $\Z \subseteq \Q$. \xqed
+Take $K= \Q$. If $\alpha \in \Q$, then its minimal polynomial is $p_\alpha(x)= x - \alpha$. Now $p_\alpha(x) \in \Z[x]$ if and only if $\alpha \in \Z$. Therefore, $\O_\Q= \Z$. Then our definition of the ring of integers does indeed reproduce the motivating example of $\Z \subseteq \Q$. \xqed
 \end{ex}
 
 
 \begin{ex}
-Take $K=\Q(\sqrt{-2})=\{a+b \colon a,b \in \Q\} \subseteq \C$ and $\alpha= a + b\sqrt{-2} \in K$. We have two cases: \\ \\
-	\indent $b=0$: If $b=0$, then $a \in \Q$. But then we are in the case from Example~\ref{ex:zinq} so that $\alpha \in \O_K$ if and only if $\alpha \in \Z$. \\ \\
-	\indent $b\neq 0$: If $b \neq 0$,  then $p_\alpha(x)$ factors as $p_\alpha(x)=(x-(a+b\sqrt{-2}))(x-(a-b\sqrt{-2}))=x^2-2ax+(a^2+2b^2)$. Then $\alpha \in \O_K$ if and only if $2a \in \Z$ and $a^2+2b^2 \in \Z$. Let $n=a^2+2b^2$. Since $2a \in \Z$, we have $a=\frac{r}{2}$ for some $r \in \Z$. Then we have $a^2+2b^2= \frac{r^2}{4}+2b^2=n$. But then $r^2+8b^2=4n$ so that $r$ cannot be odd. Therefore, $a \in \Z$. This shows that $2b^2= n - a^2 \in \Z$ which implies $b^2=\frac{s}{2}$ for some $s \in \Z$, where without loss of generality, we assume $(s,2)=1$. Write $b=\frac{u}{v}$, where $u,v \in \Z$ and $(u,v)=1$. Then $\frac{u^2}{v^2}=\frac{s}{2}$ which implies $2u^2=sv^2$. Now $2 \mid (2u^2)$ so that $2 \mid (sv^2)$. As $(s,2)=1$, it must be that $2 \mid v^2$. Therefore, $2 \mid v$ and $v=2q$ for some $q \in \Z$. Therefore, $2u^2= 4sq^2$ which implies $u^2=2sq^2$. As $2 \mid (2sq^2)$, $2 \mid u^2$ which implies $2 \mid u$. But then $(u,v) \geq 2$, a contradiction. Therefore, we must have $b \in \Z$. \\
+Take $K=\Q(\sqrt{-2})= \{ a + b \sqrt{-2} \colon a,b \in \Q \} \subseteq \C$ and $\alpha= a + b\sqrt{-2} \in K$. We have two cases: \pskip
+
+\noindent $b=0$: If $b=0$, then $a \in \Q$. But then by the work in Example~\ref{ex:zinq}, $\alpha \in \O_K$ if and only if $\alpha \in \Z$. \pskip
+
+\noindent $b\neq 0$: If $b \neq 0$,  then $p_\alpha(x)$ factors as 
+	\[
+	p_\alpha(x)=(x-(a+b\sqrt{-2}))(x-(a-b\sqrt{-2}))=x^2-2ax+(a^2+2b^2).
+	\]
+Therefore, $\alpha \in \O_K$ if and only if $2a \in \Z$ and $a^2+2b^2 \in \Z$. Let $N= a^2 + 2b^2$. Because $2a \in \Z$, we have $a= \frac{r}{2}$ for some $r \in \Z$. Then we have $N= a^2 + 2b^2= \frac{r^2}{4} + 2b^2$. But then clearing denominators shows $r^2 + 8b^2= 4N$, which implies that $r$ cannot be odd. Therefore, $r= 2k$ for some $k \in \Z$, which shows that $a= \frac{r}{2}= \frac{2k}{2}= k \in \Z$. 
+
+But then $2b^2= N - a^2 \in \Z$ so that $2b^2= s$ for some $s \in \Z$. Using the fact that $b \in \Q$, write $b= \frac{u}{v}$ and $\gcd(u, v)= 1$. Then we have $2u^2= sv^2$. If $p$ is a prime dividing $v$, then $p^2 \mid (sv^2)= 2u^2$. Because $\gcd(u,v)=1$, we must have $p^2 \mid 2$, which is impossible because $2$ is not a square in $\Z$. Therefore, no prime divides $v$ so that $v= \pm 1$. But then $b^2= \frac{u^2}{v^2}= u^2$, forcing $b= \pm u \in \Z$. Therefore, we must have $a, b \in \Z$. \pskip
 	
-This shows that $\O_K=\Z[\sqrt{-2}]=\{a+b\sqrt{-2} \colon a,b \Z\}$. Furthermore, $\Z[\sqrt{-2}]$ is a UFD, i.e. factorial. \xqed
+This shows that $\O_K= \Z[\sqrt{-2}]= \{ a + b \sqrt{-2} \colon a,b \in \Z \}$. Furthermore, one can show $\Z[\sqrt{-2}]$ is a UFD, i.e. factorial. \xqed
 \end{ex}
 
 
-We question remains why we care about `integers' in number fields rather than just considering the ordinary integers in $\Q$. The answer is simple: factorizations. In these larger rings, we might have `larger' and more `interesting' factorizations that we could use to solve problems that are otherwise more difficult in $\Z$ alone. 
-
+There is one important motivating question we have not yet addressed: why do we care about `integers' in number fields rather than just considering the ordinary integers in $\Q \subseteq K$. The answer is simple: factorizations. In these larger rings, we might have `larger' and more `interesting' factorizations that we could use to solve problems that are otherwise more difficult than over $\Z$. 
 
 
 \begin{ex}\label{ex:z(-sqrt(2))}
-Find all solutions $x,y \in \Z$ for $y^2=x^3-2$. After a bit of experimentation, one can see that $(3,\pm 5)$ is a solution. However, is this the only solution? Are there infinitely many solutions? It is true that there are infinitely many rational solutions to this equation. To solve the stated problem, we choose to work in $\Z[\sqrt{-2}]$ for the `extra factorization'. We shall use the fact that $\Z[\sqrt{-2}]$ is a UFD and $\Z[\sqrt{-2}]^\times=\{\pm 1\}$ without proof. 
+Find all solutions $x,y \in \Z$ for $y^2=x^3-2$. After a bit of experimentation, one can see that $(3,\pm 5)$ is a solution. However, are these the only solutions? Are there infinitely many integer solutions? We choose to work in $\Z[\sqrt{-2}]$ for the `extra factorizations' that it offers. Note that we shall use the fact that $\Z[\sqrt{-2}]$ is a UFD and $\Z[\sqrt{-2}]^\times=\{\pm 1\}$ without proof. [The latter will be easily proven using norms later, while the first fact follows from the fact that $\Z[\sqrt{-2}]$ is a Euclidean domain using the same canonical proof that $\Z[i]$ is Euclidean. All Euclidean domains are PIDs which are in turn UFDs.]
 
-In $\Z[\sqrt{-2}]$, we have $x^3=y^2+2=(y+\sqrt{-2})(y-\sqrt{-2})$. Write $x=u_1 \pi_1^{e_1}\cdots \pi_r^{e_r}$, where $\pi_i$ is irreducible, $e_i \geq 1$, and $\pi_i \neq \pm \pi_j$ for $i \neq j$. Then $u_1^3 \pi_1^{3e_1}\cdots \pi_r^{3e_r}=(y+\sqrt{-2})(y-\sqrt{-2})$. We claim that $y+\sqrt{-2}$ and $y-\sqrt{-2}$ are relatively prime: choose an irreducible dividing both, say $\pi$. Then $\pi \mid \big((y+\sqrt{-2}) - (y-\sqrt{-2})\big)=2\sqrt{-2}=(\sqrt{-2})^3$. By unique factorization, we must have $\pi=\sqrt{-2}$, up to units. Since $\pi \mid (y+\sqrt{-2})$, we have $y+\sqrt{-2}=\sqrt{-2}(a+b\sqrt{-2})= -2b+a\sqrt{-2}$ for some $a,b \in \Z$. Then $y=-2b$ which implies $x^3=2+y^2 \equiv 2 \mod 4$, a contradiction as no cube has residue 2 mod 4. 
-
-For each $1 \leq i \leq r$, $\pi_i^{3e_i}$ divides $y+\sqrt{-2}$ or $y-\sqrt{-2}$. Then $y+\sqrt{-2}=u \prod_{i \in \I} \pi_i^{3e_i}$ for some $\I \subseteq \{1,\ldots,r\}$ and $u \in \Z[\sqrt{-2}]^\times=\{\pm 1\}$. This implies $y+\sqrt{-2}=(a+b\sqrt{-2})^3$ for some $a,b \in \Z$. Expanding yields, $y+\sqrt{-2}=(a^3-6ab^2)+(3a^2b-2b^3)\sqrt{-2}$. This forces $y=a^3-6ab^2$ and $3a^2-2b^3=1-a$.
-
-We now have a restriction on the possibilities for $y$! This is a restriction that would not have been as easily obtained working only in $\Z$. Now as $b(3a^2-2b^2)=1$ with $a,b \in \Z$, it must be that $b \in \{\pm 1\}$. If $b=1$, we have
+In $\Z[\sqrt{-2}]$, we have the factorization 
 	\[
-	y= a^3 - 6ab^2 \Leftrightarrow 3a^2-2 =1 \Leftrightarrow 3a^2= 3 \Leftrightarrow a= \pm 1
+	x^3=y^2+2=(y+\sqrt{-2})(y-\sqrt{-2}). 
 	\]
-Then $y \in \{\mp 5\}$ which yields solutions $(3, \pm 5)$. These are the only solutions for if $b= -1$, then $3a^2(-1)-2(-1)^3=1$, which implies $3a^2=1$, a contradiction. \xqed
+Write $x=u_1 \pi_1^{e_1}\cdots \pi_r^{e_r}$, where each $\pi_i$ is irreducible, $e_i \geq 1$, and $\pi_i \neq \pm \pi_j$ for $i \neq j$. Then we have
+	\[
+	u_1^3 \pi_1^{3e_1}\cdots \pi_r^{3e_r}=(y+\sqrt{-2})(y-\sqrt{-2}). 
+	\]
+We claim that $y+\sqrt{-2}$ and $y-\sqrt{-2}$ are relatively prime: choose an irreducible dividing both, say $\pi$. Then $\pi \mid \big(( y + \sqrt{-2}) - (y - \sqrt{-2}) \big)= 2\sqrt{-2}= (\sqrt{-2})^3$. By unique factorization in $\Z[\sqrt{-2}]$, up to a unit $u$, we must have $\pi= u\sqrt{-2}$. But the only units in $\Z[\sqrt{-2}]$ are $\{\pm 1\}$. Because $\pi^3= (\sqrt{-2})^3$, we must have $\pi= \sqrt{-2}$. Now as $\pi \mid (y + \sqrt{-2})$, we have $y + \sqrt{-2} = \pi (a + b \sqrt{-2})= \sqrt{-2} (a + b\sqrt{-2})= -2b + a\sqrt{-2}$ for some $a, b \in \Z$. But then as $\pi \mid (y + \sqrt{-2})$, we have $y + \sqrt{-2}= \sqrt{-2}(a + b\sqrt{-2})= -2b + a\sqrt{-2}$ for some $a, b \in \Z$. Therefore, $y= -2b$, which implies $x^3= y^2 + 2= 4b^2+2 \equiv 2 \mod 4$, a contradiction as no cube has residue 2 mod 4. This shows that $y + \sqrt{-2}$ and $y - \sqrt{-2}$ are relatively prime.
+
+Then $\pi_i^{3e_i}$ divides $y+\sqrt{-2}$ or $y-\sqrt{-2}$ (but not both) for each $1 \leq i \leq r$. Then $y+\sqrt{-2}= u \prod_{i \in \I} \pi_i^{3e_i}$ for some $\I \subseteq \{ 1, \ldots, r \}$ and $u \in \Z[\sqrt{-2}]^\times= \{ \pm 1 \}$. This implies 
+	\[
+	y + \sqrt{-2}= u \prod_{i \in \I} \pi_i^{3e_i}= \prod_{i \in \I} \pi_i^{3e_i}= \left( \prod_{i \in \I} \pi_i^{e_i} \right)^3= (a + b\sqrt{-2} )^3
+	\]
+ for some $a,b \in \Z$. Expanding yields, $y+\sqrt{-2}=(a^3-6ab^2)+(3a^2b-2b^3)\sqrt{-2}$. This forces $y= a^3 - 6ab^2$ and $1= 3a^2b - 2b^3= b(3a^2 - 2b^2)$.
+
+We now have a restriction on the possibilities for $y$! This restriction that would not have been as easily obtained working only in $\Z$. Now as $b (3a^2 - 2b^2)= 1$ with $a, b \in \Z$, it must be that $b \in \{\pm 1\}$. If $b= 1$, we have $3a^2 - 2= 1$, which gives $a= \pm 1$. Using $a= \pm 1$ and $b=1$, we have solutions $(3, \pm 5)$. If $b= -1$, then $3a^2(-1)-2(-1)^3=1$, which implies $3a^2=1$, a contradiction to the irrationality of $\sqrt{3}$. Therefore, the only integer solutions to $y^2= x^2 + 3$ are $(3, \pm 5)$. This also shows that this equation has only finitely many rational solutions.\footnote{On the other hand, there are infinitely many \emph{rational solutions} to this equation. In fact, this is an elliptic curve defined over $\Q$ with rank 1.} \xqed
 \end{ex}
 
 
-One must take care when using such an approach. Consider the following (non-)example. 
+One must take care when using the factorization approach of Example~\ref{ex:z(-sqrt(2))}. Consider the following (non-)example. 
 
 
 \begin{nex}\label{ex:factornonex}
-Find all $(x,y) \in \Z^2$ satsifying $y^2=x^3-61$. Using the factorization in $\Z[\sqrt{-61}]$, we have $x^3=y^2+61=(y+\sqrt{-61})(y-\sqrt{-61})$. Using the method of Example~\ref{ex:z(-sqrt(2))}, one can show that there are no such solutions. But $(5, \pm 8)$ are clearly solutions! \xqed
+Find all $(x,y) \in \Z^2$ satsifying $y^2=x^3-61$. Using the factorization in $\Z[\sqrt{-61}]$, we have $x^3=y^2+61=(y+\sqrt{-61})(y-\sqrt{-61})$. Using the method of Example~\ref{ex:z(-sqrt(2))}, one can show that there are no such solutions. But $(5, \pm 8)$ are both clearly solutions! \xqed
 \end{nex}
 
 
-The key to Example~\ref{ex:z(-sqrt(2))} was not just factorization but \emph{unique} factorization. The fact that $\Z[\sqrt{-2}]$ was a UFD was essential. The problem in Example~\ref{ex:factornonex} is that $\Z[\sqrt{-61}]$ is not a UFD: $5^3=8^2+61=(8+\sqrt{-61})(8-\sqrt{-61})$, where 5, $(8+\sqrt{-61})$, and $(8-\sqrt{-61})$ all irreducible. How does one cope with loss of unique factorization? Kummer (in approximately 1846) said there should be a further factorization into ``ideal numbers'' in order to recover unique factorization. This lead Dedekind to define the ideal of a ring. He later gave the correct notion of factorization instead using (prime) ideals. We shall see every ideal of $\O_K$ factors uniquely as a product of prime ideals. Generally, we want to study the properties of $\O_K$ further. As a short list of goals, we want to\dots
+The problem in Example~\ref{ex:factornonex} is that $\Z[\sqrt{-61}]$ is not a UFD: $5^3=8^2+61=(8+\sqrt{-61})(8-\sqrt{-61})$, where $5$, $(8+\sqrt{-61})$, and $(8-\sqrt{-61})$ are all irreducible in $\Z[\sqrt{-61}]$. Thus, Example~\ref{ex:z(-sqrt(2))} and Non-Example~\ref{ex:factornonex} show that not just factorization but \emph{unique} factorization is essential.  How does one cope with loss of unique factorization? Kummer (in approximately 1846) said there should be a further factorization into ``ideal numbers'' in order to recover unique factorization. This lead Dedekind to define ideals of a ring. He later gave the correct notion of factorization instead using (prime) ideals rather than factorization with elements. We shall see that while elements may/may not factor uniquely in $\O_K$, every ideal of $\O_K$ factors uniquely as a product of prime ideals. So we shall see that in Non-Example~\ref{ex:factornonex}, while elements $5$, $8 + \sqrt{-61}$, and $8 - \sqrt{-61}$ may not factor uniquely into irreducible, the ideals generated by these elements will factor uniquely into a product of prime ideals $\p, \q$:
+	\[
+	(5)= \p \q, \quad (8 + \sqrt{-61})= \p^3, \quad (8 - \sqrt{-61})= \q^3. 
+	\]
+
+
+To work towards this longterm goal, we want to study the properties of $\O_K$ further. As a short list of intermediate goals, we want to\dots
 	\begin{itemize}
 	\item Show $\O_K$ is a ring.
-	\item Study the structure of abelian group $(\O_K,+)$ and show $\O_K \cong \Z^{[K:\Q]}$.
+	\item Study the structure of abelian group $(\O_K, +)$ and show $\O_K \cong \Z^{[K:\Q]}$.
 	\item Study the structure of units $\O_K^\times$.
 	\item Show $\O_K$ has unique factorization into prime ideals.
 	\item Measure failure of unique factorization, leading to the class group.
@@ -112,45 +152,95 @@ The key to Example~\ref{ex:z(-sqrt(2))} was not just factorization but \emph{uni
 	\end{itemize}
 
 
-We shall begin by showing that $\O_K$ is a ring. The proof, which is rather simple, will make use of some extra facts about algebraic integers.
+We shall begin by showing that $\O_K$ is a ring. The proof, which will be rather simple, will make use of some extra facts about algebraic integers.
+
 
 \begin{prop}\label{prop:algint}
 If $\alpha \in K$ is an algebraic integer, then the following are equivalent:
 	\begin{enumerate}[(i)]
 	\item $p_\alpha(x) \in \Z[x]$
-	\item $f(\alpha)=0$ for some monic polynomial $f(x) \in \Z[x]$
+	\item $f(\alpha)= 0$ for some monic polynomial $f(x) \in \Z[x]$
 	\item $\Z[\alpha]$ is a finitely generated $\Z$-module
 	\item there exists a nonzero finitely generated subgroup $M \subseteq K$ such that $\alpha M  \subseteq M$
 	\end{enumerate}
 \end{prop}
 
-\pf \hfill
+\pf We prove (i)$\iff$(ii) $\Rightarrow$ (iii) $\Rightarrow$ (iv) $\Rightarrow$ (i). 
 \begin{enumerate}
-\item[(i)$\to$(ii)] This is immediate.
-\item[(ii)$\to$(iii)] If $f(x)=x^n+a_1x^{n-1}+\cdots+a_n$ has $\alpha$ as a root, then we can express the numbers $\{\alpha^i\}_{i \geq n}$ in terms of lower powers of $\alpha$. For example, since $f(\alpha)=0$, we have $\alpha^n= -(a_1\alpha^{n-1}+\cdots+a_n)$ and $\alpha^{n+1}= -\alpha(a_1\alpha^{n-1}+\cdots+a_n)= -a_1\alpha^n-\cdots- a_n\alpha= -a_1(a_1\alpha^{n-1}+\cdots+a_n) - \cdots - a_n \alpha$. More concretely, there is a surjection $\Z[x] \to \Z[\alpha]$ given by $x \mapsto \alpha$. This gives a surjection $\Z[x]/(f) \to \Z[\alpha]$. But $\Z[x]/(f)$ is generated by $1,x,\ldots,x^{d-1}$, where $d=\deg(f)$. Then it must be that $\Z[\alpha]$ is finitely generated. 
-\item[(iii)$\to$(iv)] Take $M=\Z[\alpha]$. 
-\item[(iv)$\to$(ii)] We have $M=\oplus_{i=1}^r \Z \beta_i$ for some collection $\{\beta_i\}_{i=1}^r$. But then for each $i$, we can write $\alpha \beta_i= \sum_{j=1}^r C_{ij} \beta_j$ for some matrix $C=(C_{ij})$. By the Cayley-Hamilton Theorem, $C$ is a root of its characteristic polynomial; that is, $C$ is a root of $f(x)=\deg(xI-C) \in \Z[x]$. But then $C \in M_r(\Z)$ so that $f(\alpha)=0$. 
-\item[(ii)$\to$(i)] Suppose that $f(\alpha)=0$. We need only show that $f(x)$ is irreducible. Suppose to the contrary that $f(x)=p_\alpha(x)g(x)$ for some $g(x) \in \Q[x]$. [Note, we have used the fact that the minimal polynomial must divide any polynomial having $\alpha$ as a root.] It must be that $g(x)$ is monic since $f(x)=p_\alpha(x)g(x)$ is monic. We claim that $p_\alpha(x),g(x) \in \Z[x]$. [This is really just Gau\ss' lemma but we shall show it directly here.] If not, then fix a $p$ dividing the denominator of a coefficient of $p_\alpha(x)$ or $g(x)$. Take $e,f \geq 0$ such that $p^ep_\alpha(x)$ and $p^fg(x)$ have coefficients with no $p$'s in the denominator. We have
+\item[(i)$\to$(ii):] This is immediate.
+
+\item[(ii)$\to$(iii):] If $f(x)=x^n + a_1x^{n-1} + \cdots + a_n$ has $\alpha$ as a root, then we can express the numbers $\{\alpha^i\}_{i \geq n}$ in terms of lower powers of $\alpha$. For example because $f(\alpha)= 0$, we have $\alpha^n= -(a_1\alpha^{n-1} + \cdots + a_n)$ and $\alpha^{n+1}= -\alpha (a_1\alpha^{n-1} + \cdots + a_n)= -a_1\alpha^n - \cdots - a_n\alpha= -a_1 (a_1\alpha^{n-1} + \cdots + a_n) - \cdots - a_n \alpha$. More concretely, there is a surjection $\Z[x] \to \Z[\alpha]$ given by $x \mapsto \alpha$. This gives a surjection $\Z[x]/(f) \to \Z[\alpha]$. But $\Z[x]/(f)$ is generated by $1,x,\ldots,x^{d-1}$, where $d=\deg(f)$. Therefore, $\Z[\alpha]$ is finitely generated. 
+
+\item[(iii)$\to$(iv):] Take $M= \Z[\alpha]$. Then $\alpha M \subseteq M$. 
+
+\item[(iv)$\to$(ii):] We have $M= \oplus_{i=1}^r \Z \beta_i$ for some collection $\{ \beta_i \}_{i=1}^r$. But then for each $i$, we can write $\alpha \beta_i= \sum_{j=1}^r c_{ij} \beta_j$ for some integer valued matrix $C= (c_{ij})$, i.e.
 	\[
-	p^{e+f} f(x) = p^e p_\alpha(x) \cdot p^f g(x) \not\equiv \mod p
+	C \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_r \end{pmatrix}= \alpha \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_r \end{pmatrix}.
 	\]
-But then $e+f=0$ as $f(x)$ is monic. Since $e,f \geq 0$, we must have $e=f=0$, a contradiction. \qed 
+But then $(C - \alpha I)(\beta_1,\ldots, \beta_r)^T= 0$. By the Cayley-Hamilton Theorem, $C$ is a root of its characteristic polynomial; that is, $C$ is a root of $\widetilde{f}(x)= \det(C - xI) \in \Z[x]$,
+	\[
+	\begin{vmatrix}
+	c_{11} - x & c_{12} & \cdots & c_{1n} \\
+	c_{21} & c_{22} - x & \cdots & c_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	c_{n1} & c_{n2} & \cdots & c_{nn} - x 
+	\end{vmatrix}= 0
+	\]
+ But then $\widetilde{f}(\alpha)= 0$. Defining $f(x)= (-1)^r \widetilde{f}(x)$, we have $f(x)$ is a monic polynomial with $f(\alpha)= 0$. 
+
+\item[(ii)$\to$(i):] Suppose that $f(\alpha)=0$. Because $f(\alpha)= 0$, we know that $p_\alpha(x)$ divides $f(x)$. Suppose that $f(x)= p_\alpha(x)g(x)$ for some $g(x) \in \Q[x]$. It must be that both $p_\alpha(x)$ and $g(x)$ are monic because $f(x)= p_\alpha(x) g(x)$ is monic. It only remains to show that $p_\alpha(x) \in \Z[x]$. We claim that $p_\alpha(x),g(x) \in \Z[x]$. [This is really just Gau\ss' Lemma but we shall show it directly here.] If not, then fix a prime $p$ dividing the denominator of a coefficient of $p_\alpha(x)$ or $g(x)$. Take $e,f \geq 0$ such that $p^ep_\alpha(x)$ and $p^fg(x)$ have integer coefficients with no $p$'s in the denominator and $e,f$ are minimal (in the sense that choosing a smaller $e,f$ will not result in an integer valued polynomial). We have
+	\[
+	p^{e+f} f(x) = (p^e p^f) [p_\alpha(x) g(x) ]= p^e p_\alpha(x) \cdot p^f g(x).
+	\]
+Now take the equality $p^{e+f} f(x)= p^e p_\alpha(x) \cdot p^f g(x)$ modulo $p$. The right side must be nonzero for otherwise every coefficient is divisible by $p$ and hence have a $p$ in common. But then $e'= e-1, f'= f-1$ would have sufficed to clear denominators, contradicting the minimality of $e, f$. Therefore, the right side is nonzero modulo $p$. But then $p^{e+f} f(x) \not\equiv 0 \mod p$. Because $f(x)$ is monic, the leading coefficient of $p^{e+f} f(x)$ is $p^{e+f}$. But as $p^{e+f} f(x) \not\equiv 0 \mod p$, it must be that $e+f= 0$, i.e. $e= -f$. Because $e,f \geq 0$, we must have $e= f= 0$. Therefore, there is no prime dividing the denominator of any coefficient of $p_\alpha(x)$ or $g(x)$. Therefore, $p_\alpha(x),g(x) \in \Z[x]$, as desired. \qed 
 \end{enumerate}
 
-We are now in a position to easily prove that $\O_K$ is a subring of $K$. 
+
+Note then we could have taken any of the (equivalent) properties of Proposition~\ref{prop:algint} as our definition of an algebraic integer. From now on, we shall take any of the equivalent conditions above as our definition of an algebraic integer, using whichever is most convenient in the moment. We are now in a position to easily prove that $\O_K$ is a subring of $K$. 
+
 
 \begin{prop}\label{prop:subring}
 $\O$ is a subring of $K$.
 \end{prop}
 
-\pf Observe that $0,1 \in \O_K$ so that $\O_K$ is nonempty. In particular, $\Z \subseteq \O_K$. Let $\alpha, \beta \in \O_K$. Take $\alpha, \beta \in \O_K$. The $\Z$-modules $\Z[\alpha]$ and $\Z[\beta]$ are finitely generated, say by $1\alpha,\alpha^2,\ldots,\alpha^{d-1}$ and $1,\beta,\beta^2,\ldots,\beta^{e-1}$, respectively. Then $\Z[\alpha,\beta]$ is finitely generated by $\{\alpha^i \beta^j\}_{\substack{0 \leq i < d \\ 0 \leq j < e}}$. But $\alpha \pm \beta,\alpha\beta \in \Z[\alpha,\beta]$ so that $(\alpha \pm \beta) \Z[\alpha,\beta]$ and $(\alpha\beta)\Z[\alpha,\beta]$ are contained in $\Z[\alpha,\beta]$. By Proposition~\ref{prop:algint}, $\alpha\pm \beta, \alpha\beta$ are algebraic integers and hence $\alpha\pm\beta,\alpha\beta \in \O_K$. \qed \\
+\pf Observe that $0,1 \in \O_K$ so that $\O_K$ is nonempty. In particular, $\Z \subseteq \O_K$. Let $\alpha, \beta \in \O_K$. By Proposition~\ref{prop:algint}, the $\Z$-modules $\Z[\alpha]$ and $\Z[\beta]$ are finitely generated, say by $1, \alpha, \alpha^2, \ldots, \alpha^{d-1}$ and $1, \beta, \beta^2, \ldots, \beta^{e-1}$, respectively. Then $\Z[\alpha, \beta]$ is finitely generated by $\{\alpha^i \beta^j\}_{\substack{0 \leq i < d \\ 0 \leq j < e}}$. But $\alpha \pm \beta, \alpha\beta \in \Z[\alpha, \beta]$ so that $(\alpha \pm \beta) \Z[\alpha, \beta]$ and $(\alpha \beta) \Z[\alpha, \beta]$ are contained in $\Z[\alpha, \beta]$. By Proposition~\ref{prop:algint}, $\alpha \pm \beta, \alpha \beta$ are algebraic integers and hence $\alpha \pm \beta, \alpha \beta \in \O_K$. \qed \pskip
 
 
-\noindent \textbf{Exercise: } Prove Proposition~\ref{prop:subring} using (i) and (ii) of Proposition~\ref{prop:algint}. \\
-
-If $\Q \subseteq K \subseteq L$ are number fields, it is immediate that $\O_L \cap K = \O_K$. In particular, $\O_L \cap \Q= \Z$. It is clear that $\O$ is an integral domain since $\O \subseteq K$. Now for any $\alpha \in K$, there is an integer $m \geq 1$ such that $m\alpha \in \O_K$. Take any $\alpha \in K$ and $f(x)=x^d+c_1x^{d-1}+\cdots+c_d \in \Q[x]$ with $f(\alpha)=0$. For $m \geq 1$, $m\alpha$ is a root of $x^d+mc_1x^{d-1}+\cdots+m^dc_d$. Choosing $m$ sufficiently large, we can also assure that the coefficients are in $\Z$. That is, $\alpha$ is `not far' from being an algebraic integer. 
+\noindent \textbf{Challenge Exercise:} Prove Proposition~\ref{prop:subring} using only (i) and (ii) of Proposition~\ref{prop:algint}. \pskip
 
 
+The following proposition is also easily proven. 
+
+
+\begin{prop} \label{prop:power_push} 
+Let $\Q \subseteq K \subseteq L$ be number fields. Then
+\begin{enumerate}[(i)]
+\item $\O_K$ is an integral domain.
+\item $\O_L \cap K= \O_K$. In particular, $\O_L \cap \Q= \Z$.
+\item For any $\alpha \in K$, there is an integer $d \in \Z_{\geq 1}$ such that $d \alpha \in \O_K$.
+\item $\Frac \O_K= K$.
+\end{enumerate}
+\end{prop}
+
+\pf \hfill
+\begin{enumerate}[(i)]
+\item This is immediate because $\O_K \subseteq K$.
+
+\item $\alpha \in \O_L \cap K$ if and only if $p_\alpha(x) \in \Z[x]$ and $\alpha \in K$ if and only if $\alpha \in \O_K$. In particular, $\O_L \cap \Q= \O_\Q= \Z$.
+
+\item Take any $\alpha \in K$ and $f(x)= x^n + c_1 x^{n-1} + \cdots + c_n \in \Q[x]$ with $f(\alpha)= 0$. For $d \geq 1$, $d \alpha$ is a root of $x^n + d c_1 x^{n-1} + \cdots + d^n c_n$. Choosing $d$ sufficiently large, we can also assure that the coefficients are in $\Z$. 
+
+\item Let $F$ denote the field of fractions of $\O_K$, i.e. $F= \Frac \O_K$. Because $F$ is the smallest field containing $\O_K$, we must have $F \subseteq K$. Now let $\alpha \in K$. Because $K$ is a number field, $\alpha$ is algebraic. But then by (iii), there exists $d \in \Z$ such that $d \alpha \in \O_K \subseteq F$. As $d \in \Z \subseteq F$, we must have $\alpha= d^{-1}(d\alpha) \in F$ so that $K \subseteq F$. Therefore, $K= \Frac \O_K$, as desired. \qed 
+\end{enumerate}
+
+
+Proposition~\ref{prop:power_push}~(iii) is particularly useful and is often not stated explicitly in the literature. In particular, this part shows that any element of a number field is `not far' from being an algebraic integer --- in addition to giving a short proof of Proposition~\ref{prop:power_push}~(iv)
+
+
+
+% -------------------
+% Trace and Norm
+% -------------------
 \subsection{Trace and Norm}
 
 Suppose that $K/\Q$ has degree $n$. For $\alpha \in K$, define $\mu_\alpha: K \to K$ via $x \mapsto \alpha x$. This is a $\Q$-linear map so, fixing a basis, we can represent $\mu_\alpha$ by a $n \times n$ matrix. 

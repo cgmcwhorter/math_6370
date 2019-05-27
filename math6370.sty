@@ -1,8 +1,126 @@
 % !TEX root = math6370.tex
 
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,			% General Math 'stuff'
+  	amssymb,			% Math symbols
+  	amsthm,			% Theorem environments
+  	bookmark,        		% replaces (and loads) hyperref
+	enumerate,		% Special enumerates
+	fancyhdr,			% Better headers
+	float,				% Forced image placement
+  	mathrsfs,        		% Mathscr symbols
+  	mathtools,       		% Allows prescript
+  	microtype,       		% Improved looks
+	multirow,			% Use multirow/col
+	nicefrac,			% For 'special' fractions
+	relsize,			% For size scaling
+  	tikz-cd,         		% Commutative diagrams
+  	thmtools,        		% Custom end to example environment
+	thm-restate,		% For restateable theorems.
+	xcolor,			% To define colors
+  	math6370 		% Custom style file
+}
 
-% Special Characters
 
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+
+%\usepackage{sectsty}
+%\allsectionsfont{\sffamily}
+
+
+% -------------------
+% Colors
+% -------------------
+\definecolor{CornellRed}{RGB}{179,27,27}
+
+
+% -------------------
+% Hyperref & Bibliography
+% -------------------
+\usepackage[
+	hyperref 	= true,      		% links to online documents
+  	backend  	= bibtex,    	% use bibtex instead of biber
+  	sorting  	= nyt,       		% sorts by (name, year, title)
+  	style  	= alphabetic 	% citations look like [Har77]
+]{biblatex}
+\addbibresource{sections/references/references.bib}
+
+\usepackage[all]{xy}
+\hypersetup{
+	colorlinks 	= true,
+	citecolor	= CornellRed,
+  	linkcolor  	= CornellRed,
+  	urlcolor   	= CornellRed
+}
+\PassOptionsToPackage{hyphens}{url}
+
+
+% -------------------
+% Tikz
+% -------------------
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.10}
+\usetikzlibrary{calc,matrix,arrows,shapes.geometric,positioning,decorations.pathmorphing,patterns}
+\tikzset{snake it/.style={-stealth,
+decoration={snake, 
+    amplitude = .4mm,
+    segment length = 2mm,
+    post length=0.9mm},decorate}}
+\pgfqkeys{/tikz/commutative diagrams}{
+  Maps to/.style={
+    /tikz/commutative diagrams/Rightarrow,
+    /tikz/commutative diagrams/maps to},
+  Maps from/.style={
+    /tikz/commutative diagrams/Leftarrow,
+    /utils/exec=\pgfsetarrowsend{cm |}}
+}   
+
+
+% -------------------
+% Header/Footers
+% -------------------
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{14pt}
+\fancyhead[CE]{}
+\fancyhead[CO]{}
+\fancyhead[RE]{\thepage}
+\fancyhead[LO]{\thepage}
+
+
+% -------------------
+% Theorems, Def., etc.
+% -------------------
+\numberwithin{equation}{section}
+
+\theoremstyle{theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+
+\theoremstyle{definition}
+\newtheorem{ex}{Example}[section]
+\newtheorem{nex}{Non-Example}[section]
+\newtheorem*{dfn}{Definition}
+
+%\theoemstyle{remark}
+\newtheorem*{rem}{Remark} 
+
+
+% -------------------
+% Symbols
+% -------------------
+
+% Letter Characters
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -25,6 +143,7 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\cB}{\mathcal{B}}
 
+% Special Characters
 \newcommand{\Cl}{\text{C}\ell}
 \newcommand{\ep}{\epsilon}
 \newcommand{\xqed}{\hfill \lower-0.3ex\hbox{$\triangleleft$}}
@@ -35,9 +154,7 @@
 \renewcommand{\char}{\text{char }}
 
 
-
 % Math Operators
-
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\trace}{trace}
 \DeclareMathOperator{\ream}{Re}
@@ -59,8 +176,9 @@
 \DeclareMathOperator{\erfc}{erfc}
 
 
-% Special Commands
-
+% -------------------
+% Commands
+% -------------------
 \newcommand{\ma}[1]{\stackrel{#1}{\longrightarrow}}
 \newcommand{\hra}{\hookrightarrow}
 \newcommand{\sra}{\twoheadrightarrow}
@@ -102,35 +220,7 @@
 \newcommand{\bint}{\mathlarger{\int}}
 \newcommand{\bsum}{\mathlarger{\sum}}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\pskip}{\par\medskip\medskip}
 
 
-% Theorems, Definitions, etc.
-\numberwithin{equation}{section}
 
-\theoremstyle{theorem}
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{prop}{Proposition}[section]
-\newtheorem{lem}{Lemma}[section]
-\newtheorem{cor}{Corollary}[section]
-
-\theoremstyle{definition}
-\newtheorem{ex}{Example}[section]
-\newtheorem{nex}{Non-Example}[section]
-\newtheorem*{dfn}{Definition}
-
-%\theoemstyle{remark}
-\newtheorem*{rem}{Remark} 
-
-
-%\numberwithin{equation}{section}
-%\newtheorem{conj}[subsection]{Conjecture}
-%\newtheorem{cor}[subsection]{Corollary}
-%\newtheorem{lem}[subsection]{Lemma}
-%\newtheorem{prop}[subsection]{Proposition}
-%\newtheorem{thm}[subsection]{Theorem}
-%\newtheorem{dfn}[subsection]{Definition}
-%\newtheorem{conject}[subsection]{Conjecture}
-%\theoremstyle{definition} % contents are not italic
-%\newtheorem{rem}[subsection]{Remark}
-%\newtheorem{ex}[subsection]{Example}
-%\declaretheorem[sibling=subsubsection, qed={\lower-0.3ex\hbox{$\triangleright$}}]{example}
