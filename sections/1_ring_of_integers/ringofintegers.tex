@@ -243,26 +243,40 @@ Proposition~\ref{prop:power_push}~(iii) is particularly useful and is often not 
 % -------------------
 \subsection{Trace and Norm}
 
-Suppose that $K/\Q$ has degree $n$. For $\alpha \in K$, define $\mu_\alpha: K \to K$ via $x \mapsto \alpha x$. This is a $\Q$-linear map so, fixing a basis, we can represent $\mu_\alpha$ by a $n \times n$ matrix. 
+
+Suppose that $K/\Q$ has degree $n$. For $\alpha \in K$, define the multiplication by $\alpha$ map $\mu_\alpha: K \to K$ via $x \mapsto \alpha x$. This is a $\Q$-linear map:
+	\[
+	\begin{split}
+	\mu_\alpha(x+y)&= \alpha(x+y)= \alpha x + \alpha y= \mu_\alpha(x) + \mu_\alpha(y) \\
+	\mu_\alpha(qx)&= \alpha(qx)= (\alpha q)x= (q\alpha)x= q(\alpha x)= q \mu_\alpha(x)
+	\end{split}
+	\]
+for all $x,y \in K$ and $q \in \Q$.
+In fact, it is a $K$-linear map, though we do not make use of this. So fixing a $\Q$-basis, we can represent $\mu_\alpha$ by a $n \times n$ matrix. There are two important quantities attached to this map: the norm and the trace. 
+
 
 \begin{dfn}[Norm]
-Define $\Nm{K/\Q}: K \to \Q$ via $\alpha \mapsto \det(\mu_\alpha)$. 
+If $K/\Q$ is a number field and $\alpha \in K$, then we define the norm of $\alpha$ by $\Nm{K/\Q}(\alpha)$, where $\Nm{K/\Q}: K \to \Q$ is defined via $\alpha \mapsto \det(\mu_\alpha)$. 
 \end{dfn}
 
+
 \begin{dfn}[Trace]
-Define $\Tr{K/\Q}: K \to \Q$ via $\alpha \mapsto \trace(\mu_\alpha)$. 
+If $K/\Q$ is a number field and $\alpha \in K$, then we define the trace of $\alpha$ by $\Tr{K/\Q}(\alpha)$, where $\Tr{K/\Q}: K \to \Q$ is defined via $\alpha \mapsto \trace(\mu_\alpha)$. 
 \end{dfn}
+
 
 \begin{rem}
 The definitions of norm and trace do not depend on the fact that $K$ is a number field, only that the field extension is finite. So given any fields $K,F$ with $K/F$ finite, we may define $\Nm{K/F}$ and $\Tr{K/F}$. 
 \end{rem}
 
+
 \begin{rem}
-While choosing different a different basis for $K/\Q$ will change the matrix $\mu_\alpha$, the trace and determinant of resulting matrix are invariant. This is because the new basis is conjugate to the old one and trace/determinant are invariant under conjugation.
+While choosing different a different basis for $K/\Q$ will change the matrix $\mu_\alpha$, the trace and determinant of resulting matrix are invariant. This is because the new basis is conjugate to the old one and from elementary Linear Algebra the trace/determinant are invariant under conjugation. However while the value may be invariant, the formula will not be invariant. So in Example~\ref{ex:norm_trace_ex}, telling someone that if $\alpha \in K= \Q(\sqrt{d})$, that $\Nm{K/\Q}(\alpha)= a^2 - db^2$ and $\Tr{K/\Q}(\alpha)= 2a$ is useless unless you also tell them you are representing elements as $a + b\sqrt{d}$ with basis $\{ 1, \sqrt{d} \}$. 
 \end{rem}
 
-\begin{ex}
-Let $K=\Q(\sqrt{d})$ with $d \neq 1$ a squarefree integer. This is a degree 2 extension and $K$ has basis $\{1,\sqrt{d}\}$. Take $\alpha= a+b\sqrt{d} \in K$, where $a,b \in \Q$. We have
+
+\begin{ex} \label{ex:norm_trace_ex}
+Let $K= \Q(\sqrt{d})$ with $d \neq 1$ a squarefree integer. This is a degree 2 extension, and $K$ has basis $\{ 1, \sqrt{d}\}$. Take $\alpha= a + b\sqrt{d} \in K$, where $a, b \in \Q$. We have
 	\[
 	\begin{split}
 	\alpha \cdot 1&= a+b\sqrt{d} \\
@@ -271,51 +285,96 @@ Let $K=\Q(\sqrt{d})$ with $d \neq 1$ a squarefree integer. This is a degree 2 ex
 	\]
 Then relative to this basis, we have
 	\[
-	\mu_\alpha= \begin{pmatrix} a & bd \\ b & a \end{pmatrix}
+	[\mu_\alpha]_{\{1,\sqrt{d}\}}= \begin{pmatrix} a & bd \\ b & a \end{pmatrix}
 	\]
-We then have $\Nm{K/\Q}=a^2-db^2$ and $\Tr{K/\Q}=2a$. \xqed
+We then have $\Nm{K/\Q}= a^2 - db^2$ and $\Tr{K/\Q}=2a$. \xqed
 \end{ex}
 
-\begin{ex}
-Let $K=\Q(\omega)$, where $\omega=\sqrt[3]{2}$. The minimal polynomial of $\omega$ over $\Q$ is $p_\omega(x)=x^3-2$. Therefore, $K$ is a degree 3 extension of $\Q$ with possible $\Q$-basis being $\{1,\omega,\omega^2\}$. Then for $\alpha \in K$, we may write $a+b\omega+c\omega^2$ for $a,b,c \in \Q$. With respect to the chosen basis, we have
-	\[
-	[\mu_\alpha]= \begin{pmatrix} a & 2c & 2b \\ b & a & 2c \\ c & b & a \end{pmatrix}
-	\]
+
+\begin{ex} \label{ex:norm_trace_powerex}
+Let $K= \Q(\omega)$, where $\omega= \sqrt[3]{2}$. The minimal polynomial of $\omega$ over $\Q$ is $p_\omega(x)= x^3 - 2$. Therefore, $K$ is a degree 3 extension of $\Q$ with possible $\Q$-basis being $\{ 1, \omega, \omega^2 \}$. Then for $\alpha \in K$, we may write $a + b\omega + c\omega^2$ for $a, b, c \in \Q$. With respect to the chosen basis, we have
 	\[
 	\begin{split}
-	\Tr{K/\Q}(\alpha)&=\trace[\mu_\alpha]=3a \\
-	\Nm{K/\Q}(\alpha)&=\det[\mu_\alpha]=a^3+2b^3-4c^3-6abc
+	[\mu_\alpha]_{\{1,\omega, \omega^2\}}&= \begin{pmatrix} a & 2c & 2b \\ b & a & 2c \\ c & b & a \end{pmatrix} \\ \\
+	\Tr{K/\Q}(\alpha)&= \trace[\mu_\alpha]= 3a \\
+	\Nm{K/\Q}(\alpha)&= \det[\mu_\alpha]= a^3 + 2b^3 - 4c^3 - 6abc.
 	\end{split}
 	\]
-Now when does $\Nm{K/\Q}(\alpha)=\pm1$? Certainly when $\alpha=\pm 1$, $\Nm{K/\Q}(\alpha)=\pm 1$. But this is also true for $\alpha=\ep$, where $\ep=1+\omega+\omega^2$. Since the norm is multiplicative, every power of $\ep$ has norm 1. It turns out, $\O_K=\Z[\omega]$ and $\O_K^\times=\{\pm \ep^n \colon n \in \Z\}$. \xqed
+Now when does $\Nm{K/\Q}(\alpha) =\pm 1$? Certainly when $\alpha= \pm 1$, $\Nm{K/\Q}(\alpha)= \pm 1$. But this is also true for $\alpha= \ep$, where $\ep= 1 + \omega + \omega^2$. Because the norm is multiplicative, every power of $\ep$ has norm 1. It turns out, $\O_K= \Z[\omega]$ and $\O_K^\times= \{ \pm \ep^n \colon n \in \Z \}$ so that every element of $\Q(\omega)$ with norm $\pm 1$ is, up to sign, a power of $\epsilon$. \xqed
 \end{ex}
 
-From the properties of determinants and traces, it is routine to verify
 
-\begin{prop} \hfill
+From the properties of determinants and traces, it is routine to verify the following
+
+
+\begin{prop} 
+Let $K/\Q$ be a number field and $\alpha, \beta \in K$. Then 
 	\begin{itemize}
 	\item $\Nm{K/\Q}(\alpha\beta)=\Nm{K/\Q}(\alpha) \Nm{K/\Q}(\beta)$
 	\item $\Nm{K/\Q}(c)=c^n$ for $c \in \Q$
 	\end{itemize}
-In particular, $\Nm{K/\Q}: K^\times \to \Q^\times$ is a homomorphism of groups.
+In particular, $\Nm{K/\Q}: K^\times \to \Q^\times$ is a homomorphism of multiplicative groups.
 	\begin{itemize}
 	\item $\Tr{K/\Q}: K \to \Q$ is $\Q$-linear
 	\end{itemize}
 \end{prop}
 
-\begin{ex}[Pell's Equation, $n=2$] \label{ex:pell2}
-Using the norm, we shall show that $x^2-2y^2=1$ has infinitely many solutions. We know $\Z[\sqrt{2}] \subseteq K:=\Q(\sqrt{2})$. Observe $\Nm{K/\Q}=x^2-2y^2$. There is a correspondence
+\pf Fix a basis $\{1, \gamma, \ldots, \gamma^{n-1} \}$ for $K/\Q$ and choose $\alpha, \beta, x \in K$. Then with respect to this basis, we have
 	\[
-	\{(a,b) \in \Z^2 \colon a^2-2b^2=1\} \iff \{\alpha=a+b\sqrt{d} \in \Z[\sqrt{2}] \colon \Nm{K/\Q}(\alpha)=1\}
+	[\mu_{\alpha\beta}](x)= (\alpha\beta) x= \alpha (\beta x)= [\mu_\alpha](\beta x)= \big( [\mu_\alpha] \circ [\mu_\beta] \big)(x).
 	\] 
-Let $G=\{\alpha \in \Z[\sqrt{2}] \colon \Nm{K/\Q}(\alpha)=1\}$. We claim that $G$ is a subgroup of $\Z[\sqrt{2}]^\times$.
+Taking determinants and using the fact that the determinant is multiplicative shows that $\Nm{K/\Q}(\alpha\beta)=\Nm{K/\Q}(\alpha) \Nm{K/\Q}(\beta)$. For the second bullet, note that if $\{1, \gamma, \ldots, \gamma^{n-1} \}$ is a $\Q$-basis for $K/\Q$, then using this basis $[\mu_c]$ can be represented as 
+	\[
+	[\mu_c]_{\{1, \gamma, \ldots, \gamma^{n-1} \}}=
+	\begin{pmatrix}
+	c & 0 & \cdots & 0 \\
+	0 & c & \cdots & 0 \\
+	\vdots & 0 & \ddots & 0 \\
+	0 & 0 & \cdots & c \\
+	\end{pmatrix},
+	\]
+which has determinant $\det \mu_c= c^n$. Therefore, $\Nm{K/\Q}(c)=c^n$ for $c \in \Q$. Because $\Nm{K/\Q}(1)= 1$, $\Nm{K/\Q}: K^\times \to \Q^\times$ is a multiplicative group homomorphism. 
+
+Lastly, suppose that $\alpha, \beta \in K$ and $c \in \Q$. Fix a basis $\{1, \gamma, \ldots, \gamma^{n-1} \}$ for $K/\Q$. Then
+	\[
+	\begin{split}
+	\mu_{c\alpha + \beta}\left(\sum_{i=0}^{n-1} a_i \gamma^i \right)&= (c\alpha + \beta) \left(\sum_{i=0}^{n-1} a_i \gamma^i \right) \\
+	&= \sum_{i=0}^{n-1} (c\alpha + \beta)(a_i \gamma^i) \\
+	&= \sum_{i=0}^{n-1} \left[ c\alpha (a_i \gamma^i) + \beta (a_i \gamma^i) \right] \\
+	&=  \sum_{i=0}^{n-1} c\alpha (a_i \gamma^i) + \sum_{i=0}^{n-1} \beta (a_i \gamma^i) \\
+	&= c \left(\alpha \sum_{i=0}^{n-1} a_i \gamma^i \right) + \beta \sum_{i=0}^{n-1} a_i \gamma^i \\
+	&= c\mu_{\alpha} \left( \sum_{i=0}^{n-1} a_i \gamma^i \right) + \mu_\beta \left( \sum_{i=0}^{n-1} a_i \gamma^i \right).
+	\end{split}
+	\]
+where the $a_i \in \Q$. So representing $[\mu_{c\alpha+\beta}]$, $[\mu_{c\alpha}]$, and $[\mu_\beta]$ using the same chosen basis $\{1, \gamma, \ldots, \gamma^{n-1} \}$, the work above along with the fact that the trace of a matrix is $\Q$-linear shows that $\Tr{K/\Q}(c\alpha+ \beta)= c\Tr{K/\Q}(\alpha) + \Tr{K/\Q}(\beta)$, i.e. $\Tr{K/\Q}$ is $\Q$-linear. \qed \pskip
+
+
+\begin{rem}
+More generally, if $L/K$ is a finite extension of fields and $\alpha \in L$, choosing a $K$-basis for $\mu_\alpha$, $\Nm{L/K}: L^\times \to K^\times$ is a multiplicative group homomorphism and $\Tr{L/K}: L \to K$ is an additive group homomorphism. 
+\end{rem}
+
+
+But again, why do we care about these maps? Among many other things, these maps will allow us to find integer solutions to polynomial equations. [Are we sensing a theme yet?] 
+
+
+\begin{ex}(Pell's Equation\footnote{Generally, a Pell equation (or Pell-Fermat equation) is an equation of the form $x^2 - ny^2 = 1$ for some squarefree $n \in \Z_+$.} when $n=2$) \label{ex:pell2}
+Using the norm, we shall show that $x^2-2y^2=1$ has infinitely many solutions. We know $\Z[\sqrt{2}] \subseteq K:=\Q(\sqrt{2})$. Observe with respect to basis $\{1, \sqrt{2} \}$ and representing elements in $K$ as $a + b \sqrt{d}$, we have $\Nm{K/\Q}= a^2 - 2b^2$. There is a correspondence
+	\[
+	\{ (x,y) \in \Z^2 \colon x^2 - 2y^2=1 \} \iff \{ \alpha= a + b\sqrt{d} \in \Z[\sqrt{2}] \colon \Nm{K/\Q}(\alpha)= 1 \}.
+	\] 
+Let $G= \{ \alpha \in \Z[\sqrt{2}] \colon \Nm{K/\Q}(\alpha)= 1 \}$. We claim that $G$ is a subgroup of $\Z[\sqrt{2}]^\times$:
 	\begin{itemize}
 	\item Clearly, $1 \in G$.
 	\item If $\alpha, \beta \in G$, then $\Nm{K/\Q}(\alpha\beta)=\Nm{K/\Q}(\alpha)\Nm{K/\Q}(\beta)=1\cdot 1=1$ so that $\alpha\beta \in G$.
-	\item If $\alpha=a+b\sqrt{2} \in G$, then $\alpha^{-1}=a-b\sqrt{2} \in G$ as $\alpha\alpha^{-1}=a^2-2b^2=1$.
+	\item If $\alpha=a+b\sqrt{2} \in G$, then $\alpha^{-1}=a-b\sqrt{2} \in G$ because $\alpha\alpha^{-1}=a^2-2b^2=1$. But then 
+		\[
+		1= \Nm{K/\Q}(1)= \Nm{K/\Q}(\alpha \alpha^{-1})= \Nm{K/\Q}(\alpha) \Nm{K/\Q}(\alpha^{-1})= 1 \cdot \Nm{K/\Q}(\alpha^{-1})= \Nm{K/\Q}(\alpha^{-1}).
+		\]
+	Therefore, $\alpha^{-1} \in G$. 
 	\end{itemize}
-Now take $\ep=3+2\sqrt{2} \in G$. Since $\ep>1$, the powers of $\ep$ are all distinct. But then there are infinitely many elements of norm 1; hence, there are infinitely many solutions to $x^2-2y^2=1$. In fact, $G=\pm \langle \ep \rangle=\{ \pm \ep^n \colon n \in \Z\}$. However, $\Z[\sqrt{2}]^\times= \pm \langle 1+\sqrt{2}\rangle$ and $G$ is a subgroup of $\Z[\sqrt{2}]^\times$ of index 2. Note that $(1+\sqrt{2})^2=3+2\sqrt{2}=\ep$. \xqed
+Now take $\ep=3+2\sqrt{2} \in G$. Because $\ep>1$, the powers of $\ep$ are all distinct. But then there are infinitely many elements of norm 1; hence, there are infinitely many solutions to $x^2-2y^2=1$. In fact, $G=\pm \langle \ep \rangle=\{ \pm \ep^n \colon n \in \Z\}$. However, $\Z[\sqrt{2}]^\times= \pm \langle 1+\sqrt{2}\rangle$ and $G$ is a subgroup of $\Z[\sqrt{2}]^\times$ of index 2. Note that $(1+\sqrt{2})^2=3+2\sqrt{2}=\ep$. \xqed
 \end{ex}
+
 
 \begin{ex} \label{ex:pellgen}
 In general, Pell's equation ($x^2-dy^2=1$ with $d>1$ squarefree) has infinitely many solutions. However, the first nontrivial solution (ones different from (1,0)), $\ep$, can be large. For example given $x^2-1141y^2=1$, the corresponding group is 
