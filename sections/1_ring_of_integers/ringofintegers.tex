@@ -21,7 +21,7 @@ A number field $K$ is a finite extension of $\Q$, i.e. a finite dimensional $\Q$
 	\begin{enumerate}[(i)]
 	\item The fields $\Q$, $\Q(\sqrt{2})$, $\Q(\sqrt[3]{2})$ are all number fields. These have dimension (as $\Q$-vector spaces) of 1, 2, and 3, respectively. 
 	\item The cyclotomic fields: $\Q(\zeta_n)$, where $\zeta_n$ is a primitive $n$th root of unity.
-	\item The field $\Q(\alpha)$, where $\alpha$ is a root of $x^3+2x^2+1$.
+	\item The field $\Q(\alpha)$, where $\alpha$ is a root of $x^3+2x^2+1$. \xqed \pskip
 	\end{enumerate}
 \end{ex}
 
@@ -80,7 +80,7 @@ Despite being part of the definition, it is not immediately clear that $\O_K$ is
 
 
 \begin{ex}\label{ex:zinq}
-Take $K= \Q$. If $\alpha \in \Q$, then its minimal polynomial is $p_\alpha(x)= x - \alpha$. Now $p_\alpha(x) \in \Z[x]$ if and only if $\alpha \in \Z$. Therefore, $\O_\Q= \Z$. Then our definition of the ring of integers does indeed reproduce the motivating example of $\Z \subseteq \Q$. \xqed
+Take $K= \Q$. If $\alpha \in \Q$, then its minimal polynomial is $p_\alpha(x)= x - \alpha$. Now $p_\alpha(x) \in \Z[x]$ if and only if $\alpha \in \Z$. Therefore, $\O_\Q= \Z$. Then our definition of the ring of integers does indeed reproduce the motivating example of $\Z \subseteq \Q$. \xqed \pskip
 \end{ex}
 
 
@@ -97,7 +97,7 @@ Therefore, $\alpha \in \O_K$ if and only if $2a \in \Z$ and $a^2+2b^2 \in \Z$. L
 
 But then $2b^2= N - a^2 \in \Z$ so that $2b^2= s$ for some $s \in \Z$. Using the fact that $b \in \Q$, write $b= \frac{u}{v}$ and $\gcd(u, v)= 1$. Then we have $2u^2= sv^2$. If $p$ is a prime dividing $v$, then $p^2 \mid (sv^2)= 2u^2$. Because $\gcd(u,v)=1$, we must have $p^2 \mid 2$, which is impossible because $2$ is not a square in $\Z$. Therefore, no prime divides $v$ so that $v= \pm 1$. But then $b^2= \frac{u^2}{v^2}= u^2$, forcing $b= \pm u \in \Z$. Therefore, we must have $a, b \in \Z$. \pskip
 	
-This shows that $\O_K= \Z[\sqrt{-2}]= \{ a + b \sqrt{-2} \colon a,b \in \Z \}$. Furthermore, one can show $\Z[\sqrt{-2}]$ is a UFD, i.e. factorial. \xqed
+This shows that $\O_K= \Z[\sqrt{-2}]= \{ a + b \sqrt{-2} \colon a,b \in \Z \}$. Furthermore, one can show $\Z[\sqrt{-2}]$ is a UFD, i.e. factorial. \xqed \pskip
 \end{ex}
 
 
@@ -123,7 +123,7 @@ Then $\pi_i^{3e_i}$ divides $y+\sqrt{-2}$ or $y-\sqrt{-2}$ (but not both) for ea
 	\]
  for some $a,b \in \Z$. Expanding yields, $y+\sqrt{-2}=(a^3-6ab^2)+(3a^2b-2b^3)\sqrt{-2}$. This forces $y= a^3 - 6ab^2$ and $1= 3a^2b - 2b^3= b(3a^2 - 2b^2)$.
 
-We now have a restriction on the possibilities for $y$! This restriction that would not have been as easily obtained working only in $\Z$. Now as $b (3a^2 - 2b^2)= 1$ with $a, b \in \Z$, it must be that $b \in \{\pm 1\}$. If $b= 1$, we have $3a^2 - 2= 1$, which gives $a= \pm 1$. Using $a= \pm 1$ and $b=1$, we have solutions $(3, \pm 5)$. If $b= -1$, then $3a^2(-1)-2(-1)^3=1$, which implies $3a^2=1$, a contradiction to the irrationality of $\sqrt{3}$. Therefore, the only integer solutions to $y^2= x^2 + 3$ are $(3, \pm 5)$. This also shows that this equation has only finitely many rational solutions.\footnote{On the other hand, there are infinitely many \emph{rational solutions} to this equation. In fact, this is an elliptic curve defined over $\Q$ with rank 1.} \xqed
+We now have a restriction on the possibilities for $y$! This restriction that would not have been as easily obtained working only in $\Z$. Now as $b (3a^2 - 2b^2)= 1$ with $a, b \in \Z$, it must be that $b \in \{\pm 1\}$. If $b= 1$, we have $3a^2 - 2= 1$, which gives $a= \pm 1$. Using $a= \pm 1$ and $b=1$, we have solutions $(3, \pm 5)$. If $b= -1$, then $3a^2(-1)-2(-1)^3=1$, which implies $3a^2=1$, a contradiction to the irrationality of $\sqrt{3}$. Therefore, the only integer solutions to $y^2= x^2 + 3$ are $(3, \pm 5)$. This also shows that this equation has only finitely many rational solutions.\footnote{On the other hand, there are infinitely many \emph{rational solutions} to this equation. In fact, this is an elliptic curve defined over $\Q$ with rank 1.} \xqed \pskip
 \end{ex}
 
 
@@ -131,7 +131,7 @@ One must take care when using the factorization approach of Example~\ref{ex:z(-s
 
 
 \begin{nex}\label{ex:factornonex}
-Find all $(x,y) \in \Z^2$ satsifying $y^2=x^3-61$. Using the factorization in $\Z[\sqrt{-61}]$, we have $x^3=y^2+61=(y+\sqrt{-61})(y-\sqrt{-61})$. Using the method of Example~\ref{ex:z(-sqrt(2))}, one can show that there are no such solutions. But $(5, \pm 8)$ are both clearly solutions! \xqed
+Find all $(x,y) \in \Z^2$ satsifying $y^2=x^3-61$. Using the factorization in $\Z[\sqrt{-61}]$, we have $x^3=y^2+61=(y+\sqrt{-61})(y-\sqrt{-61})$. Using the method of Example~\ref{ex:z(-sqrt(2))}, one can show that there are no such solutions. But $(5, \pm 8)$ are both clearly solutions! \xqed \pskip
 \end{nex}
 
 
@@ -192,14 +192,14 @@ But then $(C - \alpha I)(\beta_1,\ldots, \beta_r)^T= 0$. By the Cayley-Hamilton 
 	\[
 	p^{e+f} f(x) = (p^e p^f) [p_\alpha(x) g(x) ]= p^e p_\alpha(x) \cdot p^f g(x).
 	\]
-Now take the equality $p^{e+f} f(x)= p^e p_\alpha(x) \cdot p^f g(x)$ modulo $p$. The right side must be nonzero for otherwise every coefficient is divisible by $p$ and hence have a $p$ in common. But then $e'= e-1, f'= f-1$ would have sufficed to clear denominators, contradicting the minimality of $e, f$. Therefore, the right side is nonzero modulo $p$. But then $p^{e+f} f(x) \not\equiv 0 \mod p$. Because $f(x)$ is monic, the leading coefficient of $p^{e+f} f(x)$ is $p^{e+f}$. But as $p^{e+f} f(x) \not\equiv 0 \mod p$, it must be that $e+f= 0$, i.e. $e= -f$. Because $e,f \geq 0$, we must have $e= f= 0$. Therefore, there is no prime dividing the denominator of any coefficient of $p_\alpha(x)$ or $g(x)$. Therefore, $p_\alpha(x),g(x) \in \Z[x]$, as desired. \qed 
+Now take the equality $p^{e+f} f(x)= p^e p_\alpha(x) \cdot p^f g(x)$ modulo $p$. The right side must be nonzero for otherwise every coefficient is divisible by $p$ and hence have a $p$ in common. But then $e'= e-1, f'= f-1$ would have sufficed to clear denominators, contradicting the minimality of $e, f$. Therefore, the right side is nonzero modulo $p$. But then $p^{e+f} f(x) \not\equiv 0 \mod p$. Because $f(x)$ is monic, the leading coefficient of $p^{e+f} f(x)$ is $p^{e+f}$. But as $p^{e+f} f(x) \not\equiv 0 \mod p$, it must be that $e+f= 0$, i.e. $e= -f$. Because $e,f \geq 0$, we must have $e= f= 0$. Therefore, there is no prime dividing the denominator of any coefficient of $p_\alpha(x)$ or $g(x)$. Therefore, $p_\alpha(x),g(x) \in \Z[x]$, as desired. \qed \pskip
 \end{enumerate}
 
 
 Note then we could have taken any of the (equivalent) properties of Proposition~\ref{prop:algint} as our definition of an algebraic integer. From now on, we shall take any of the equivalent conditions above as our definition of an algebraic integer, using whichever is most convenient in the moment. We are now in a position to easily prove that $\O_K$ is a subring of $K$. 
 
 
-\begin{prop}\label{prop:subring}
+\begin{prop} \label{prop:subring}
 $\O$ is a subring of $K$.
 \end{prop}
 
@@ -230,7 +230,7 @@ Let $\Q \subseteq K \subseteq L$ be number fields. Then
 
 \item Take any $\alpha \in K$ and $f(x)= x^n + c_1 x^{n-1} + \cdots + c_n \in \Q[x]$ with $f(\alpha)= 0$. For $d \geq 1$, $d \alpha$ is a root of $x^n + d c_1 x^{n-1} + \cdots + d^n c_n$. Choosing $d$ sufficiently large, we can also assure that the coefficients are in $\Z$. 
 
-\item Let $F$ denote the field of fractions of $\O_K$, i.e. $F= \Frac \O_K$. Because $F$ is the smallest field containing $\O_K$, we must have $F \subseteq K$. Now let $\alpha \in K$. Because $K$ is a number field, $\alpha$ is algebraic. But then by (iii), there exists $d \in \Z$ such that $d \alpha \in \O_K \subseteq F$. As $d \in \Z \subseteq F$, we must have $\alpha= d^{-1}(d\alpha) \in F$ so that $K \subseteq F$. Therefore, $K= \Frac \O_K$, as desired. \qed 
+\item Let $F$ denote the field of fractions of $\O_K$, i.e. $F= \Frac \O_K$. Because $F$ is the smallest field containing $\O_K$, we must have $F \subseteq K$. Now let $\alpha \in K$. Because $K$ is a number field, $\alpha$ is algebraic. But then by (iii), there exists $d \in \Z$ such that $d \alpha \in \O_K \subseteq F$. As $d \in \Z \subseteq F$, we must have $\alpha= d^{-1}(d\alpha) \in F$ so that $K \subseteq F$. Therefore, $K= \Frac \O_K$, as desired. \qed \pskip
 \end{enumerate}
 
 
@@ -241,7 +241,7 @@ Proposition~\ref{prop:power_push}~(iii) is particularly useful and is often not 
 % -------------------
 % Trace and Norm
 % -------------------
-\subsection{Trace and Norm}
+\subsection{Trace and Norm \label{subsec:trace_norm}}
 
 
 Suppose that $K/\Q$ has degree $n$. For $\alpha \in K$, define the multiplication by $\alpha$ map $\mu_\alpha: K \to K$ via $x \mapsto \alpha x$. This is a $\Q$-linear map:
@@ -252,7 +252,7 @@ Suppose that $K/\Q$ has degree $n$. For $\alpha \in K$, define the multiplicatio
 	\end{split}
 	\]
 for all $x,y \in K$ and $q \in \Q$.
-In fact, it is a $K$-linear map, though we do not make use of this. So fixing a $\Q$-basis, we can represent $\mu_\alpha$ by a $n \times n$ matrix. There are two important quantities attached to this map: the norm and the trace. 
+In fact, it is a $K$-linear map, though we do not make use of this. So fixing a $\Q$-basis, we can represent $\mu_\alpha$ by a $n \times n$ matrix, $[\mu_\alpha]$. There are two important quantities attached to this map: the norm and the trace. 
 
 
 \begin{dfn}[Norm]
@@ -265,8 +265,8 @@ If $K/\Q$ is a number field and $\alpha \in K$, then we define the trace of $\al
 \end{dfn}
 
 
-\begin{rem}
-The definitions of norm and trace do not depend on the fact that $K$ is a number field, only that the field extension is finite. So given any fields $K,F$ with $K/F$ finite, we may define $\Nm{K/F}$ and $\Tr{K/F}$. 
+\begin{rem} \label{rem:norm_trace_q}
+The definitions of norm and trace do not depend on the fact that $K$ is a number field, only that the field extension is finite. So given any fields $K,F$ with $K/F$ finite, we may define $\Nm{K/F}$ and $\Tr{K/F}$. Note also that these maps take values in $\Q$ because matrix entries for $[\mu_\alpha]$ are all rational. 
 \end{rem}
 
 
@@ -287,7 +287,7 @@ Then relative to this basis, we have
 	\[
 	[\mu_\alpha]_{\{1,\sqrt{d}\}}= \begin{pmatrix} a & bd \\ b & a \end{pmatrix}
 	\]
-We then have $\Nm{K/\Q}= a^2 - db^2$ and $\Tr{K/\Q}=2a$. \xqed
+We then have $\Nm{K/\Q}= a^2 - db^2$ and $\Tr{K/\Q}=2a$. \xqed \pskip
 \end{ex}
 
 
@@ -300,7 +300,7 @@ Let $K= \Q(\omega)$, where $\omega= \sqrt[3]{2}$. The minimal polynomial of $\om
 	\Nm{K/\Q}(\alpha)&= \det[\mu_\alpha]= a^3 + 2b^3 - 4c^3 - 6abc.
 	\end{split}
 	\]
-Now when does $\Nm{K/\Q}(\alpha) =\pm 1$? Certainly when $\alpha= \pm 1$, $\Nm{K/\Q}(\alpha)= \pm 1$. But this is also true for $\alpha= \ep$, where $\ep= 1 + \omega + \omega^2$. Because the norm is multiplicative, every power of $\ep$ has norm 1. It turns out, $\O_K= \Z[\omega]$ and $\O_K^\times= \{ \pm \ep^n \colon n \in \Z \}$ so that every element of $\Q(\omega)$ with norm $\pm 1$ is, up to sign, a power of $\epsilon$. \xqed
+Now when does $\Nm{K/\Q}(\alpha) =\pm 1$? Certainly when $\alpha= \pm 1$, $\Nm{K/\Q}(\alpha)= \pm 1$. But this is also true for $\alpha= \ep$, where $\ep= 1 + \omega + \omega^2$. Because the norm is multiplicative, every power of $\ep$ has norm 1. It turns out, c.f. Theorem~\ref{thm:unit}, $\O_K= \Z[\omega]$ and $\O_K^\times= \{ \pm \ep^n \colon n \in \Z \}$ so that every element of $\Q(\omega)$ with norm $\pm 1$ is, up to sign, a power of $\epsilon$. \xqed \pskip
 \end{ex}
 
 
@@ -310,8 +310,8 @@ From the properties of determinants and traces, it is routine to verify the foll
 \begin{prop} 
 Let $K/\Q$ be a number field and $\alpha, \beta \in K$. Then 
 	\begin{itemize}
-	\item $\Nm{K/\Q}(\alpha\beta)=\Nm{K/\Q}(\alpha) \Nm{K/\Q}(\beta)$
-	\item $\Nm{K/\Q}(c)=c^n$ for $c \in \Q$
+	\item $\Nm{K/\Q}(\alpha\beta)= \Nm{K/\Q}(\alpha) \Nm{K/\Q}(\beta)$
+	\item $\Nm{K/\Q}(c)= c^n$ for $c \in \Q$
 	\end{itemize}
 In particular, $\Nm{K/\Q}: K^\times \to \Q^\times$ is a homomorphism of multiplicative groups.
 	\begin{itemize}
@@ -319,7 +319,7 @@ In particular, $\Nm{K/\Q}: K^\times \to \Q^\times$ is a homomorphism of multipli
 	\end{itemize}
 \end{prop}
 
-\pf Fix a basis $\{1, \gamma, \ldots, \gamma^{n-1} \}$ for $K/\Q$ and choose $\alpha, \beta, x \in K$. Then with respect to this basis, we have
+\pf Fix a basis $\{ 1, \gamma, \ldots, \gamma^{n-1} \}$ for $K/\Q$ and choose $\alpha, \beta, x \in K$. Then with respect to this basis, we have
 	\[
 	[\mu_{\alpha\beta}](x)= (\alpha\beta) x= \alpha (\beta x)= [\mu_\alpha](\beta x)= \big( [\mu_\alpha] \circ [\mu_\beta] \big)(x).
 	\] 
@@ -350,94 +350,112 @@ where the $a_i \in \Q$. So representing $[\mu_{c\alpha+\beta}]$, $[\mu_{c\alpha}
 
 
 \begin{rem}
-More generally, if $L/K$ is a finite extension of fields and $\alpha \in L$, choosing a $K$-basis for $\mu_\alpha$, $\Nm{L/K}: L^\times \to K^\times$ is a multiplicative group homomorphism and $\Tr{L/K}: L \to K$ is an additive group homomorphism. 
+More generally, if $L/K$ is a finite extension of fields and $\alpha \in L$, choosing a $K$-basis for $\mu_\alpha, \Nm{L/K}: L^\times \to K^\times$ is a multiplicative group homomorphism and $\Tr{L/K}: L \to K$ is an additive group homomorphism. 
 \end{rem}
 
 
 But again, why do we care about these maps? Among many other things, these maps will allow us to find integer solutions to polynomial equations. [Are we sensing a theme yet?] 
 
 
-\begin{ex}(Pell's Equation\footnote{Generally, a Pell equation (or Pell-Fermat equation) is an equation of the form $x^2 - ny^2 = 1$ for some squarefree $n \in \Z_+$.} when $n=2$) \label{ex:pell2}
-Using the norm, we shall show that $x^2-2y^2=1$ has infinitely many solutions. We know $\Z[\sqrt{2}] \subseteq K:=\Q(\sqrt{2})$. Observe with respect to basis $\{1, \sqrt{2} \}$ and representing elements in $K$ as $a + b \sqrt{d}$, we have $\Nm{K/\Q}= a^2 - 2b^2$. There is a correspondence
+\begin{ex}(Pell's Equation\footnote{Generally, a Pell equation (or Pell-Fermat equation) is an equation of the form $x^2 - ny^2 = 1$ for some squarefree $n \in \Z_+$.} when $n= 2$) \label{ex:pell2}
+Using norms, we shall show that $x^2-2y^2=1$ has infinitely many solutions. We know $\Z[\sqrt{2}] \subseteq K:= \Q(\sqrt{2})$. Observe, representing elements in $K$ as $a + b \sqrt{d}$ using the basis $\{ 1, \sqrt{2} \}$, we have $\Nm{K/\Q}(a + b\sqrt{2})= a^2 - 2b^2$. There is a correspondence
 	\[
 	\{ (x,y) \in \Z^2 \colon x^2 - 2y^2=1 \} \iff \{ \alpha= a + b\sqrt{d} \in \Z[\sqrt{2}] \colon \Nm{K/\Q}(\alpha)= 1 \}.
 	\] 
 Let $G= \{ \alpha \in \Z[\sqrt{2}] \colon \Nm{K/\Q}(\alpha)= 1 \}$. We claim that $G$ is a subgroup of $\Z[\sqrt{2}]^\times$:
 	\begin{itemize}
 	\item Clearly, $1 \in G$.
-	\item If $\alpha, \beta \in G$, then $\Nm{K/\Q}(\alpha\beta)=\Nm{K/\Q}(\alpha)\Nm{K/\Q}(\beta)=1\cdot 1=1$ so that $\alpha\beta \in G$.
-	\item If $\alpha=a+b\sqrt{2} \in G$, then $\alpha^{-1}=a-b\sqrt{2} \in G$ because $\alpha\alpha^{-1}=a^2-2b^2=1$. But then 
+	\item If $\alpha, \beta \in G$, then $\Nm{K/\Q}(\alpha\beta)= \Nm{K/\Q}(\alpha) \Nm{K/\Q}(\beta)= 1 \cdot 1= 1$ so that $\alpha\beta \in G$.
+	\item If $\alpha= a + b\sqrt{2} \in G$, then $\alpha^{-1}= a - b\sqrt{2} \in G$ because $\alpha \alpha^{-1}= a^2 - 2b^2= 1$. But then 
 		\[
 		1= \Nm{K/\Q}(1)= \Nm{K/\Q}(\alpha \alpha^{-1})= \Nm{K/\Q}(\alpha) \Nm{K/\Q}(\alpha^{-1})= 1 \cdot \Nm{K/\Q}(\alpha^{-1})= \Nm{K/\Q}(\alpha^{-1}).
 		\]
 	Therefore, $\alpha^{-1} \in G$. 
 	\end{itemize}
-Now take $\ep=3+2\sqrt{2} \in G$. Because $\ep>1$, the powers of $\ep$ are all distinct. But then there are infinitely many elements of norm 1; hence, there are infinitely many solutions to $x^2-2y^2=1$. In fact, $G=\pm \langle \ep \rangle=\{ \pm \ep^n \colon n \in \Z\}$. However, $\Z[\sqrt{2}]^\times= \pm \langle 1+\sqrt{2}\rangle$ and $G$ is a subgroup of $\Z[\sqrt{2}]^\times$ of index 2. Note that $(1+\sqrt{2})^2=3+2\sqrt{2}=\ep$. \xqed
+Now take $\ep= 3 + 2\sqrt{2} \in G$ (as one can check). Because $\ep>1$, the powers of $\ep$ are all distinct. But then there are infinitely many elements of norm 1, namely $\ep^n$ for $n \in \Z$; hence, there are infinitely many solutions to $x^2-2y^2=1$. In fact, $G:= \pm \langle \ep \rangle= \{ \pm \ep^n \colon n \in \Z \}$. Note that $\Z[\sqrt{2}]^\times= \pm \langle 1+\sqrt{2}\rangle$ and $G$ is a subgroup of $\Z[\sqrt{2}]^\times$ of index 2: $(1 + \sqrt{2})^2= 3 + 2\sqrt{2}= \ep$. \xqed \pskip
 \end{ex}
 
 
 \begin{ex} \label{ex:pellgen}
-In general, Pell's equation ($x^2-dy^2=1$ with $d>1$ squarefree) has infinitely many solutions. However, the first nontrivial solution (ones different from (1,0)), $\ep$, can be large. For example given $x^2-1141y^2=1$, the corresponding group is 
+In general, Pell's equation, $x^2 - dy^2= 1$ where $d>1$ is squarefree, has infinitely many solutions. There is always the trivial solution $(1,0)$. However, Pell's equation has infinitely many solutions. The smallest of these solutions can be `large'. For example, the integer solutions to $x^2 - 1141y^2= 1$ correspond to elements of $\Z[\sqrt{1141}]$ with norm 1 (using the usual norm), i.e. the group
 	\[
-	G=\{ \alpha \in \Z[\sqrt{1141}] \colon \Nm{K/\Q}(\alpha)=1\}= \pm \langle \ep \rangle,
+	G:= \{ \alpha \in \Z[\sqrt{1141}] \colon \Nm{K/\Q}(\alpha)= 1 \}= \pm \langle \ep \rangle,
 	\]
-where $\ep=1036782394157223963237125215+30693385322765657197397208\sqrt{1141}$. \xqed
+where $\ep= 1036782394157223963237125215 + 30693385322765657197397208\sqrt{1141}$. \xqed \pskip
 \end{ex}
 
 
-These are special cases of a more general theorem, which will come later (see Section~\ref{sec:unit} and Section~\ref{sec:pell}): 
-
-
+These are special cases of a more general theorem, which will come later, c.f. Section~\ref{sec:unit} and Section~\ref{sec:pell}: 
 
 
 \begin{restatable*}[Dirichlet's Unit Theorem]{thm}{unit} \label{thm:unit}
 Let $K$ be a number field of degree $n$ with $r$ real embeddings and $s$ conjugate pairs of complex embeddings. Then the abelian group $\O_K^\times$ is a finitely generated abelian group with rank $r+s-1$ and $\O_K^\times \cong \mu_K \times \Z^{r+s-1}$, where $\mu_K$ are the roots of unity in $\O_K$. 
 \end{restatable*}
 
-\begin{ex}
-For a quadratic number field $K=\Q(\sqrt{d})$, with $d>0$ square free, $r=2$ and $s=0$ so that $\O_K^\times$ has rank $r+s-1=1$. \xqed
-\end{ex}
 
 \begin{ex}
-The theorem also gives that when $K=\Q(\sqrt{d})$, it will not generally be the case that $\O_K= \Z[\sqrt{d}]$. For instance, if $\alpha=\dfrac{-1+\sqrt{-3}}{2}$. Observe that $\alpha^3=1$ so that $\alpha$ is a root of $x^3-1$; therefore, $\alpha \in \Q(\sqrt{-3})$ is an algebraic integer. However, $\alpha \notin \Z[\sqrt{-3}]$. \xqed
+For the quadratic number field $K= \Q(\sqrt{d})$, where $d>0$ squarefree, $r= 2$ and $s= 0$ so that by Theorem~\ref{thm:unit}, $\O_K^\times$ has rank $r + s - 1= 1$. \xqed \pskip
 \end{ex}
 
 
+\begin{rem} \label{rem:roint_larger}
+If $K= \Q(\sqrt{d})$, it will not generally be the case that $\O_K= \Z[\sqrt{d}]$. For $K= \Q(\sqrt{d})$, it will be the case that $\Z[\sqrt{d}] \subseteq \O_K$, but the full ring of integers can be larger than $\Z[\sqrt{d}]$. For instance, consider the ring $K= \Q(\alpha)$, where $\alpha= \dfrac{-1 + \sqrt{-3}}{2}$. Observe that $\alpha^3= 1$ so that $\alpha$ is a root of $x^3 - 1$; therefore, $\alpha \in \Q(\sqrt{-3})$ is an algebraic integer but $\alpha \notin \Z[\sqrt{-3}]$.
+\end{rem}
+
+
+\begin{rem}
+Let $d \in \Z$ and write $d= a^2 d'$ for some $d' \in \Z$, i.e. write $d$ as the product of its square and squarefree factors. If $K= \Q(\sqrt{d})$ and $K'= \Q(\sqrt{d'})$, then $K= K'$. However, it is not generally the case that $\O_K= \O_{K'}$. 
+\end{rem}
+
+
+
+% -------------------
+% Complex Embeddings: Norm \& Trace Continued
+% -------------------
 \subsection{Complex Embeddings: Norm \& Trace Continued}
 
-
-In trying to study the norm and trace, it is natural to study the characteristic polynomial of $[\mu_\alpha]$, i.e. $\det(xI-\mu_\alpha) \in \Q[x]$, as
+In trying to study the norm and trace, it is natural to study the characteristic polynomial of $[\mu_\alpha]$, i.e. $\det(xI-\mu_\alpha) \in \Q[x]$, because it is partially built from the trace and norm:
 	\[
-	\det(xI-\mu_\alpha)=x^n - \Tr{K/\Q}(\alpha)x^{n-1} + \cdots + (-1)^n \Nm{K/\Q}(\alpha).
+	\det(xI - \mu_\alpha)= x^n - \Tr{K/\Q}(\alpha) x^{n-1} + \cdots + (-1)^n \Nm{K/\Q}(\alpha).
+	\]
+The map $\mu_\alpha$ acts on $K$ as a $\Q$-linear map. Extending scalars, $\mu_\alpha$ acts on $K \otimes_\Q \C$.\footnote{Recall if $f: R \to S$ is a ring homomorphism and $M$ is an $R$-module, regarding $S$ as am $R$-module via $f$, then $M \otimes_R S$ may be regarded as an $S$-module. This module $M \otimes_R S$ is called the extension of scalars from $R$ to $S$ on $M$.} Choose a primitive element $\beta$ for $K$. Then we have
+	\[
+	K= \Q(\beta) \cong \Q[x]/ (p_\beta(x)),
+	\]
+where $p_\beta(x)$ is the minimal polynomial of $\beta$. We may then write
+	\[
+	K \otimes_\Q \C \cong \bigg( \Q[x]/ (p_\beta(x)) \bigg) \otimes_\Q \C \cong \C[x] / (p_\beta(x)).
 	\]
 
-Now $\mu_\alpha$ acts on $K$ as a $\Q$-linear map. Extending scalars, $\mu_\alpha$ acts on $K \otimes_\Q \C$. Choose a primitive element $\beta$ for $K$. Then we have
+
+This ring is most likely not a field. By the Fundamental Theorem of Algebra, $p_\beta(x)$ factors over $\C$ into a product of powers of linear terms. If $p_\beta(x)$ is not already linear, then $\C[x] / (p_\beta(x))$ will contains zero divisors, namely its factors. Therefore, $\C[x] / (p_\beta(x))$ is a field if and only if $p_\beta(x)$ has degree one. But $p_\beta(x)$ is the minimal polynomial for an algebraic number because $K= \Q(\beta)$. Therefore, $p_\beta(x) \in \Q[x]$ has degree one. Then $p_\beta$ has degree one if and only if $\beta \in \Q$ if and only if $K= \Q$. 
+
+
+Generally, using the Fundamental Theorem of Algebra, write $p_\beta(x)= \prod_{i=1}^n (x - \beta_i)$, where $\beta_i \in \C$ are the distinct roots of $p_\beta(x)$ in $\C$. By the Chinese Remainder Theorem,
 	\[
-	K=\Q(\beta) \cong \Q[x]/ (p_\beta(x)),
+	K \otimes_\Q \C \cong \C[x]/(p_\beta(x)) \cong \prod_{i=1}^n \big[ \C[x]/(x-\beta_i) \big] \cong \prod_{i=1}^n \C = \C^n.
 	\]
-where $p_\beta(x)$ is the minimal polynomial of $\beta$. [The isomorphism in the left direction is $x \mapsto \beta$ or assuming equality, $\beta=[x]$.] We may then write
-	\[
-	K \otimes_\Q \C= \C[x]/(p_\beta(x)).
-	\]
-This ring is almost certainly not a field, since $\beta_beta(x)$ factors into linear terms over $\C$ by the Fundamental Theorem of Algebra. It should then be clear that this is a field if and only if $p_\beta$ has degree 1 if and only if $\beta \in \Q$ if and only if $K=\Q$. Now write $p_\beta(x)=\prod_{i=1}^n (x-\beta_i)$, where $\beta_i \in \C$ are the distinct roots of $p_\beta(x)$ in $\C$. By the Chinese Remainder Theorem,
-	\[
-	K \otimes_\Q \C= \C[x]/(p_\beta(x)) \cong \prod_{i=1}^n \C[x]/(x-\beta_i) \cong \prod_{i=1}^n \C =\C^n
-	\]
-This isomorphism is canonical up to choice of ordering of the roots and $\beta$. Using this isomorphism, $\mu_\alpha$ acts on $K \otimes_\Q \C \cong \C^n$ via multiplication by $\alpha \otimes 1$. Consider the composite
+This isomorphism is canonical up to choice of ordering of the roots and choice of primitive element $\beta$. Using this isomorphism, $\mu_\alpha$ acts on $K \otimes_\Q \C \cong \C^n$ via multiplication by $\alpha \otimes 1$. To understand the map more clearly, let $\sigma_i$ be the composite of the maps
 	\[
 	\sigma_i: K \ma{} K \otimes_\Q \C \ma{\cong} \C^n \ma{\pi_i} \C
 	\]
-where the first map is $\alpha \mapsto \alpha \otimes 1$. Each map $\sigma_i: K \hra \C$ is a nonzero homomorphism of fields, hence injective. Since the isomorphism is determined by its action on $\beta$ (since the map will fix $\Q$), each embedding is characterized by the fact that $\sigma_i(\beta)=\beta_i$. 
+where the first map is $\alpha \mapsto \alpha \otimes 1$. The maps $\sigma_i: K \hra \Q$ are injective because they are nonzero homomorphisms of fields. The maps $\sigma_i$ also all fix $\Q$, so the isomorphisms are determined by their action on $\beta$. Therefore, each embedding $\sigma_i$ is characterized by the fact that $\sigma_i(\beta)= \beta_i$. The maps $\sigma_i$ are the complex embeddings of $K$ into $\C$.
+
 
 \begin{dfn}[Complex Embeddings]
-The field homomorphisms $\sigma_1,\ldots,\sigma_n: K \hra \C$ are the complex embeddings of $K$ into $\C$.
+The field homomorphisms $\sigma_1,\ldots,\sigma_n: K \hra \C$ described above are the complex embeddings of $K$ into $\C$.
 \end{dfn}
 
-\begin{rem}
-Note that if $K/\Q$ is a number field of degree $n$, the work above shows there are always exactly $n$ such embeddings. 
-\end{rem}
 
-Considering simple tensors, an explicit isomorphism $K \otimes_\Q \C \to \C^n$ is given by $\alpha \otimes z \mapsto (z\sigma_1(\alpha),\ldots,z\sigma_n(\alpha))$, i.e. `scaling'. The action on $K \otimes_\Q \C \cong \C^n$ can then be given by the diagonal matrix
+Note that if $K/\Q$ is a number field of degree $n$, the work above shows there are always exactly $n$ such embeddings. This is worth stating as a proposition:
+
+
+\begin{prop}
+Let $K/\Q$ be a number field of degree $n$. Then $K$ has exactly $n$ distinct complex embeddings $\sigma_i: K \hra \C$. 
+\end{prop}
+
+
+Considering simple tensors, an explicit isomorphism $K \otimes_\Q \C \ma{\cong} \C^n$ is given by $\alpha \otimes z \mapsto (z\,\sigma_1(\alpha), \ldots, \,z\sigma_n(\alpha))$, i.e. `scaling'. Alternatively, $\iota: K \to \C^n$ is given by $\alpha \mapsto (\sigma_1(\alpha), \ldots, \sigma_n(\alpha))$. The action of $\mu_\alpha$ on $K \otimes_\Q \C$ then corresponds to an action of $\mu_\alpha$ on $\C^n$ given by the diagonal matrix
 	\[
 	\begin{pmatrix}
 	\sigma_1(\alpha) & & \\
@@ -447,56 +465,68 @@ Considering simple tensors, an explicit isomorphism $K \otimes_\Q \C \to \C^n$ i
 	\]
 From this characterization, the following becomes clear:
 
-\begin{prop}
-For a number field $K/\Q$ of degree $n$,
+
+\begin{prop} \label{prop:embed_tracenorm}
+Let $K/\Q$ be a number field of degree $n$. Then 
 	\[
 	\begin{split}
 	\Nm{K/\Q}(\alpha)&= \prod_{i=1}^n \sigma_i(\alpha) \\
 	\Tr{K/\Q}(\alpha)&= \sum_{i=1}^n \sigma_i(\alpha)
 	\end{split}
 	\]
-where $\sigma_1,\ldots,\sigma_n: K \hra \C$ are the complex embeddings of $K$.
+where $\sigma_1, \ldots, \sigma_n: K \hra \C$ are the complex embeddings of $K$.
 \end{prop}
 
+
 \begin{ex}
-Let $K=\Q(\sqrt{d})$ be a quadratic extension, where $d \neq 1$ is a squarefree integer. We assume $K \subseteq \C$ already for convenience. There are two embeddings $\sigma_1,\sigma_2: K \hra \C$:
+Let $K= \Q(\sqrt{d})$ be a quadratic extension, where $d \neq 1$ is a squarefree integer. We assume $K \subseteq \C$ already for convenience. There are two embeddings $\sigma_1, \sigma_2: K \hra \C$ given by
 	\[
 	\begin{split}
-	\sigma_1(a+b\sqrt{d})&= a+b\sqrt{d} \\
-	\sigma_2(a+b\sqrt{d})&= a-b\sqrt{d}
+	\sigma_1(a + b\sqrt{d})&= a + b\sqrt{d} \\
+	\sigma_2(a + b\sqrt{d})&= a - b\sqrt{d}
 	\end{split}
 	\]
 Then the norm and trace are
 	\[
 	\begin{split}
-	\Nm{K/\Q}(a+b\sqrt{d})&= (a+b\sqrt{d})(a-b\sqrt{d})= a^2-db^2 \\
-	\Tr{K/\Q}(a+b\sqrt{d})&= (a+b\sqrt{d}) + (a-b\sqrt{d})= 2a
+	\Nm{K/\Q}(a + b\sqrt{d})&= (a + b\sqrt{d}) (a - b\sqrt{d})= a^2 - db^2 \\
+	\Tr{K/\Q}(a + b\sqrt{d})&= (a + b\sqrt{d}) + (a - b\sqrt{d})= 2a
 	\end{split}
-	\] \xqed
+	\] 
+This was exactly what was found in Example~\ref{ex:norm_trace_ex}. \xqed \pskip
 \end{ex}
 
 
-We had wanted to study more the relation between trace/norm and the characteristic polynomial of $[\mu_\alpha]$, i.e. $\det(xI-\mu_\alpha) \in \Q[x]$. The work above shows
+We had wanted to study the relation between trace/norm and the characteristic polynomial of $[\mu_\alpha]$, i.e. $\det(xI  - \mu_\alpha) \in \Q[x]$. Expressing the action of $\mu_\alpha$ as the diagonal matrix with entries $\sigma_1(\alpha), \ldots, \sigma_n(\alpha)$, the work above shows
 	\[
-	\det(xI - \mu_\alpha)= \prod_{i=1}^n (x - \sigma_i(\alpha))
+	\det(xI - \mu_\alpha)= \prod_{i=1}^n \big(x - \sigma_i(\alpha) \big).
 	\]
-Notice that $\sigma_i(\alpha)$ is a root of $p_\alpha(x)$ since $p_\alpha(x)$ has rational coefficients and each $\sigma_i$ is a morphism of $\Q$-algebras fixing these coefficients:
+Observe that expanding the right side and using Proposition~\ref{prop:embed_tracenorm}, we see again that
 	\[
-	0=\sigma_i(0)=\sigma_i(p_\alpha(\alpha))=p_\alpha(\sigma_i(\alpha))
+	\det(xI - \mu_\alpha)= x^n - \Tr{K/\Q}(\alpha) x^{n-1} + \cdots + (-1)^n \Nm{K/\Q}(\alpha).
+	\]
+Because $p_\alpha(x)$ has rational coefficients and each $\sigma_i$ is a morphism of $\Q$-algebras fixing these coefficients, $\sigma_i(\alpha)$ is a root of $p_\alpha(x)$:
+	\[
+	0= \sigma_i(0)= \sigma_i(p_\alpha(\alpha))= p_\alpha(\sigma_i(\alpha)).
 	\]
 Therefore,
 	\[
-	\det(xI - \mu_\alpha)= \prod_{i=1}^n (x - \sigma_i(\alpha))= p_\alpha^m
+	\det(xI - \mu_\alpha)= \prod_{i=1}^n \big( x - \sigma_i(\alpha) \big)= p_\alpha(x)^r
 	\]
-for some $m$. But we know $\deg p_\alpha=[\Q(\alpha):\Q]$ and $\deg \det(xI - \mu_\alpha)=n=[K:\Q]$. Therefore, we must have $m=[K:\Q(\alpha)]$. This proves the following:
+for some $r$. But we know $\deg[p_\alpha(x)]= [\Q(\alpha) \colon \Q]$ and $[K \colon \Q]= n = \deg[\det(xI - \mu_\alpha)]$. Therefore, we must have $r= [K \colon \Q(\alpha)]$. This proves the following proposition:
 
-\begin{prop}\label{prop:mult}
-Let $K/\Q$ be a number field and $\alpha \in K$. Let $\mu_\alpha: K \to K$ denote multiplication by $\alpha$. Then
+
+\begin{prop} \label{prop:mult}
+Let $K/\Q$ be a number field. Let $\alpha \in K$ and $\mu_\alpha: K \to K$ denote the map given by multiplication by $\alpha$. Then
 	\[
-	\det(xI - \mu_\alpha)= \prod_{i=1}^n (x - \sigma_i(\alpha))= p_\alpha(x)^{[K:\Q(\alpha)]}
+	\det(xI - \mu_\alpha)= \prod_{i=1}^n \big(x - \sigma_i(\alpha) \big)= p_\alpha(x)^{[K \colon \Q(\alpha)]},
 	\]
-where $\sigma_1,\ldots,\sigma_n: K \hra \C$ are the complex embeddings of $K$ into $\C$.
+where $\sigma_1, \ldots, \sigma_n: K \hra \C$ are the complex embeddings of $K$ into $\C$ and $p_\alpha(x)$ is the minimal polynomial of $\alpha$ over $\Q$.
 \end{prop}
+
+
+From Remark~\ref{rem:norm_trace_q}, we already know that the norm and trace maps take values in $\Q$. However, they are integer valued in the special case where $\alpha \in \O_K$.
+
 
 \begin{cor}\label{cor:mult}
 For $\alpha \in \O_K$, $\Nm{K/\Q}(\alpha)$ and $\Tr{K/\Q}(\alpha)$ are integers.
@@ -508,123 +538,134 @@ For $\alpha \in \O_K$, $\Nm{K/\Q}(\alpha)$ and $\Tr{K/\Q}(\alpha)$ are integers.
 	\]
 Since $p_\alpha(x) \in \Z[x]$, all the coefficients on the left side must also be integers. But we have
 	\[
-	\det(xI-\mu_\alpha)=x^n - \Tr{K/\Q}(\alpha)x^{n-1} + \cdots + (-1)^n \Nm{K/\Q}(\alpha).
-	\] \qed \\
+	\det(xI - \mu_\alpha)= x^n - \Tr{K/\Q}(\alpha) x^{n-1} + \cdots + (-1)^n \Nm{K/\Q}(\alpha). \qed
+	\]  
 
 
 \begin{ex}
-Let $K=\Q(\sqrt{d})$, where $d\neq 1$ is a squarefree integer. We want to find $\O_K$. If $\alpha=a+b\sqrt{d} \in \O_K$, where $a,b \in \Q$, we know from Corollary~\ref{cor:mult} that $\Nm{K/\Q}(\alpha),\Tr{K/Q}(\alpha) \in \Z$. Hence, $a^2-db^2,2a \in \Z$. Multiplying $a^2-db^2$ by 4, we obtain $(2a)^2-d(2b)^2,2a \in \Z$. 
+Let $K= \Q(\sqrt{d})$, where $d \neq 1$ is a squarefree integer. We want to find the ring of integers of $K$, $\O_K$. If $\alpha= a + b\sqrt{d} \in \O_K$, where $a, b \in \Q$, we know from Corollary~\ref{cor:mult} that $\Nm{K/\Q}(\alpha), \Tr{K/Q}(\alpha) \in \Z$. Hence, $a^2 - db^2, 2a \in \Z$. Multiplying $a^2 - db^2$ by 4, we obtain $4(a^2 - db^2)= (2a)^2 - d(2b)^2 \in \Z$ and $2a \in \Z$.
 
-Therefore, $2\O_K \subseteq \Z[\sqrt{d}]=\{a+b\sqrt{d} \colon a,b \in \Z\}$. Then we have an inclusion of abelian groups
+Therefore, $2\O_K \subseteq \Z[\sqrt{d}]= \{ a + b\sqrt{d} \colon a,b \in \Z \}$. We have an inclusion of abelian groups
 	\[
 	\Z[\sqrt{d}] \subseteq \O_K \subseteq \dfrac{1}{2}\, \Z[\sqrt{d}]
 	\]
 The quotient $\frac{1}{2}\Z[\sqrt{d}]/\Z[\sqrt{d}]$ is a group of order 4 with coset representatives: 0, $\frac{1}{2}$, $\frac{\sqrt{d}}{2}$, and $\frac{1+\sqrt{d}}{2}$. 
 
-In order to determine $\O_K$, we need to determine which of these representatives are algebraic integers. Clearly, $0 \in \O_K$ and $\frac{1}{2} \notin \O_K$. The minimal polynomial of $\frac{\sqrt{d}}{2}$ is $x^2 - \frac{d}{4}$---which is not in $\Z[x]$ as $d$ is square free. Hence, $\frac{\sqrt{d}}{4} \notin \O_K$. Finally, the minimal polynomial of $\frac{1+\sqrt{d}}{2}$ is
+In order to determine $\O_K$, we need to determine which of these representatives are algebraic integers. Clearly, $0 \in \O_K$ and $\frac{1}{2} \notin \O_K$. The minimal polynomial of $\frac{\sqrt{d}}{2}$ is $x^2 - \frac{d}{4}$ which is not in $\Z[x]$ because $d$ is squarefree. Hence, $\frac{\sqrt{d}}{4} \notin \O_K$. Finally, the minimal polynomial of $\frac{1 + \sqrt{d}}{2}$ is
 	\[
-	\left(x - \dfrac{1+\sqrt{d}}{2}\right) \left(x - \dfrac{1-\sqrt{d}}{2}\right)= x^2-x+ \dfrac{1-d}{4}.
+	\left(x - \dfrac{1 + \sqrt{d}}{2} \right) \left(x - \dfrac{1 - \sqrt{d}}{2} \right)= x^2 - x + \dfrac{1 - d}{4}.
 	\]
-Then $\frac{1+\sqrt{d}}{2}$ has minimal polynomial $p_\alpha(x) \in \Z[x]$. [That is, $\frac{1+\sqrt{d}}{2} \in \O_K$ if and only if $d \equiv 1 \mod 4$.] Therefore,
+This polynomial is in $\Z[x]$ if and only if $(1-d)/4 \in \Z$, i.e. $d-1= 4k$ for some $k \in \Z$. But then this polynomial is in $\Z[x]$ if and only if $d \equiv 1\mod 4$. Therefore, $\frac{1+\sqrt{d}}{2} \in \O_K$ if and only if $d \equiv 1 \mod 4$. Thus,
 	\[
-	\O+K=
+	\O_K=
 	\begin{cases}
-	\Z[\sqrt{d}], & d \not\equiv 1 \mod 4 \\
-	\Z\left[\frac{1+\sqrt{d}}{2}\right], & d \equiv 1 \mod 4.
-	\end{cases}
-	\]
-\xqed
+	\Z[\sqrt{d}], & d \not\equiv 1 \mod 4 \\ \\
+	\Z\left[ \dfrac{1+\sqrt{d}}{2} \right], & d \equiv 1 \mod 4. 
+	\end{cases} 
+	\] 
+Finally, observe that we always have $\Z[\sqrt{d}] \subseteq \Z[\frac{1+\sqrt{d}}{2}]$, justifying the comments in Remark~\ref{rem:roint_larger}. 
 \end{ex}
 
 
-In the previous example where $K=\Q(\sqrt{d})$, where $d \neq 1$ is a squarefree integer, we found
+In the previous example where $d \neq 1$ is a squarefree integer and $K=\Q(\sqrt{d})$, we found
 	\[
-	\O+K=
+	\O_K=
 	\begin{cases}
-	\Z[\sqrt{d}], & d \not\equiv 1 \mod 4 \\
-	\Z\left[\frac{1+\sqrt{d}}{2}\right], & d \equiv 1 \mod 4.
-	\end{cases}
-	\]
-But what is the point of this? Certainly, $\Z[\sqrt{d}] \subseteq \O_K$. Why not just use $\Z[\sqrt{d}]$? Why is $\O_K$ the `right' thing to study? As a vague answer, $\O_K$ is `nicer'. For example, take the case where $K=\Q(\sqrt{-3})$. We know $\O_K=\Z\left[\frac{1+\sqrt{-3}}{2}\right]$ not $\Z[\sqrt{-3}]$. Why use $\Z\left[\frac{1+\sqrt{-3}}{2}\right]$? Well, $\Z\left[\frac{1+\sqrt{-3}}{2}\right]$ is a UFD whereas $\Z[\sqrt{-3}] \subseteq \Z\left[\frac{1+\sqrt{-3}}{2}\right]$ is not. So the ring $\Z\left[\frac{1+\sqrt{-3}}{2}\right]$ is a `better' choice. There are under lying geometric considerations/connections here as well; the affine coordinate ring of $\Z\left[\frac{1+\sqrt{-3}}{2}\right]$ is smooth whereas the one for $\Z[\sqrt{-3}]$ is not. But for now, let us return to relations between $\O_K$ and $\Nm{K/\Q}$/$\Tr{K/\Q}$. 
+	\Z[\sqrt{d}], & d \not\equiv 1 \mod 4 \\ \\
+	\Z\left[ \dfrac{1+\sqrt{d}}{2} \right], & d \equiv 1 \mod 4. 
+	\end{cases} 
+	\] 
+But what is the point of this? Certainly, $\Z[\sqrt{d}] \subseteq \O_K$. Why not just use $\Z[\sqrt{d}]$? Why is $\O_K$ given above the `right' thing to study? As a vague answer, $\O_K$ is `nicer'. For example, consider the case where $K= \Q(\sqrt{-3})$. By the work above, we know $\O_K= \Z\left[ \frac{1 + \sqrt{-3}}{2} \right]$ not $\Z[\sqrt{-3}]$. But why use $\O_K= \Z\left[ \frac{1 + \sqrt{-3}}{2} \right]$? Well, $\Z\left[ \frac{1 + \sqrt{-3}}{2} \right]$ is a UFD, whereas $\Z[\sqrt{-3}]$ is not. In this sense, the ring $\Z\left[\frac{1+\sqrt{-3}}{2}\right]$ is a `better' choice. There are under lying geometric considerations/connections here as well; the affine coordinate ring of $\Z\left[ \frac{1 + \sqrt{-3}}{2} \right]$ is smooth whereas the affine coordinate ring of $\Z[\sqrt{-3}]$ is not smooth. Though we will not discuss this any further because our focus is on Algebraic Number Theory and not Arithmetic Geometry. So for now, let us return to relations between $\O_K$ and $\Nm{K/\Q}, \Tr{K/\Q}$. 
+
 
 \begin{prop}
-$\alpha \in \O$ is a unit if and only if $\Nm{K/\Q}(\alpha)=\pm 1$.
+$\alpha \in \O$ is a unit if and only if $\Nm{K/\Q}(\alpha)= \pm 1$.
 \end{prop}
 
-\pf ($\Longrightarrow$). If $\alpha$ is a unit, there is some $\beta \in K$ such that $\alpha \beta=1$. We have $\Nm{K/\Q}(\alpha)\Nm{K/\Q}(\beta)=\Nm{K/\Q}(\alpha\beta)=\Nm{K/\Q}(1)=1$. Since $\Nm{K/\Q}(\alpha)$ and $\Nm{K/\Q}(\beta)$ are integers, we must have $\Nm{K/\Q}(\alpha)=\pm 1$. 
+\pf ($\Longrightarrow$). If $\alpha$ is a unit, there is some $\beta \in K$ such that $\alpha \beta= 1$. We have $\Nm{K/\Q}(\alpha) \Nm{K/\Q}(\beta)= \Nm{K/\Q}(\alpha \beta)= \Nm{K/\Q}(1)= 1$. Because $\Nm{K/\Q}(\alpha)$ and $\Nm{K/\Q}(\beta)$ are integers, we must have $\Nm{K/\Q}(\alpha)= \pm 1$. 
 
-($\Longleftarrow$). Identify $K \subseteq \C$ and let $\sigma_1,\ldots,\sigma_n: K \hra \C$ be the complex embeddings of $K$ into $\C$, relabeling if necessary, so that $\sigma_1=\text{id}$. Then
+($\Longleftarrow$). Identify $K \subseteq \C$ and let $\sigma_1, \ldots, \sigma_n: K \hra \C$ be the complex embeddings of $K$ into $\C$, relabeling if necessary, with $\sigma_1= \text{id}$. Then
 	\[
-	\pm 1=\Nm{K/\Q}(\alpha)=\sigma_1(\alpha)\sigma_2(\alpha) \cdots \sigma_n(\alpha)= \alpha \cdot \sigma_2(\alpha) \cdots \sigma_n(\alpha).
+	\pm 1= \Nm{K/\Q}(\alpha)= \sigma_1(\alpha) \sigma_2(\alpha) \cdots \sigma_n(\alpha)= \alpha \cdot \sigma_2(\alpha) \cdots \sigma_n(\alpha).
 	\]
-Define $\beta:=\sigma_2(\alpha) \cdots \sigma_n(\alpha)$. Now $\beta \in K$ as $\alpha \in K$. We only need check that $\beta \in \O_K$. Now for all $i$, $\sigma_i(\alpha)$ is an algebraic integer since these are roots of the minimal polynomial $p_\alpha(x) \in \Z[x]$. But then $\beta:=\sigma_2(\alpha) \cdots \sigma_n(\alpha)$ is a product of algebraic integers so that $\beta \in \O_K$. Then $\alpha\beta=1$ with $\beta \in \O_K$. \qed 
+Define $\beta:= \sigma_2(\alpha) \cdots \sigma_n(\alpha)$. As $\alpha \in K$, $\beta \in K$. We only need check that $\beta \in \O_K$. For all $i$, $\sigma_i(\alpha)$ is an algebraic integer beacuse these are roots of the minimal polynomial $p_\alpha(x) \in \Z[x]$. But then $\beta= \sigma_2(\alpha) \cdots \sigma_n(\alpha)$ is a product of algebraic integers so that $\beta \in \O_K$. Then $\alpha \beta= 1$ with $\beta \in \O_K$. \qed \pskip
 
 
+
+% -------------------
+% Integral Basis & Orders
+% -------------------
 \subsection{Integral Basis \& Orders}
 
+We want to understand the additive abelian group structure of $\O_K$. Our next goal will be to prove that as an abelian group, $\O_K \cong \Z x_1 \oplus \cdots \oplus \Z x_n \cong \Z^n$, i.e. there is a collection $\{ x_1, \ldots, x_n \}$ that is an integral basis for $\O_K$. 
 
-We wanted to understand the additive abelian group structure of $\O_K$. Our next goal will be to prove that as an abelian group, $\O_K \cong \Z x_1 \oplus \cdots \oplus \Z x_n \cong \Z^n$. That is, $\{x_1,\ldots,x_n\}$ is an integral basis for $\O_K$. 
 
 \begin{dfn}[Integral Basis]
 A set of elements $\{x_1,\ldots,x_n\}$, where $x_i \in \O_K$ is called an integral basis for $\O_K$ if $\O_K \cong \Z x_1 \oplus \cdots \oplus \Z x_n \cong \Z^n$. We also say that this is an integral basis of $K$.
 \end{dfn}
 
-Any integral basis is also a basis of $K$ as a $\Q$-vector space. The image of these basis elements under the map
-	\[
+
+Let $K/\Q$ be a number field of degree $n$ and suppose that $\{ x_1, \ldots, x_n \}$ is an integral basis for $\O_K$. By clearing denominators, any nontrivial $\Q$-linear relation for $\{ x_1, \ldots, x_n \}$ gives a nontrivial $\Z$-linear relation. Therefore, any integral basis is also a basis of $K$ as a $\Q$-vector space. The image of any basis elements under the map
+	\begin{center}
 	\begin{tikzcd}
 	K \arrow{r} & \displaystyle\prod_\sigma \, \C \\[-3ex]
-	\alpha \arrow[maps to]{r} & (\sigma_(\alpha))_\sigma
+	\alpha \arrow[maps to]{r} & (\sigma(\alpha))_\sigma
 	\end{tikzcd}
-	\]
-will lie in a smaller $\R$-vector space, which we shall define.
+	\end{center}
+will lie in a smaller $\R$-vector space, which we shall define. For $\sigma: K \to \C$, denote by $\ov{\sigma}: K \hra \C$ the embedding obtained by composing $\sigma$ with complex conjugation. Essentially by definition $\ov{\sigma(\alpha)}= \ov{\sigma}(\alpha)$ for $\alpha \in K$. 
 
-For $\delta: K \to \C$, denote by $\ov{\sigma}: K \hra \C$ the embedding obtained by composing $\sigma$ with complex conjugation. For $\alpha \in K$, we have $\ov{\sigma(\alpha)}= \ov{\sigma}(\alpha)$, essentially by definition. 
 
 \begin{dfn}
-$K_\R:= \{(\alpha_\sigma)_\sigma \in \prod_\sigma \C \colon \ov{\alpha}_\sigma = \alpha_{\ov{\sigma}}\}$.
+$K_\R:= \{ (\alpha_\sigma)_\sigma \in \prod_\sigma \C \colon \ov{\alpha}_\sigma = \alpha_{\ov{\sigma}} \}$.
 \end{dfn}
 
+
 There is a map
-	\[
+	\begin{center}
 	\begin{tikzcd}
 	K \arrow[hook]{r} & K_\R \\[-3ex]
-	\alpha \arrow[maps to]{r} & (\sigma_(\alpha))_\sigma
+	\alpha \arrow[maps to]{r} & (\sigma(\alpha))_\sigma
 	\end{tikzcd}
+	\end{center}
+What is the dimension of $K_\R$ as an $\R$-vector space? We know $K \otimes_\Q \R \cong K_\R$. If $\sigma= \ov{\sigma}$, then $\alpha_\sigma \in \R$, and if $\sigma \neq \ov{\sigma}$, then $\ov{\alpha}_\sigma= \alpha_{\ov{\sigma}}$. Furthermore, $\ov{\alpha}_\sigma= \alpha_{\ov{\sigma}}$ if and only if $\ream(\alpha_\sigma)= \ream(\alpha_{\ov{\sigma}})$ and $\imag(\alpha_\sigma)= -\imag(\alpha_{\ov{\sigma}})$. This shows knowing $\alpha_\sigma$ is enough to determine $\alpha_{\ov{\sigma}}$ and
+	\[
+	\dim_\R K_\R = \frac{1}{2} \, \dim_\R\left(\prod_\sigma \C \right) = \frac{1}{2} \cdot 2n= n.
 	\]
 
-But what is the dimension, as an $\R$-vector space, of $K_\R$? We know $K \otimes_\Q \R \cong K_\R$ and $\dim_\R K_\R= \frac{1}{2} \dim_\R \left(\prod_\sigma \C\right)$, since if $\sigma=\ov{\sigma}$, then $\alpha_\sigma \in \R$, and if $\sigma \neq \ov{\sigma}$, then $\ov{\alpha}_\sigma= \alpha_{\ov{\sigma}}$, so knowing $\alpha_\sigma$ is enough to determine $\alpha_{\ov{\sigma}}$. [This is because $\ov{\alpha}_\sigma= \alpha_{\ov{\sigma}}$ if and only if $\real(\alpha_\sigma)=\real(\alpha_\sigma)$ and $\imag(\alpha_\sigma)= -\imag(\alpha_{\ov{\sigma}})$.] Then
-	\[
-	\dim_\R K_\R = \frac{1}{2} \, \dim_\R\left(\prod_\sigma \C \right) = \frac{1}{2} \cdot 2n=n
-	\]
+
+There is an intimate relationship between the structure of $\O_K$ and $K_\R$ and geometry, which we will begin to explore with the following definition:
+
 
 \begin{dfn}[Discrete]
 An additive subgroup $H$ of $\C^n$ (or $\R^n$) is discrete (points are isolated) if $H \cap X$ is finite for any compact $X \subseteq \C^n$ (respectively, $X \subseteq \R^n$). 
 \end{dfn}
 
+
 \begin{ex} \hfill
 	\begin{enumerate}[(i)]
 	\item $\Z \subseteq \R \subseteq \C$ is discrete.
-	\item $\Z\left[\frac{1+\sqrt{-3}}{2}\right] \subseteq \C$ is discrete.
-	\item $\R \subseteq \C$ is not discrete. \xqed
+	\item $\Z\left[\frac{1 + \sqrt{-3}}{2}\right] \subseteq \C$ is discrete.
+	\item $\R \subseteq \C$ is not discrete. \xqed \pskip
 	\end{enumerate} 
 \end{ex}
 
+
 \begin{ex}
-Let $K=\Q(\sqrt{2}) \subseteq \R$. Then $\O_K=\Z[\sqrt{2}]$. The two embeddings $K \hra \C$ are
+Let $K= \Q(\sqrt{2}) \subseteq \R$ so that $\O_K =\Z[\sqrt{2}]$. The two embeddings $K \hra \C$ are
 	\[
 	\begin{split}
-	\sigma_1(a+b\sqrt{2})&= a + b\sqrt{2} \\
-	\sigma_2(a+b\sqrt{2})&= a - b\sqrt{2}
+	\sigma_1(a + b\sqrt{2})&= a + b\sqrt{2} \\
+	\sigma_2(a + b\sqrt{2})&= a - b\sqrt{2}
 	\end{split}
 	\]
-These embeddings are self-conjugate so the map $K \hra K_\R=\R^2$ is given by $\alpha \mapsto (\sigma_1(\alpha),\sigma_2(\alpha))$. Note that $\Z[\sqrt{2}]$ is not discrete in $\R$ but considering $\Z[\sqrt{2}] \subseteq \R^2$ then $\O_K=\Z[\sqrt{2}]$ is discrete.
+These embeddings are self-conjugate so the map $K \hra K_\R=\R^2$ is given by $\alpha \mapsto (\sigma_1(\alpha),\, \sigma_2(\alpha))$. Note that $\Z[\sqrt{2}]$ is not discrete in $\R$ but considering $\Z[\sqrt{2}] \subseteq \R^2$, then $\O_K= \Z[\sqrt{2}]$ is discrete.
 	\[
 	\begin{tikzcd}
 	\Z[\sqrt{2}] \arrow[hook]{r} & \R^2 \\[-3ex]
-	a+b \sqrt{2} \arrow[mapsto]{r} & (a+b\sqrt{2},a-b\sqrt{2})
+	a + b \sqrt{2} \arrow[mapsto]{r} & (a + b\sqrt{2},\, a - b\sqrt{2})
 	\end{tikzcd}
 	\]
-We can picture this embedding as a lattice in $\R^2$ generated by vectors $\langle 1,-1\rangle$ and $\langle \sqrt{2}, -\sqrt{2}\rangle$. 
+We can picture this embedding as a lattice in $\R^2$ generated by vectors $\langle 1, -1\rangle$ and $\langle \sqrt{2}, -\sqrt{2}\rangle$. 
 
 	\begin{figure}[h!]
 	\centering
@@ -640,9 +681,9 @@ We can picture this embedding as a lattice in $\R^2$ generated by vectors $\lang
 		
 		\coordinate (VecOne) at (0.5,0.5);
 		\coordinate (VecTwo) at (0.75,-0.75);
-    		\draw [ultra thick,-latex,red] (Origin)
+    		\draw [ultra thick,-latex,black] (Origin)
         			-- (VecOne) node [above left] {};
-    		\draw [ultra thick,-latex,red] (Origin)
+    		\draw [ultra thick,-latex,black] (Origin)
         			-- (VecTwo) node [below right] {};
 			
     		\pgftransformcm{0.707107}{-0.707107}{0.707107}{0.707107}{\pgfpoint{0cm}{0cm}}	
@@ -652,89 +693,99 @@ We can picture this embedding as a lattice in $\R^2$ generated by vectors $\lang
     		\draw[style=help lines,dashed] ({-3},{0.7071*\y}) -- ({3},{0.7071*\y});
 	\end{tikzpicture}
   	\caption{The lattice for $\Z[\sqrt{2}]$ generated by $\langle 1,1 \rangle$ and $\langle \sqrt{2}, -\sqrt{2}\rangle$. \label{fig:lattice}}
-	\end{figure} \xqed
+	\end{figure} \xqed \pskip
 \end{ex}
 
 
 This last example is not an aberration.
 
+
 \begin{prop}
-Under the inclusion $\iota: K \hra K_\R$, $\iota(\O_K)$ is a discrete subgroup of the $\R$-vector space $K_\R$; that is, all its points are isolated. 
+Under the inclusion $\iota: K \hra K_\R$, the image $\iota(\O_K)$ is a discrete subgroup of the $\R$-vector space $K_\R$; that is, all its points $\iota(\O_K) \subseteq K_\R$ are isolated. 
 \end{prop}
 
-\pf Take $r>0$. It suffices to show there are only finitely many $\alpha \in \O_K$ with $|\sigma(\alpha)| \leq r$ for all $\sigma: K \hra \C$. Suppose $\alpha \in \O_K$ has this property. Then
+\pf Take $r>0$. It suffices to show there are only finitely many $\alpha \in \O_K$ with $|\sigma(\alpha)| \leq r$ for all $\sigma: K \hra \C$. Suppose $\alpha \in \O_K$ has this property. Then as $\alpha \in \O_K$,
 	\[
-	\prod_\sigma (x - \sigma(\alpha))= p_\alpha(x)^{[K:\Q(\alpha)]} \in \Z[x],
+	\prod_\sigma \big(x - \sigma(\alpha) \big)= p_\alpha(x)^{[K \colon \Q(\alpha)]} \in \Z[x].
 	\]
-as $\alpha \in \O_K$. The coefficients of the polynomial on the left are bounded, by the assumption that $|\sigma(\alpha)| \leq r$, in terms of $r$ and the degree $n$. Hence, there are only finitely many possibilities for $\prod_\sigma (x - \sigma(\alpha))$ since $\Z \subseteq \R$ is discrete. Hence, there are only finitely many such $\alpha$. \qed \\
+By the assumption that $|\sigma(\alpha)| \leq r$, the coefficients of the polynomial on the left are bounded in terms of $r$ and $n$. Because of this and the fact that $\Z \subseteq \R$ is discrete, there are only finitely many possibilities for $\prod_\sigma (x - \sigma(\alpha))$. Hence, there are only finitely many such $\alpha$. \qed \\
 
 
 While the next proposition is not directly related to the topics at hand, it will be useful later.
 
+
 \begin{prop}\label{prop:zbasis}
-Let $H$ be a discrete subgroup of $\R^n$. Then $H$ is a free $\Z$-module of rank at most $n$. Then any $\Z$-basis of $H$ is linearly independent over $\R$. 
+Let $H$ be a discrete subgroup of $\R^n$. Then $H$ is a free $\Z$-module of rank at most $n$, and any $\Z$-basis of $H$ is linearly independent over $\R$. 
 \end{prop}
 
-\pf Let $V:= \Span_\R H$. Choose a basis for $V$ in $H$. We may assume $\Z^r \subseteq H \subseteq \R^r$, where $r=\dim_\R V \leq n$. Replacing $\R^n$ by $V$ if necessary, we may assume $\Z^n \subseteq H \subseteq \R^n$. 
+\pf Let $V:= \Span_\R H$. Choose a basis for $V$ in $H$. We may assume $\Z^r \subseteq H \subseteq \R^r$, where $r= \dim_\R V \leq n$. Replacing $\R^n$ by $V$ if necessary, we may assume $\Z^n \subseteq H \subseteq \R^n$. Now every coset of $H/\Z^n$ has a representative with $(a_1, \ldots, a_n) \in \R^n$ with $0 \leq a_i<1$ (simply by rounding down each component and subtracting off a vector consisting of these numbers). Because $H$ is discrete, there are only finitely many such representatives. Hence, the quotient is finite. Set $m:= \#(H/\Z^n)$. Multiplying any element of $H/\Z^n$ by $m$ must give the identity coset, so multiplying any element of $H$ by $m$ lands in $\Z^n$. So $\Z^n \subseteq H \subseteq \frac{1}{m} \Z^n$. Therefore, $H$ must be free of rank $n$ as a $\Z$-module, i.e $H \cong \Z^n$. \qed \pskip
 
-Now every coset of $H/\Z^n$ has a representative with $(a_1,\ldots,a_n) \in \R^n$ with $0 \leq a_i<1$ (simply by rounding down each component and subtracting off a vector consisting of these numbers). Since $H$ is discrete, there are only finitely many such representatives. Hence, the quotient is finite.
-
-Set $m:= \#(H/\Z^n)$. Multiplying any element of $H/\Z^n$ by $m$ must give the identity coset, so multiplying any element of $H$ by $m$ lands in $\Z^n$. So $\Z^n \subseteq H \subseteq \frac{1}{m} \Z^n$. Therefore, $H$ must be free of rank $n$ as a $\Z$-module, i.e $H \cong \Z^n$. \qed \\
 
 We can then obtain one of our long term goals, describing $(\O_K,+)$.
 
-\begin{prop}\label{prop:ringintabelian}
-Let $K/\Q$ be a number field. Then $\O_K \cong \Z^n$ as an additive abelian group.
+
+\begin{prop} \label{prop:ringintabelian}
+Let $K/\Q$ be a number field of degree $n$. Then $\O_K \cong \Z^n$ as an additive abelian group.
 \end{prop}
 
-\pf By Proposition~\ref{prop:zbasis}, we know that $\O_K \cong \iota(\O_K) \subseteq K_\R \cong \R^n$. Therefore, $\O_K \cong \Z^r$, where $r \leq n$. Now take a basis $\{x_1,\ldots,x_n\}$ of $K$ over $\Q$. After multiplication by some integer $m \geq 1$, i.e. clearing denominators (this does not affect linear independence), we may assume that $x_i \in \O_K$. Then $x_1,\ldots,x_n$ are linearly independent elements in $(\O_K,+)$. Therefore, $r \geq n$. But then we must have $r=n$. Hence, $\O_K \cong \Z^n$ as an additive abelian group. \qed \\
+\pf By Proposition~\ref{prop:zbasis}, we know that $\O_K \cong \iota(\O_K) \subseteq K_\R \cong \R^n$. Therefore, $\O_K \cong \Z^r$, where $r \leq n$. Now take a basis $\{ x_1, \ldots, x_n \}$ of $K$ over $\Q$. After multiplication by some integer $m \geq 1$, i.e. clearing denominators as in Proposition~\ref{prop:power_push} (this does not affect linear independence), we may assume that $x_i \in \O_K$. Then $x_1, \ldots, x_n$ are linearly independent elements in $(\O_K, +)$. Therefore, $r \geq n$. But then we must have $r= n$. Hence, $\O_K \cong \Z^n$ as an additive abelian group. \qed \pskip
 
 
+In general, how does one compute $\O_K$? We know how to compute $\O_K$ for quadratic extensions but not for a general number field $K$. We will introduce a `good guess' for the ring of integers (this will be what is called an order) and then correct this guess into the correct $\O_K$. For instance, if $K= \Q(\sqrt[3]{2})$, one would `guess' $\O_K \stackrel{?}{=} \Z[\sqrt[3]{2}]$. The theory of discriminants will allow us to check and adjust our guess, allowing us to work our way to the true ring of integers. 
 
-
-In general, how does one compute $\O_K$? We know how to compute $\O_K$ for quadratic extensions but very little else. We will introduce a `good guess' for the ring of integers (this will be an order). For instance, if $K=\Q(\sqrt[3]{2})$, one would `guess' $\O_K \stackrel{?}{=} \Z[\sqrt[3]{2}]$. The theory of discriminants will then allow us to check and adjust our guess, allowing us to work our way to the true ring of integers. 
 
 \begin{dfn}[Order]
-Let $K$ be a number field. An order of $K$ is a subring $R \subseteq K$ that is isomorphic as an additive group to $\Z^n$, where $n=[K:\Q]$. 
+Let $K$ be a number field. An order of $K$ is a subring $R \subseteq K$ that is isomorphic as an additive group to $\Z^n$, where $n= [K \colon \Q]$. 
 \end{dfn}
 
-\begin{ex}
-If $K=\Q(\sqrt[3]{2})$, then $\Z[\sqrt[3]{2}]$ is an order of $K$. \xqed
-\end{ex}
 
 \begin{ex}
-By Proposition~\ref{prop:ringintabelian}, $\O_K$ is always an order of $K$. \xqed
+If $K= \Q(\sqrt[3]{2})$, then $\Z[\sqrt[3]{2}]$ is an order of $K$. \xqed \pskip
 \end{ex}
+
+
+\begin{ex}
+By Proposition~\ref{prop:ringintabelian}, $\O_K$ is always an order of $K$. \xqed \pskip
+\end{ex}
+
 
 Indeed, $\O_K$ is the maximal order of $K$. One can define $\O_K$ to be the maximal order of $K$. However, it does take a bit of work to then show it is equivalent to our definition. 
 
-\begin{lem}
+
+\begin{lem} \label{lem:max_order}
 For any order $R \subseteq K$, $R \subseteq \O_K$, i.e. $\O_K$ is the maximal order of $K$.
 \end{lem}
 
-\pf Take $\alpha \in R$. Then $\alpha R \subseteq R$. Note that $R$ is an order, i.e. a finitely generated $\Z$-submodule of $K$. But then by Propostion~\ref{prop:algint}, we know that $\alpha \in \O_K$. \qed \\
+\pf Take $\alpha \in R$. Then $\alpha R \subseteq R$. Note that $R$ is an order, i.e. a finitely generated $\Z$-submodule of $K$. But then by Propostion~\ref{prop:algint}, we know that $\alpha \in \O_K$. \qed \pskip
 
-Now we have a symmetric (non-degenerate) $\Q$-bilinear pairing on $K$:
-	\[
+
+\begin{rem}
+It is important to emphasize that although for any order $R \subseteq K$, $R \cong \O_K$ as additive abelian groups. However, Lemma~\ref{lem:max_order} shows that $R \subseteq \O_K$ as subrings of $K$. 
+\end{rem}
+
+
+
+% -------------------
+% Discriminants
+% -------------------
+\subsection{Discriminants}
+
+It is routine to verify that $\Tr{K/\Q}$ is a symmetric (non-degenerate) $\Q$-bilinear pairing on $K$:
+	\begin{center}
 	\begin{tikzcd}
 	\langle \;,\; \rangle \arrow{r} & \Q \\[-3ex]
 	(\alpha,\beta) \arrow[mapsto]{r} & \Tr{K/\Q}(\alpha\beta)
 	\end{tikzcd}
-	\]
-For any order $R$, $\langle \;,\;\rangle: R \times R \to \Z$ since $(\alpha,\beta) \mapsto \Tr{K/\Q}(\alpha\beta) \in \Z$ by Corollary~\ref{cor:mult}. 
-
-\begin{rem}
-This induces a pairing on $K \otimes_\Q \R \cong K_\R$ and gives it a Euclidean structure, i.e. a standard inner product on $\R^n$.
-\end{rem}
-
-Fix a basis $\{x_1,\ldots,x_r\}$ of $R$ as a $\Z$-module, and take $\alpha,\beta \in R$, writing them as
+	\end{center}
+	
+By Corollary~\ref{cor:mult}, $(\alpha,\beta) \mapsto \Tr{K/\Q}(\alpha \beta) \in \Z$ so that $\langle \;,\;\rangle: R \times R \to \Z$ for any order $R$. This induces a pairing on $K \otimes_\Q \R \cong K_\R$ and gives it a Euclidean structure, i.e. a standard inner product on $\R^n$. Fix a basis $\{ x_1, \ldots, x_r \}$ of $R$ as a $\Z$-module, and take $\alpha, \beta \in R$, writing them as
 	\[
 	\begin{split}
 	\alpha&= \sum_{i=1}^r a_i x_i \\
 	\beta&= \sum_{i=1}^r b_i x_i,
 	\end{split}
 	\]
-where $a_i,b_i \in \Z$. Expanding using linearity, 
+where $a_i, b_i \in \Z$. Expanding the product and using the linearity of $\Tr{K/\Q}$, we have
 	\[
 	\Tr{K/\Q}(\alpha\beta)= \sum_{i,j} a_i \Tr{K/\Q}(x_ix_j)b_j= (a_1,\ldots,a_n) 
 	\begin{pmatrix}
@@ -746,62 +797,78 @@ where $a_i,b_i \in \Z$. Expanding using linearity,
 	b_1 \\ \vdots \\ b_r
 	\end{pmatrix}
 	\]
+This matrix will be our next object of study and is worthy of a name:
 
+ 
 \begin{dfn}[Discriminant]
-The discriminant of an $n$-tuple $(x_1,\ldots,x_n) \in \O_K$ is
+The discriminant of an $n$-tuple $(x_1, \ldots, x_n) \in \O_K^n$ is
 	\[
-	\disc(x_1,\ldots,x_n):= \det\left(\Tr{K/\Q}(x_ix_j)\right)_{i,j}
+	\disc(x_1,\ldots,x_n):= \det\left( \Tr{K/\Q}(x_ix_j) \right)_{i,j}
 	\]
 \end{dfn}
 
-Note that the discriminant takes values in $\Z$. But how does this depend on the choice of basis? If one chose another basis of $R$, say $\{y_1,\ldots,y_n\}$, write
-	\[
-	y_i = \sum_{j=1}^r B_{ij} x_j
-	\]
-for some $B_{ij} \in \Z$. Define the matrix $B=(B_{ij})_{ij}$. The matrix $B$ is invertible, i.e. $B \in \GL_n(\Z)$ and clearly symmetric. It is routine to verify that
-	\[
-	\left( \Tr{K/\Q}(y_iy_j) \right)_{ij}= B \left(\Tr{K/\Q}(x_ix_j) \right)_{ij} B^T
-	\]
-Then taking determinants, we have
-	\[
-	\disc(y_1,\ldots,y_n)= \det(B)^2 \disc(x_1,\ldots,x_n),
-	\]
-but since $B \in \GL(\Z)$, $\det(B)=\pm 1$. Therefore, the discriminant is independent of the choice of basis. 
 
-\begin{dfn}[Discriminant (Order)]
-The discriminant of an order $R$ is $\disc(R):=\disc(x_1,\ldots,x_n)$, where $\{x_1,\ldots,x_n\}$ is a basis of $R$.
+Note that the discriminant takes values in $\Z$ because $\Tr{K/\Q}$ takes values in $\Q$. But how does the discriminant depend on the choice of basis for $\O_K$? If one chose another basis of $R$, say $\{ y_1, \ldots, y_n \}$, write
+	\[
+	y_i= \sum_{j=1}^r B_{ij} x_j
+	\]
+for some $B_{i,j} \in \Z$. Define the matrix $B:= (B_{i,j})_{i,j}$. The matrix $B$ is symmetric and invertible, i.e. $B \in \GL_n(\Z)$. It is routine to verify that
+	\[
+	\left( \Tr{K/\Q}(y_iy_j) \right)_{ij}= B \left( \Tr{K/\Q}(x_ix_j) \right)_{ij} B^T.
+	\]
+Then taking determinants and using the fact that $\det M= \det M^T$, we have
+	\[
+	\disc(y_1, \ldots, y_n)= \det(B)^2 \disc(x_1, \ldots, x_n).
+	\]
+Because $B \in \GL(\Z)$, we must have $\det(B)= \pm 1$. Therefore, the discriminant is independent of the choice of basis. This proves the following proposition:
+
+
+\begin{prop}
+The discriminant of an $n$-tuple $(x_1, \ldots, x_n) \in \O_K^n$ is independent of the choice of basis for $\O_K$.
+\end{prop}
+
+
+\begin{dfn}[Discriminant of an Order]
+The discriminant of an order $R$ is $\disc(R):= \disc(x_1, \ldots, x_n)$, where $\{ x_1, \ldots, x_n \}$ is a basis of $R$.
 \end{dfn}
 
-We can now make our previous `guess-and-check' notion for calculating $\O_K$ a bit more precise. For an order $R \subseteq \O_K$, $\disc(R)=\disc(\O_K) [\O_K \colon R]^2$ (as we shall show). Then to find $\O_K$:
+
+We can now make our previous `guess-and-check' notion for calculating $\O_K$ a bit more precise. As we shall show, for an order $R \subseteq \O_K$, $\disc(R)= \disc(\O_K) [\O_K \colon R]^2$, c.f. Lemma~\ref{lem:disc_ordersq}. Then to find $\O_K$, we have the following procedure: \pskip
+
+
+\noindent{\bfseries Computing $\O_K$}
 	\begin{enumerate}[1.]
 	\item Guess an order $R$.
 	\item Compute $\disc(R)$, which gives a finite number of possibilities for $[\O_K \colon R]$.
 	\item Observe $R \subseteq \O_K \subseteq \frac{1}{m} R$. Find representatives for the cosets and determine which are algebraic integers. 
-	\end{enumerate}
+	\end{enumerate} \pskip
+
+
+As a final remark before relating the discriminants of orders, we shall show that the discriminant is always nonzero which essentially follows because the pairing $\langle \;,\; \rangle$ is non-degenerate.
+
 
 \begin{prop}
 For an order $R \subseteq K$, $\disc(R) \neq 0$.
 \end{prop}
 
-\pf Suppose $0 \neq \alpha \in R$. Then $\Tr{K/\Q}(\alpha\alpha^{-1})=[K \colon \Q] \neq 0$. There is some $m \geq 1$ such that $m \alpha^{-1} \in R$. Then $\langle \alpha,\beta \rangle= m[K \colon \Q] \neq 0$ since $\langle \;,\; \rangle$ is non-degenerate. \qed 
+\pf Suppose $0 \neq \alpha \in R$. We know $\Tr{K/\Q}(\alpha\alpha^{-1})= [K \colon \Q] \neq 0$ so that there is some $m \geq 1$ such that $m \alpha^{-1} \in R$. Then $\langle \alpha, \beta \rangle= m [K \colon \Q] \neq 0$ because $\langle \;,\; \rangle$ is non-degenerate. \qed \pskip
 
 
-\subsection{Discriminants}
-
-
-\begin{dfn}[Discriminant (Number Field)]
-If $K$ is a number field, then we define $\disc(K):= \disc(\O_K)$. 
+\begin{dfn}[Discriminant of a Number Field]
+If $K$ is a number field, then we define the discriminant of $K$ to be $\disc(K):= \disc(\O_K)$. 
 \end{dfn}
 
+
 \begin{rem}
-There are many notations for what we have denoted as $\disc(K)$: $d_K,D_K,\Delta_K,\ldots$
+There are many notations for what we have denoted as $\disc(K)$: $d_K, D_K, \Delta_K, \ldots$.
 \end{rem}
 
 
 Before we prove a useful lemma relating $\disc(R)$ and $\disc(\O_K)$, we shall remind the reader of Smith Normal Form.
 
+
 \begin{thm}[Smith Normal Form]
-Let $B \in M_n(\Z)$ be of rank $r$. There exists matrices $P,Q \in \GL(\Z)$ such that
+Let $B \in M_n(\Z)$ be of rank $r$. There exists matrices $P, Q \in \GL(\Z)$ such that
 	\[
 	PBQ=
 	\begin{pmatrix}
@@ -811,36 +878,39 @@ Let $B \in M_n(\Z)$ be of rank $r$. There exists matrices $P,Q \in \GL(\Z)$ such
 	 &  &  & 0 &  & \\ 
 	 &  &  &  & \ddots & \\ 
 	 &  &  &  &  & 0
-	\end{pmatrix},
+	\end{pmatrix}
 	\]
 where $d_i \geq 1$ and $d_i \mid d_{i+1}$. 
 \end{thm}
 
+
 \begin{rem}
-One only need the entries of the matrix be in a PID and the matrix need not be square. One defines $d_i=\div_i(A)/\div_{i-1}(A)$, where $\div_i$ is the $i$th determinant divisor, i.e. the gcd of all the $i \times i$ minors of $A$ and $d_0(A):=1$. 
+One only need the entries of the matrix be in a PID and the matrix need not be square. One defines $d_i= \div_i(A) / \div_{i-1}(A)$, where $\div_i$ is the $i$th determinant divisor, i.e. the gcd of all the $i \times i$ minors of $A$ and $d_0(A):= 1$. 
 \end{rem}
 
 
-\noindent \textbf{Exercise: }Prove the classification of finitely generated abelian groups using the Smith Normal Form. \\
+\noindent {\bfseries Exercise:} Prove the classification of finitely generated abelian groups using the Smith Normal Form. \\
 
 
-\begin{lem}
+\begin{lem} \label{lem:disc_ordersq}
 Let $R \subseteq K$ be an order. Then $\disc(R)= \disc(\O_K) [\O_K \colon R]^2$. 
 \end{lem}
 
 \pf Write $\O_K= \Z x_1 \oplus \cdots \oplus \Z x_n$ and let $R \subseteq \O_K$ be an order. Write $R= \Z y_1 \oplus \cdots \oplus \Z y_n$. For each of the $y_i$'s, write
 	\[
-	y_i \sum_{j=1}^n B_{ij} x_i
+	y_i \sum_{j=1}^n B_{ij} x_i.
 	\]
-Define $B:=(B_{ij})_{ij}$. We know that $B \in \GL_n(\Z)$. Observe that $[\O_K \colon R] = [\Z^n \colon B(\Z^n)]$. By some previous remarks,
+Define $B:= (B_{i,j})_{i,j}$. We know that $B \in \GL_n(\Z)$. Observe that $[\O_K \colon R] = [\Z^n \colon B(\Z^n)]$. By some previous remarks,
 	\[
-	\disc(y_1,\ldots,y_n)= \det(B)^2 \disc(x_1,\ldots,x_n)
+	\disc(y_1, \ldots, y_n)= \det(B)^2 \disc(x_1, \ldots, x_n)= \det(B)^2 \disc(\O_K).
 	\]
-Therefore, $\disc(R)= \det(B)^2 \disc(\O_K)$. It remains to show that $\det(B)= \pm [\O_K \colon R]$. Without loss of generality, assume that $B$ is of the form
+Therefore, $\disc(R)= \det(B)^2 \disc(\O_K)$. It remains to show that $\det(B)= \pm [\O_K \colon R]$. 
+
+Using the Smith Normal Form, there are invertible integer matrices $P, Q$ so that $PBQ$ is a diagonal matrix. But then $\det(P), \det(Q) \in \{\pm 1\}$. But then $P,Q$ do not change $[\Z^n \colon B(\Z^n)]$ or $\pm\det(B)$. So without loss of generality, we may assume that $B$ is of the form
 	\[
-	B=\begin{pmatrix} d_1 & & \\ & \ddots & \\ & & d_n \end{pmatrix}
+	B= \begin{pmatrix} d_1 & & \\ & \ddots & \\ & & d_n \end{pmatrix}
 	\]
-with $d_i \geq 1$ and $\det B \neq 0$. [Using Smith Normal Form, we replace $B$ by $PBQ$. This does not change $[\Z^n \colon B(\Z^n)]$ or $\pm\det(B)$ since $P,Q$ are invertible integer matrices. Then $\det(P),\det(Q) \in \{\pm 1\}$.] Now $\det(B)=d_1d_2\cdots d_n$. Therefore,
+with $d_i \geq 1$ and $\det B \neq 0$. Now $\det(B)= d_1 d_2 \cdots d_n$. Therefore,
 	\[
 	B(\Z^n)= d_1 \Z \times \cdots \times d_n \Z
 	\]
@@ -848,10 +918,11 @@ and
 	\[
 	\Z^n/B(\Z^n) \cong \Z/d_1\Z \times \cdots \times \Z/d_n\Z,
 	\]
-which has cardinality $d_1\cdots d_n$, as desired. \qed \\
+which has cardinality $d_1 \cdots d_n$, as desired. \qed \pskip
+
 
 \begin{ex}
-Let $K=\Q(\sqrt{d})$, where $d \neq 1$ is a squarefree integer. Now $R=\Z[\sqrt{d}]=\Z + \Z \sqrt{d}$ is an order of $K$. Furthermore,
+Let $K= \Q(\sqrt{d})$, where $d \neq 1$ is a squarefree integer. Now $R= \Z[\sqrt{d}]= \Z + \Z \sqrt{d}$ is an order of $K$. Furthermore,
 	\[
 	\begin{split}
 	\disc(R)&= \disc(1,\sqrt{d}) \\
@@ -860,72 +931,73 @@ Let $K=\Q(\sqrt{d})$, where $d \neq 1$ is a squarefree integer. Now $R=\Z[\sqrt{
 	\Tr{K/\Q}(\sqrt{d} \cdot 1) & \Tr{K/\Q}(\sqrt{d} \cdot \sqrt{d})
 	\end{pmatrix} \\
 	&= \det \begin{pmatrix} 2 & 0 \\ 0 & 2d \end{pmatrix} \\
-	&=4d.
+	&= 4d.
 	\end{split}
 	\]
-So $4d=\disc(R)=\disc(\O_K) [\O_K \colon R]^2$. Since $d$ is squarefree, this implies that $[\O_K \colon R] \in \{1,2\}$; that is, $\O_K=R$ or is index 2 larger, i.e.	
+So $4d= \disc(R)= \disc(\O_K) [\O_K \colon R]^2$. Because $d$ is squarefree, this implies that $[\O_K \colon R] \in \{ 1, 2 \}$; that is, $\O_K= R$ or is index 2 larger, i.e.	
 	\[
 	R \subseteq \O_K \subseteq \dfrac{1}{2}\, R.
 	\]
-Now $R/\frac{1}{2}R$ has coset representatives $1, \frac{1}{2}, \frac{\sqrt{d}}{2}$, and $\frac{1+\sqrt{d}}{2}$. One need only check which of these are algebraic integers. It is routine to check that 1 is an algebraic integer, $\frac{1}{2}, \frac{\sqrt{d}}{2}$ are not algebraic integers, and $\frac{1+\sqrt{d}}{2}$ is sometimes an algebraic integer (if and only if $d \equiv 1 \mod 4$). Therefore,
+Now $R / \frac{1}{2}R$ has coset representatives $1, \frac{1}{2}, \frac{\sqrt{d}}{2}$, and $\frac{1 + \sqrt{d}}{2}$. One need only check which of these are algebraic integers. It is routine to check that 1 is an algebraic integer, $\frac{1}{2}, \frac{\sqrt{d}}{2}$ are not algebraic integers, and $\frac{1 + \sqrt{d}}{2}$ is sometimes an algebraic integer (if and only if $d \equiv 1 \mod 4$). Therefore,
 	\[
 	\begin{split}
 	\O_K&=
 	\begin{cases}
-	\Z[\sqrt{d}], & \text{if } d \not\equiv 1 \mod 4 \\
-	\Z\left[\frac{1+\sqrt{d}}{2}\right], & \text{if } d \equiv 1 \mod 4
-	\end{cases} \\
+	\Z[\sqrt{d}], & \text{if } d \not\equiv 1 \mod 4 \\ \\
+	\Z\left[ \dfrac{1 + \sqrt{d}}{2} \right], & \text{if } d \equiv 1 \mod 4
+	\end{cases} \\ \\
 	\disc(\O_K)&=
 	\begin{cases}
 	4d, & \text{if } d \not\equiv 1 \mod 4 \\
 	d, & \text{if } d \equiv 1 \mod 4.
 	\end{cases}
 	\end{split}
-	\] \xqed
+	\] \xqed \pskip
 \end{ex}
+
 
 \begin{rem}
 The discriminant of $\O_K$ determines a degree 2 extension $K/\Q$ up to isomorphism. Later, we shall see that there are only finitely many number fields of any degree with a given discriminant. 
 \end{rem}
 
-\begin{lem}\label{lem:embeddisc}
-Let $\sigma_1,\ldots,\sigma_n: K \hra \C$ be the complex embeddings of $K$ into $\C$. Then for $x_1,\ldots,x_n \in \O_K$,
+
+\begin{lem} \label{lem:embeddisc}
+Let $\sigma_1, \ldots, \sigma_n: K \hra \C$ be the complex embeddings of $K$ into $\C$. Then for $x_1, \ldots, x_n \in \O_K$,
 	\[
-	\disc(x_1,\ldots,x_n)= \bigg(\det \big(\sigma_i(x_j)\big)_{i,j} \bigg)^2= \left[\det 
+	\disc(x_1, \ldots, x_n)= \bigg( \det \big(\sigma_i(x_j) \big)_{i,j} \bigg)^2= \left[ \det 
 	\begin{pmatrix}
 	\sigma_1(x_1) & \cdots & \sigma_1(x_n) \\
 	\vdots & \ddots & \vdots \\
 	\sigma_n(x_1) & \cdots & \sigma_n(x_n)
-	\end{pmatrix}\right]^2
+	\end{pmatrix} \right]^2
 	\]
 \end{lem}
 
-\pf Recall $\Tr{K/\Q}(x)= \sum_{i=1}^n \sigma_i(x)$. Let $A:=(\sigma_i(x_j))_{ij}$. Then we have
+\pf Recall $\Tr{K/\Q}(x)= \sum_{i=1}^n \sigma_i(x)$. Let $A:= (\sigma_i(x_j))_{i,j}$. Then we have
 	\[
 	\begin{split}
-	\disc(x_1,\ldots,x_n)&= \det\bigg(\Tr{K/\Q}(x_ix_j)\bigg)_{i,j} \\
-	&=\det\left(\sum_{k=1}^n \sigma_k(x_i) \sigma_k(x_j) \right) \\
-	&=\det\left(\sum_{k=1}^n \sigma_k(x_i x_j) \right) \\
+	\disc(x_1, \ldots, x_n)&= \det \bigg( \Tr{K/\Q}(x_ix_j) \bigg)_{i,j} \\
+	&=\det \left( \sum_{k=1}^n \sigma_k(x_i) \sigma_k(x_j) \right) \\
+	&=\det \left( \sum_{k=1}^n \sigma_k(x_i x_j) \right) \\
 	&= \det( A^TA) \\
 	&= \left[ \det(A) \right]^2.
 	\end{split}
-	\]
-\qed \\
+	\] \qed \pskip
 
 
 \begin{ex}
-Let $K=\Q(\sqrt{d})$, where $d \neq 1$ is a squarefree integer. Consider $R=\Z[\sqrt{d}] \subseteq \Q(\sqrt{d})=K$. The two complex embeddings of $K$ into $\C$ are 
+Let $K= \Q(\sqrt{d})$, where $d \neq 1$ is a squarefree integer. Consider $R= \Z[\sqrt{d}] \subseteq \Q(\sqrt{d})= K$. The two complex embeddings of $K$ into $\C$ are 
 	\[
 	\begin{split}
-	\sigma_1(a+b\sqrt{d})&= a + b\sqrt{d} \\
-	\sigma_2(a+b\sqrt{d})&= a - b\sqrt{d}
+	\sigma_1(a + b\sqrt{d})&= a + b\sqrt{d} \\
+	\sigma_2(a + b\sqrt{d})&= a - b\sqrt{d}
 	\end{split}
 	\]
 Then by Lemma~\ref{lem:embeddisc}
 	\[
 	\begin{split}
 	\disc R&= \disc(1,\sqrt{d}) \\
-	&=\left[\det \begin{pmatrix}
+	&= \left[ \det \begin{pmatrix}
 	\sigma_1(1) & \sigma_1(\sqrt{d}) \\
 	\sigma_2(1) & \sigma_2(\sqrt{d})
 	\end{pmatrix} \right]^2 \\
@@ -935,34 +1007,39 @@ Then by Lemma~\ref{lem:embeddisc}
 	\end{pmatrix} \right]^2 \\
 	&= 4d
 	\end{split}
-	\] \xqed
+	\] \xqed \pskip
 \end{ex}
 
 
 The term `discriminant' will already be familiar to the reader from the discriminant of a polynomial. 
 
-\begin{dfn}[Discriminant (Polynomial)]
+
+\begin{dfn}[Discriminant of a Polynomial]
 If $f(x) \in \Q[x]$ is a monic polynomial of degree $n \geq 1$, the discriminant of $f$ is
 	\[
 	\disc(f)= \prod_{1 \leq i<j \leq n} (\alpha_i - \alpha_j)^2
 	\]
-where $\alpha_1,\ldots,\alpha_n$ are the roots of $f$ in $\C$. 
+where $\alpha_1, \ldots, \alpha_n$ are the roots of $f$ in $\C$. 
 \end{dfn}
 
+
 It is worth noting that $\disc(f) \in \Q$ and if $f \in \Z[x]$ then $\disc(f) \in \Z$. Note also that if the polynomial is not monic, one can always divide by the leading coefficient and use the fact that if $\alpha \in \Q$, then $\disc(\alpha x)= \alpha^n \disc(x)$, where $n=[K:\Q]$. 
+
 
 \begin{ex}
 Here are some discriminants of several specific polynomials:
 	\[
 	\begin{split}
-	\disc(x^2+bc+x)&= b^2 - 4c \\
-	\disc(x^3+bx^2+cx+d)&= b^2c^2 - 4c^3 - 4b^3d - 27d^2 + 18bcd \\
-	\disc(x^3+cx+d)&= -4c^3 - 27 d^2
+	\disc(x^2 + bx + c)&= b^2 - 4c \\
+	\disc(x^3 + bx^2 + cx + d)&= b^2c^2 - 4c^3 - 4b^3d - 27d^2 + 18bcd \\
+	\disc(x^3 + cx + d)&= -4c^3 - 27 d^2
 	\end{split}
-	\] \xqed
+	\] \xqed \pskip
 \end{ex}
 
+
 We shall connect the discriminant of a number field with that of the discriminant of a polynomial. 
+
 
 \begin{lem}\label{lem:discmin}
 If $\alpha \in \O_K$ is such that $K=\Q(\alpha)$ (so that $\Z[\alpha]$ is an order of $K$), then $\disc(\Z[\alpha])= \disc(p_\alpha(x))$, where $p_\alpha(x)$ is the minimal polynomial of $\alpha$ over $\Q$. 
@@ -983,13 +1060,15 @@ If $\alpha \in \O_K$ is such that $K=\Q(\alpha)$ (so that $\Z[\alpha]$ is an ord
 	\end{split}
 	\] \qed \\
 
+
 \begin{ex}
 Let $K=\Q(\alpha)$, where $\alpha$ is a root of $f(x)=x^3+x+1$. Observe that $f(x)$ is irreducible and then $[K:\Q]=3$. Now $\Z[\alpha]$ is an order of $K$ with 
 	\[
 	\disc(\Z[\alpha])= \disc(f)= -4(1)^3 - 27(1)^2= -31.
 	\]
-But $\disc(\Z[\alpha])= \disc(\O_K) [\O_K \colon \Z[\alpha]]^2$. Since 31 is prime, we must have $[\O_K \colon \Z[\alpha]=1$ which implies that $\O_K=\Z[\alpha]$ and $\disc(K)= -31$. \xqed
+But $\disc(\Z[\alpha])= \disc(\O_K) [\O_K \colon \Z[\alpha]]^2$. Since 31 is prime, we must have $[\O_K \colon \Z[\alpha]=1$ which implies that $\O_K=\Z[\alpha]$ and $\disc(K)= -31$. \xqed \pskip
 \end{ex}
+
 
 \begin{ex}
 Let $K=\Q(\alpha)$, where $\alpha$ is a root of $f(x)= x^3-x^2-2x-8$. Consider the order $\Z[\alpha]$ of $K$. 
@@ -1018,15 +1097,17 @@ Therefore, $\theta$ is a root of
 	\end{pmatrix}
 	\right)= x^3 - 3x^2 -10x - 8.
 	\]
-But then $\theta \in \O_K$. Therefore, $\O_K= \Z 1 \oplus \Z \alpha \oplus \Z\frac{\alpha+\alpha^2}{2}=\Z \oplus \Z \alpha \oplus \Z \theta$. Note that $\O_K \neq \Z[\beta]$ for any $\beta \in \O_K$ --- a result due to Dedekind. \xqed
+But then $\theta \in \O_K$. Therefore, $\O_K= \Z 1 \oplus \Z \alpha \oplus \Z\frac{\alpha+\alpha^2}{2}=\Z \oplus \Z \alpha \oplus \Z \theta$. Note that $\O_K \neq \Z[\beta]$ for any $\beta \in \O_K$ --- a result due to Dedekind. \xqed \pskip
 \end{ex}
 
 
 \begin{ex}
-In the previous example, we saw that for $K=\Q(\alpha)$, where $\alpha$ is a root of $f(x)=x^3-x^2-2x-8$, $\O_K \neq \Z[\beta]$ for any $\beta \in \O_K$. This is not the only example. For example, if $K=\Q(\sqrt[3]{19})$, then $\O_K \neq \Z[\sqrt[3]{19}]$ but rather $\O_K=\Z+\Z\omega+ \Z \frac{1+\omega+\omega^2}{3}$, where $\omega=\sqrt[3]{19}$. \xqed
+In the previous example, we saw that for $K=\Q(\alpha)$, where $\alpha$ is a root of $f(x)=x^3-x^2-2x-8$, $\O_K \neq \Z[\beta]$ for any $\beta \in \O_K$. This is not the only example. For example, if $K=\Q(\sqrt[3]{19})$, then $\O_K \neq \Z[\sqrt[3]{19}]$ but rather $\O_K=\Z+\Z\omega+ \Z \frac{1+\omega+\omega^2}{3}$, where $\omega=\sqrt[3]{19}$. \xqed \pskip
 \end{ex}
 
+
 We have seen how the discriminant relates to $\O_K$. We shall now see how the discriminant relates to the norm.
+
 
 \begin{lem}\label{lem:discnorm}
 Let $K=\Q(\alpha)$ be a number field, where $\alpha \in \O_K$. If $f \in \Z[x]$ is the minimal polynomial of $\alpha$ over $\Q$, then	
@@ -1054,7 +1135,8 @@ But then $f'(\sigma_j(\alpha))= \prod_{i \neq j} (\sigma_j(\alpha) - \sigma_i(\a
 	&= (-1)^{\frac{n(n-1)}{2}} \prod_j \sigma_j(f'(\alpha)) \\
 	&=  (-1)^{\frac{n(n-1)}{2}} \Nm{K/\Q}(f'(\alpha))
 	\end{split}
-	\] \qed \\
+	\] \qed \pskip
+
 
 \begin{ex}[$p$th Cyclotomic Field]
 Fix an odd prime $p$. Let $\zeta \neq 1$ be a $p$th root of unity, i.e. $\zeta^p=1$. Let $K=\Q(\zeta)$ be the $p$th cyclotomic field. Define
@@ -1116,12 +1198,11 @@ Using the fact that $\zeta^i-1=(\zeta-1)(1+\zeta+\cdots+\zeta^{i-1})$, this show
 	\disc \O_K&= (-1)^{\frac{p-1}{2}} p^{p-2}
 	\end{split}
 	\]
-Note that $\frac{p}{(\zeta-1)^{p-1}} \in \Z[\zeta]$ and $\Nm{K/\Q}(\frac{p}{(\zeta-1)^{p-1}})= \frac{p^{p-1}}{p^{p-1}}=1$ so that $p=u(\zeta-1)^{p-1}$ for some $u \in \Z[\zeta]^\times$. \xqed
+Note that $\frac{p}{(\zeta-1)^{p-1}} \in \Z[\zeta]$ and $\Nm{K/\Q}(\frac{p}{(\zeta-1)^{p-1}})= \frac{p^{p-1}}{p^{p-1}}=1$ so that $p=u(\zeta-1)^{p-1}$ for some $u \in \Z[\zeta]^\times$. \xqed \pskip
 \end{ex}
+
 
 \begin{rem}
 Choose $m \geq 1$ and let $\zeta_m$ be the primitive $m$th root of unity. Then $\O_K=\Z[\zeta_m]$ and $\disc \O_K \mid m^{\phi(m)}$. 
 \end{rem}
-
-
 
